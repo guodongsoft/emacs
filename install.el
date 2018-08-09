@@ -11,7 +11,5 @@
 (package-install `markdown-mode)
 
 ;; system operation check
-(if (eq system-type 'gnu/linux)
-    (progn
-      (package-install `base16-theme)
-      (package-install `exwm)))
+;; (when (eq system-type 'gnu/linux)
+;;  (package-install `exwm))

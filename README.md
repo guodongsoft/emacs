@@ -15,3 +15,6 @@
 # Slime
 - cd ~/.emacs.d
 - git clone https://github.com/slime/slime.git
+
+# EXWM
+cp ~/.emacs.d/elpa/exwm*/xinitrc ~/.xinitrc
