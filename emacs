@@ -12,10 +12,19 @@
 (require 'evil)
 (evil-mode 1)
 
-(setq inferior-lisp-program "/usr/local/bin/sbcl")
+;; (setq inferior-lisp-program "/usr/local/bin/sbcl")
+(setq inferior-lisp-program "/usr/local/bin/clisp")
 (add-to-list 'load-path "~/.emacs.d/slime")
 (require 'slime)
 (slime-setup)
+
+;; Use youdao dictionary
+(global-set-key (kbd "C-c y") 'youdao-dictionary-search-at-point)
+
+;; auto complete
+(ac-config-default)
+(ac-set-trigger-key "TAB")
+(setq ac-auto-start nil)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
