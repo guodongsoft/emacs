@@ -6,6 +6,7 @@
 (package-initialize)
 
 (package-refresh-contents)
+(package-install `evil)
 (package-install `auto-complete)
 (package-install `youdao-dictionary)
 (package-install `markdown-mode)

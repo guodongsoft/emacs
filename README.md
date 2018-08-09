@@ -5,16 +5,24 @@
 - (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
 - (package-initialize)
 
-## 2.Install
-- M-x package-refresh-contents
-- Example: M-x package-install <RET> evil
-
-### install with script
+## 2.Install script
 - emacs --script install.el
 
-# Slime
-- cd ~/.emacs.d
-- git clone https://github.com/slime/slime.git
+# Quicklisp
+## 1.Install
+- see quicklisp/Install
+
+## 2.Let Emacs know about SBCL and Quicklisp
+- First in SBCL run:
+```
+(ql:quickload "quicklisp-slime-helper")
+```
+
+- Tell Emacs how to launch your Lisp environment
+```
+(setq inferior-lisp-program "sbcl")
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
+```
 
 # EXWM
 cp ~/.emacs.d/elpa/exwm*/xinitrc ~/.xinitrc
