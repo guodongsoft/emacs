@@ -10,6 +10,7 @@
 (package-initialize)
 
 (load-theme 'tango-dark t)
+(set-face-background 'default "0")
 
 (require 'evil)
 (evil-mode 1)
