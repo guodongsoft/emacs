@@ -23,7 +23,10 @@
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
 
 ;; ansi-term
-(global-set-key "\C-x\ a" '(lambda ()(interactive)(ansi-term "/bin/zsh")))
+(global-set-key (kbd "C-x a") '(lambda ()(interactive)(ansi-term "/bin/zsh")))
+
+;; Indent region
+(global-set-key (kbd "C-\\") 'indent-region)
 
 ;; Use youdao dictionary
 (global-set-key (kbd "C-c y") 'youdao-dictionary-search-at-point)
