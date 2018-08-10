@@ -12,11 +12,18 @@
 (load-theme 'tango-dark t)
 (set-face-background 'default "0")
 
+(require 'mozc)
+(set-language-environment "Japanese")
+(setq default-input-method "japanese-mozc")
+
 (require 'evil)
 (evil-mode 1)
 
 (setq inferior-lisp-program "sbcl")
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
+
+;; ansi-term
+(global-set-key "\C-x\ a" '(lambda ()(interactive)(ansi-term "/bin/zsh")))
 
 ;; Use youdao dictionary
 (global-set-key (kbd "C-c y") 'youdao-dictionary-search-at-point)
@@ -31,7 +38,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (evil))))
+ '(package-selected-packages (quote (mozc evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
