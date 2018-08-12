@@ -106,8 +106,9 @@
  (package-install 'zeal-at-point))
 
 ;; 代码跳转
-(package-install 'xcscope)
-(package-install 'ggtags)
+;;(package-install 'xcscope)
+;;(package-install 'ggtags)
+(package-install 'ctags-update)
 
 ;; 代码检查
 (package-install 'flycheck)
