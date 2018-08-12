@@ -5,3 +5,5 @@ eshell
 tags
 bookmarks
 *.dat
+*.eld
+*.cache

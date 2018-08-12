@@ -9,8 +9,9 @@
              '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (package-initialize)
 
-(load-theme 'tango-dark t)
-(set-face-background 'default "0")
+(defun set-theme () (load-theme 'tango-dark t))
+(set-theme)
+;;(set-face-background 'default "0")
 
 (require 'mozc)
 (set-language-environment "Japanese")
@@ -31,17 +32,58 @@
 ;; Use youdao dictionary
 (global-set-key (kbd "C-c y") 'youdao-dictionary-search-at-point)
 
-;; auto complete
+;; Auto complete
 (ac-config-default)
 (ac-set-trigger-key "TAB")
 (setq ac-auto-start nil)
+
+;; Neotree
+(require 'neotree)
+(defun my-neotree-toggle ()
+ (interactive)
+ (neotree-toggle)
+ (set-theme))
+(global-set-key [f6] 'my-neotree-toggle)
+
+;; Projectile
+;; 默认全局使用
+(projectile-global-mode)
+;; 默认打开缓存
+(setq projectile-enable-caching t)
+;; 使用f5键打开默认文件搜索
+(global-set-key [f5] 'projectile-find-file)
+
+(projectile-mode +1)
+(projectile-rails-global-mode)
+(define-key key-translation-map (kbd "C-c ,") (kbd "C-c r"))
+(define-key key-translation-map (kbd "C-c .") (kbd "C-c r !"))
+
+(setq projectile-switch-project-action 'neotree-projectile-action)
+(defun neotree-ffip-project-dir ()
+ "Open NeoTree using the git root."
+ (interactive)
+ (let ((project-dir (ffip-project-root))
+       (file-name (buffer-file-name)))
+  (if project-dir
+   (progn
+    (neotree-dir project-dir)
+    (neotree-find file-name))
+   (message "Could not find git project root."))))
+(define-key projectile-mode-map (kbd "C-c C-p") 'neotree-ffip-project-dir)
+(add-hook 'neotree-mode-hook
+ (lambda ()
+  (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+  (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
+  (define-key evil-normal-state-local-map (kbd "o") 'neotree-enter)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (mozc evil))))
+ '(package-selected-packages
+   (quote
+    (projectile-speedbar egg git-command package-utils emmet-mode mozc evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
