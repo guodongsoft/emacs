@@ -7,6 +7,7 @@
 
 (package-refresh-contents)
 (package-install `evil)
+(package-install `mozc)
 (package-install `auto-complete)
 (package-install `youdao-dictionary)
 (package-install `markdown-mode)
