@@ -23,8 +23,23 @@
 (setq inferior-lisp-program "sbcl")
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
 
-;; Ansi-term
-(global-set-key (kbd "C-x a") '(lambda ()(interactive)(ansi-term "/bin/zsh")))
+;; Zsh
+(defun new-zsh ()
+  (interactive)
+  (ansi-term "/bin/zsh"))
+
+(defun get-buffer-with-name (name)
+  (when (not (get-buffer name))
+    (new-zsh)
+    (rename-buffer name)))
+
+(defun zsh ()
+  (interactive)
+  (get-buffer-with-name "zsh"))
+
+(defun rails ()
+  (interactive)
+  (get-buffer-with-name "rails"))
 
 ;; Indent region
 (global-set-key (kbd "C-\\") 'indent-region)
