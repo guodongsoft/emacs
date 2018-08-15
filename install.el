@@ -152,6 +152,8 @@
 (package-install 'projectile-rails)
 (package-install 'projectile-variable)
 
+(package-install 'rspec-mode)
+
 ;; Python
 ;;(package-install 'anaconda-mode)
 ;;(package-install 'elpy)

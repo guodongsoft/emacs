@@ -4,6 +4,8 @@ slime
 eshell
 tags
 bookmarks
+url
 *.dat
 *.eld
 *.cache
+\#*

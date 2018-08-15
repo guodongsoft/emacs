@@ -23,7 +23,7 @@
 (setq inferior-lisp-program "sbcl")
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
 
-;; ansi-term
+;; Ansi-term
 (global-set-key (kbd "C-x a") '(lambda ()(interactive)(ansi-term "/bin/zsh")))
 
 ;; Indent region
@@ -31,6 +31,9 @@
 
 ;; Use youdao dictionary
 (global-set-key (kbd "C-c y") 'youdao-dictionary-search-at-point)
+
+;; Emmet
+(global-set-key (kbd "C-c ,y") 'emmet-expand-yas)
 
 ;; Auto complete
 (ac-config-default)
@@ -40,10 +43,16 @@
 ;; Neotree
 (require 'neotree)
 (defun my-neotree-toggle ()
- (interactive)
- (neotree-toggle)
- (set-theme))
+  (interactive)
+  (neotree-toggle)
+  (set-theme))
 (global-set-key [f6] 'my-neotree-toggle)
+
+(add-hook 'neotree-mode-hook
+	  (lambda ()
+	    (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+	    (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
+	    (define-key evil-normal-state-local-map (kbd "o") 'neotree-enter)))
 
 ;; Projectile
 ;; 默认全局使用
@@ -55,26 +64,28 @@
 
 (projectile-mode +1)
 (projectile-rails-global-mode)
-(define-key key-translation-map (kbd "C-c ,") (kbd "C-c r"))
-(define-key key-translation-map (kbd "C-c .") (kbd "C-c r !"))
+;;(define-key key-translation-map (kbd "C-c ,") (kbd "C-c r"))
+;;(define-key key-translation-map (kbd "C-c .") (kbd "C-c r !"))
 
 (setq projectile-switch-project-action 'neotree-projectile-action)
 (defun neotree-ffip-project-dir ()
- "Open NeoTree using the git root."
- (interactive)
- (let ((project-dir (ffip-project-root))
-       (file-name (buffer-file-name)))
-  (if project-dir
-   (progn
-    (neotree-dir project-dir)
-    (neotree-find file-name))
-   (message "Could not find git project root."))))
+  "Open NeoTree using the git root."
+  (interactive)
+  (let ((project-dir (ffip-project-root))
+	(file-name (buffer-file-name)))
+    (if project-dir
+	(progn
+	  (neotree-dir project-dir)
+	  (neotree-find file-name))
+      (message "Could not find git project root."))))
 (define-key projectile-mode-map (kbd "C-c C-p") 'neotree-ffip-project-dir)
-(add-hook 'neotree-mode-hook
- (lambda ()
-  (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
-  (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
-  (define-key evil-normal-state-local-map (kbd "o") 'neotree-enter)))
+
+;; No bar
+(setq inhibit-startup-screen t)
+(setq inhibit-splash-screen t)
+;;(menu-bar-mode -1)
+;;(scroll-bar-mode -1)
+(tool-bar-mode -1)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -83,7 +94,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (projectile-speedbar egg git-command package-utils emmet-mode mozc evil))))
+    (rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
