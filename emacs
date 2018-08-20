@@ -29,7 +29,7 @@
   (ansi-term "/bin/zsh"))
 
 (defun get-buffer-with-name (name)
-  (when (not (get-buffer name))
+  (unless (get-buffer name)
     (new-zsh)
     (rename-buffer name)))
 
