@@ -24,5 +24,8 @@
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
 ```
 
+# TAGS
+find . -name "*.el" -or -name "*.c" | etags -
+
 # EXWM
 cp ~/.emacs.d/elpa/exwm*/xinitrc ~/.xinitrc
