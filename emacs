@@ -9,6 +9,8 @@
              '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (package-initialize)
 
+(global-linum-mode t)
+
 (defun set-theme () (load-theme 'tango-dark t))
 (set-theme)
 ;;(set-face-background 'default "0")
