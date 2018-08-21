@@ -27,5 +27,12 @@
 # TAGS
 find . -name "*.el" -or -name "*.c" | etags -
 
+## Source
+```
+git://git.savannah.gnu.org/emacs.git
+https://git.savannah.gnu.org/git/emacs.git
+ssh://git.savannah.gnu.org:/srv/git/emacs.git
+```
+
 # EXWM
 cp ~/.emacs.d/elpa/exwm*/xinitrc ~/.xinitrc
