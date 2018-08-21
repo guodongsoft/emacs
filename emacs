@@ -9,6 +9,8 @@
              '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (package-initialize)
 
+(setq tags-table-list '("~/.emacs.d/source"))
+
 (global-linum-mode t)
 
 (defun set-theme () (load-theme 'tango-dark t))
