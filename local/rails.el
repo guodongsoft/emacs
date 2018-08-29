@@ -15,6 +15,11 @@
   (interactive)
   (projectile-rails-find-controller))
 
+(defun Rserializer ()
+  "find a serializer"
+  (interactive)
+  (projectile-rails-find-serializer))
+
 (defun Rhelper ()
   "find a helper"
   (interactive)
@@ -44,6 +49,9 @@
   "find a test"
   (interactive)
   (projectile-rails-find-test))
+;;Eintegrationtest
+;;Eunittest
+;;Efunctionaltest
 
 (defun Rmigration ()
   "find a migration"
@@ -137,11 +145,7 @@
 
 ;;projectile-rails-extract-region	C-c r x	Extract the selected region to a partial.
 
-;;Eintegrationtest
-;;Eunittest
-;;Efunctionaltest
 ;;Echannel
-;;Eserializer
 
 (defun Rdbconsole ()
   "run rails dbconsole command"
