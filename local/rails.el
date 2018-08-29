@@ -5,15 +5,30 @@
   (interactive)
   (projectile-rails-find-model))
 
+(defun Cmodel ()
+  "go to a model connected with the current resource"
+  (interactive)
+  (projectile-rails-find-current-model))
+
 (defun Rview ()
   "find a view"
   (interactive)
   (projectile-rails-find-view))
 
+(defun Cview ()
+  "go to a view connected with the current resource"
+  (interactive)
+  (projectile-rails-find-current-view))
+
 (defun Rcontroller ()
   "find a controller"
   (interactive)
   (projectile-rails-find-controller))
+
+(defun Ccontroller ()
+  "go to a controller connected with the current resource"
+  (interactive)
+  (projectile-rails-find-current-controller))
 
 (defun Rserializer ()
   "find a serializer"
@@ -24,6 +39,11 @@
   "find a helper"
   (interactive)
   (projectile-rails-find-helper))
+
+(defun Chelper ()
+  "go to a helper connected with the current resource"
+  (interactive)
+  (projectile-rails-find-current-helper))
 
 (defun Rlib ()
   "find a lib"
@@ -40,15 +60,30 @@
   (interactive)
   (projectile-rails-find-fixture))
 
+(defun Cfixture ()
+  "go to a fixture connected with the current resource"
+  (interactive)
+  (projectile-rails-find-current-fixture))
+
 (defun Rspec ()
   "find a spec"
   (interactive)
   (projectile-rails-find-spec))
 
+(defun Cspec ()
+  "go to a spec connected with the current resource"
+  (interactive)
+  (projectile-rails-find-current-spec))
+
 (defun Rtest ()
   "find a test"
   (interactive)
   (projectile-rails-find-test))
+
+(defun Ctest ()
+  "go to a test connected with the current resource"
+  (interactive)
+  (projectile-rails-find-current-test))
 ;;Eintegrationtest
 ;;Eunittest
 ;;Efunctionaltest
@@ -57,6 +92,11 @@
   "find a migration"
   (interactive)
   (projectile-rails-find-migration))
+
+(defun Cmigration ()
+  "go to a migration connected with the current resource"
+  (interactive)
+  (projectile-rails-find-current-migration))
 
 (defun Rjavascript ()
   "find a javascript"
