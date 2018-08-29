@@ -20,12 +20,12 @@
   (interactive)
   (projectile-rails-find-current-view))
 
-(defun Rcontroller ()
+(defun Rctrl ()
   "find a controller"
   (interactive)
   (projectile-rails-find-controller))
 
-(defun Ccontroller ()
+(defun Cctrl ()
   "go to a controller connected with the current resource"
   (interactive)
   (projectile-rails-find-current-controller))
@@ -184,7 +184,6 @@
   (projectile-rails-goto-spec-helper))
 
 ;;projectile-rails-extract-region	C-c r x	Extract the selected region to a partial.
-
 ;;Echannel
 
 (defun Rdbconsole ()
