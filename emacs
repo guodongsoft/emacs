@@ -10,8 +10,7 @@
 (package-initialize)
 
 ;;;; 设置编辑环境
-;; 设置为中文简体语言环境
-;;(set-language-environment 'Chinese-GB)
+(set-language-environment "Japanese")
 ;; 设置默认读入文件编码
 (prefer-coding-system 'utf-8)
 ;; 设置写入文件编码
@@ -35,7 +34,10 @@
 (setq-default pathname-coding-system 'utf-8)
 (set-file-name-coding-system 'utf-8)
 
-(setq tags-table-list '("~/.emacs.d/source"))
+(setq tags-table-list
+      '("~/work/project/J_SCORE_API"
+        "~/work/ruby/rails/5.x/sample_app"
+        "~/.emacs.d/source"))
 
 (global-linum-mode t)
 
@@ -53,23 +55,8 @@
 (setq inferior-lisp-program "sbcl")
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
 
-;; Zsh
-(defun new-zsh ()
-  (interactive)
-  (ansi-term "/bin/zsh"))
-
-(defun get-buffer-with-name (name)
-  (unless (get-buffer name)
-    (new-zsh)
-    (rename-buffer name)))
-
-(defun zsh ()
-  (interactive)
-  (get-buffer-with-name "zsh"))
-
-(defun rails ()
-  (interactive)
-  (get-buffer-with-name "rails"))
+(load (expand-file-name "~/.emacs.d/local/shell.el"))
+(load (expand-file-name "~/.emacs.d/local/projectile.el"))
 
 ;; Indent region
 (global-set-key (kbd "C-\\") 'indent-region)
@@ -98,32 +85,6 @@
 	    (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
 	    (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
 	    (define-key evil-normal-state-local-map (kbd "o") 'neotree-enter)))
-
-;; Projectile
-;; 默认全局使用
-(projectile-global-mode)
-;; 默认打开缓存
-(setq projectile-enable-caching t)
-;; 使用f5键打开默认文件搜索
-(global-set-key [f5] 'projectile-find-file)
-
-(projectile-mode +1)
-(projectile-rails-global-mode)
-;;(define-key key-translation-map (kbd "C-c ,") (kbd "C-c r"))
-;;(define-key key-translation-map (kbd "C-c .") (kbd "C-c r !"))
-
-(setq projectile-switch-project-action 'neotree-projectile-action)
-(defun neotree-ffip-project-dir ()
-  "Open NeoTree using the git root."
-  (interactive)
-  (let ((project-dir (ffip-project-root))
-	(file-name (buffer-file-name)))
-    (if project-dir
-	(progn
-	  (neotree-dir project-dir)
-	  (neotree-find file-name))
-      (message "Could not find git project root."))))
-(define-key projectile-mode-map (kbd "C-c C-p") 'neotree-ffip-project-dir)
 
 ;; No bar
 (setq inhibit-startup-screen t)
