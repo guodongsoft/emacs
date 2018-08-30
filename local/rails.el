@@ -1,41 +1,41 @@
 (projectile-rails-global-mode)
 
-(defun Rmodel ()
+(defun Em ()
   "Find a model"
   (interactive)
   (projectile-rails-find-model))
 
-(defun Cmodel ()
+(defun Cm ()
   "go to a model connected with the current resource"
   (interactive)
   (projectile-rails-find-current-model))
 
-(defun Rview ()
+(defun Ev ()
   "find a view"
   (interactive)
   (projectile-rails-find-view))
 
-(defun Cview ()
+(defun Cv ()
   "go to a view connected with the current resource"
   (interactive)
   (projectile-rails-find-current-view))
 
-(defun Rctrl ()
+(defun Ec ()
   "find a controller"
   (interactive)
   (projectile-rails-find-controller))
 
-(defun Cctrl ()
+(defun Cc ()
   "go to a controller connected with the current resource"
   (interactive)
   (projectile-rails-find-current-controller))
 
-(defun Rserializer ()
+(defun Eserializer ()
   "find a serializer"
   (interactive)
   (projectile-rails-find-serializer))
 
-(defun Rhelper ()
+(defun Ehelper ()
   "find a helper"
   (interactive)
   (projectile-rails-find-helper))
@@ -45,17 +45,17 @@
   (interactive)
   (projectile-rails-find-current-helper))
 
-(defun Rlib ()
+(defun Elib ()
   "find a lib"
   (interactive)
   (projectile-rails-find-lib))
 
-(defun Rfeature ()
+(defun Efeature ()
   "find a feature"
   (interactive)
   (projectile-rails-find-feature))
 
-(defun Rfixture ()
+(defun Efixture ()
   "find a fixture"
   (interactive)
   (projectile-rails-find-fixture))
@@ -65,7 +65,7 @@
   (interactive)
   (projectile-rails-find-current-fixture))
 
-(defun Rspec ()
+(defun Espec ()
   "find a spec"
   (interactive)
   (projectile-rails-find-spec))
@@ -75,7 +75,7 @@
   (interactive)
   (projectile-rails-find-current-spec))
 
-(defun Rtest ()
+(defun Etest ()
   "find a test"
   (interactive)
   (projectile-rails-find-test))
@@ -84,11 +84,10 @@
   "go to a test connected with the current resource"
   (interactive)
   (projectile-rails-find-current-test))
-;;Eintegrationtest
 ;;Eunittest
 ;;Efunctionaltest
 
-(defun Rmigration ()
+(defun Emigration ()
   "find a migration"
   (interactive)
   (projectile-rails-find-migration))
@@ -98,93 +97,102 @@
   (interactive)
   (projectile-rails-find-current-migration))
 
-(defun Rjavascript ()
+(defun Ejavascript ()
   "find a javascript"
   (interactive)
   (projectile-rails-find-javascript))
 
-(defun Rstylesheet ()
+(defun Estylesheet ()
   "find a stylesheet"
   (interactive)
   (projectile-rails-find-stylesheet))
 
-(defun Rlog ()
+(defun Elog ()
   "find a log"
   (interactive)
   (projectile-rails-find-log))
 
-(defun Rinitializer ()
+(defun Einitializer ()
   "find a initializer"
   (interactive)
   (projectile-rails-find-initializer))
 
-(defun Renvironment ()
+(defun Eenvironment ()
   "find a environment"
   (interactive)
   (projectile-rails-find-environment))
 
-(defun Rlocale ()
+(defun Elocale ()
   "find a locale"
   (interactive)
   (projectile-rails-find-locale))
 
-(defun Rmailer ()
+(defun Emailer ()
   "find a mailer"
   (interactive)
   (projectile-rails-find-mailer))
 
-(defun Rvalidator ()
+(defun Evalidator ()
   "find a validator"
   (interactive)
   (projectile-rails-find-validator))
 
-(defun Rlayout ()
+(defun Elayout ()
   "find a layout"
   (interactive)
   (projectile-rails-find-layout))
 
-(defun Rjob ()
+(defun Ejob ()
   "find a job"
   (interactive)
   (projectile-rails-find-job))
 
-(defun Rtask ()
+(defun Etask ()
   "find a rake task"
   (interactive)
   (projectile-rails-find-rake-task))
 
-(defun Rschema ()
+(defun Eschema ()
   "go to schema"
   (interactive)
   (projectile-rails-goto-schema))
 
-(defun Rgemfile ()
+(defun Egemfile ()
   "go to gemfile"
   (interactive)
   (projectile-rails-goto-gemfile))
 
-(defun Rroutes ()
+(defun Eroutes ()
   "go to routes"
   (interactive)
   (projectile-rails-goto-routes))
 
-(defun Rseeds ()
+(defun Eseeds ()
   "go to seeds"
   (interactive)
   (projectile-rails-goto-seeds))
 
-(defun Rfile_at_point ()
+(defun Efile_at_point ()
   "go to a file at point"
   (interactive)
   (projectile-rails-goto-file-at-point))
 
-(defun Rspec_helper ()
+(defun Espec_helper ()
   "go to spec helper"
   (interactive)
   (projectile-rails-goto-spec-helper))
 
 ;;projectile-rails-extract-region	C-c r x	Extract the selected region to a partial.
-;;Echannel
+
+(defun Rr ()
+  "select a rake task"
+  (interactive)
+  (projectile-rails-rake))
+
+(defun Rs ()
+  "run rails server"
+  (interactive)
+  (projectile-rails-server))
 
 (defun Rdbconsole ()
   "run rails dbconsole command"
@@ -201,12 +209,40 @@
   (interactive)
   (projectile-rails-generate))
 
-(defun Rserver ()
-  "run rails server"
-  (interactive)
-  (projectile-rails-server))
+(defun projectile-rails-generate-cmd (command)
+  (projectile-rails-with-root
+   (let ((command-prefix (projectile-rails-with-preloader
+                          :spring (concat projectile-rails-spring-command " rails generate " command)
+                          :zeus (concat projectile-rails-zeus-command " generate controller " command)
+                          :vanilla (concat projectile-rails-vanilla-command " generate controller " command))))
+     (compile
+      (projectile-rails--generate-with-completion command-prefix)
+      'projectile-rails-generate-mode))))
 
-(defun Rrake ()
-  "select a rake task"
+(defun Rgc ()
+  "run rails generate controller command"
   (interactive)
-  (projectile-rails-rake))
+  (projectile-rails-generate-cmd "controller "))
+
+(defun Rgm ()
+  "run rails generate model command"
+  (interactive)
+  (projectile-rails-generate-cmd "model "))
+
+(defun Rgd ()
+  "run rails generate migration command"
+  (interactive)
+  (projectile-rails-generate-cmd "migration "))
+
+(defun Rgt ()
+  "run rails generate integration_test command"
+  (interactive)
+  (projectile-rails-generate-cmd "integration_test "))
+
+(defun projectile-rails-cmd (command)
+    (projectile-rails-with-root
+     (compile (projectile-rails-with-preloader
+	       :spring (concat projectile-rails-spring-command " rails " command)
+	       :zeus (concat projectile-rails-zeus-command " " command)
+	       :vanilla (concat projectile-rails-vanilla-command " " command))
+	      'projectile-rails-mode)))
