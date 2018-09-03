@@ -213,8 +213,8 @@
   (projectile-rails-with-root
    (let ((command-prefix (projectile-rails-with-preloader
                           :spring (concat projectile-rails-spring-command " rails generate " command)
-                          :zeus (concat projectile-rails-zeus-command " generate controller " command)
-                          :vanilla (concat projectile-rails-vanilla-command " generate controller " command))))
+                          :zeus (concat projectile-rails-zeus-command " generate " command)
+                          :vanilla (concat projectile-rails-vanilla-command " generate " command))))
      (compile
       (projectile-rails--generate-with-completion command-prefix)
       'projectile-rails-generate-mode))))

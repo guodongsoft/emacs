@@ -1,11 +1,11 @@
 ;; Zsh
-(defun new-zsh ()
+(defun term()
   (interactive)
   (ansi-term "/bin/zsh"))
 
 (defun get-buffer-with-name (name)
   (unless (get-buffer name)
-    (new-zsh)
+    (ansi-term "/bin/zsh")
     (rename-buffer name)))
 
 (defun zsh ()
