@@ -1,5 +1,5 @@
 # Package
-## 1.Start with this in .emacs
+## 1.Start with this in init.el
 - (require 'package)
 - (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 - (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))

@@ -1,8 +1,10 @@
 (require 'package)
-(add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives
-	     '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(setq package-archives
+ '(("melpa"        . "http://melpa.org/packages/")
+   ("melpa-stable" . "https://stable.melpa.org/packages/")
+   ("melpa-cn"     . "http://elpa.emacs-china.org/melpa/")
+   ("org-cn"       . "http://elpa.emacs-china.org/org/")
+   ("gnu-cn"       . "http://elpa.emacs-china.org/gnu/")))
 (package-initialize)
 
 (with-no-warnings (require 'cl))
@@ -30,15 +32,13 @@
 (package-install 'sr-speedbar)
 (package-install 'imenu-list)
 ;; 标签页
-;;(package-install 'tabbar)
+(package-install 'tabbar)
 ;; 自动保存
 (package-install 'super-save)
 ;; 窗口操作
 (package-install 'popwin)
 ;; 窗口跳转
 (package-install 'window-numbering)
-;; 目录增强
-;;(package-install 'dired+)
 ;; 打开当前文件目录
 (package-install 'direx)
 ;; 打开外部应用
@@ -51,7 +51,7 @@
 (package-install 'exec-path-from-shell)
 
 ;;快速操作
-;;(package-install 'helm)
+(package-install 'helm)
 (package-install 'swiper)
 (package-install 'counsel)
 (when (eq system-type 'darwin)
@@ -85,9 +85,14 @@
 ;; 有道词典
 (package-install 'youdao-dictionary)
 
+(package-install 'doom-modeline)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 开发插件
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Autopair括号
+(package-install 'autopair)
 
 (package-install 'sql-impala)
 
@@ -113,10 +118,9 @@
 ;; 代码检查
 (package-install 'flycheck)
 (package-install 'flycheck-ycmd)
-;;(package-install 'flycheck-google-cpplint)
 
 ;; Google c style
-;;(package-install 'google-c-style)
+(package-install 'google-c-style)
 
 ;; Git
 (package-install 'egg)
@@ -155,12 +159,12 @@
 (package-install 'rspec-mode)
 
 ;; Python
-;;(package-install 'anaconda-mode)
-;;(package-install 'elpy)
+(package-install 'anaconda-mode)
+(package-install 'elpy)
 
 ;; Go
-;;(package-install 'go-mode)
-;;(package-install 'company-go)
+(package-install 'go-mode)
+(package-install 'company-go)
 
 ;; system operation check
 ;; (when (eq system-type 'gnu/linux)
