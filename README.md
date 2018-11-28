@@ -1,3 +1,8 @@
+# 准备
+## 1.使用pip 安装：rope jedi flake8 importmagic autopep8 yapf
+
+## 2. 字体：打开emacs以后M-x all-the-icons-install-fonts
+
 # Package
 ## 1.Start with this in init.el
 - (require 'package)

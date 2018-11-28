@@ -120,10 +120,6 @@
 ;; 显示行号
 (global-linum-mode t)
 
-;; 透明
-(set-face-background 'default "0")
-;;(set-frame-parameter nil 'alpha 90)
-
 ;; Evil
 (require 'evil)
 (evil-mode 1)
@@ -138,7 +134,11 @@
 (global-set-key (kbd "C-c ,y") 'emmet-expand-yas)
 
 ;; Themes
-(defun set-theme () (load-theme 'tango-dark t))
+(defun set-theme ()
+  (load-theme 'tango-dark t)
+  ;; 透明
+  (set-face-background 'default "0")
+  )
 (set-theme)
 
 ;; Neotree
@@ -148,6 +148,7 @@
  (neotree-toggle)
  (set-theme))
 (global-set-key [f6] 'my-neotree-toggle)
+(setq neo-show-hidden-files t)
 
 (add-hook 'neotree-mode-hook
  (lambda ()
@@ -227,7 +228,7 @@
 (load (expand-file-name "~/.emacs.d/local/projectile.el"))
 
 ;; Go-mode
-;;(add-to-list 'load-path "/home/w/.emacs.d/elpa/go-mode-20181012.329/")
+(add-to-list 'load-path "~/.emacs.d/elpa/go-mode-20181012.329/")
 (autoload 'go-mode "go-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 (add-hook 'go-mode-hook
