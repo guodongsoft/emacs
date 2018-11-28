@@ -24,8 +24,8 @@
 (package-install 'discover-clj-refactor)
 
 ;; molokai 配色
-;;(package-install 'molokai-theme)
-;;(package-install 'dracula-theme)
+(package-install 'molokai-theme)
+(package-install 'dracula-theme)
 
 ;; 文件列表
 (package-install 'neotree)

@@ -138,10 +138,6 @@
 (global-set-key (kbd "C-c ,y") 'emmet-expand-yas)
 
 ;; Themes
-;;(load-theme 'gruvbox-dark-medium t)
-;;(load-theme 'gruvbox-dark-hard t)
-;;(load-theme 'solarized-dark t)
-;;(load-theme 'gruvbox-light-mediun t)
 (defun set-theme () (load-theme 'tango-dark t))
 (set-theme)
 
