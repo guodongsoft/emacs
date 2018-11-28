@@ -206,13 +206,13 @@
   'mode-line-remote " "
   '(:eval (propertize " %b " 'face
       (if (buffer-modified-p)
-       '(:background "#d33682" :foreground "#fdf6e3" :weight bold)
-       '(:background "#268bd2" :foreground "#fdf6e3" :weight normal))))
-  '(:propertize " %p/%I " face (:background "gray60" :foreground "#fdf6e3"))
+       '(:background "#90c4f9" :foreground "#fdf6e3" :weight bold)
+       '(:background "#3f99f3" :foreground "#fdf6e3" :weight normal))))
+  '(:propertize " %p/%I " face (:background "#f990e4" :foreground "#fdf6e3"))
   '(:eval (propertize (concat " " (eyebrowse-mode-line-indicator) " ")))
-  '(:eval (propertize (format-time-string "%p·%H:%M ")
+  '(:eval (propertize (format-time-string " %p·%H:%M ")
       'help-echo (format-time-string "%F %a")
-      'face '(:inherit 'font-lock-doc-face)))
+      'face '(:inherit 'font-lock-doc-face :background "#cef1cb" :foreground "#5149e4")))
   '(:propertize vc-mode face (:inherit font-lock-keyword-face :weight bold)) " %m " ))
 
 ;; ---------- 开发语言 ---------- Start
