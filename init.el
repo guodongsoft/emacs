@@ -23,7 +23,15 @@
 
 ;; 关闭启动帮助画面
 (setq inhibit-startup-screen t)
+(setq inhibit-startup-message t)
 (setq inhibit-splash-screen t)
+
+;; 在标题栏提示你目前在什么位置
+(setq frame-title-format "%b")
+
+;; 显示列号、行号
+(setq column-number-mode t)
+(setq line-number-mode t)
 
 ;; 关闭菜单
 ;;(menu-bar-mode -1)
@@ -34,12 +42,25 @@
 ;; 关闭工具栏
 ;;(tool-bar-mode 0)
 
+;; 回车缩进
+;(global-set-key "\C-m" 'newline-and-indent)
+;(global-set-key (kbd "C-<return>") 'newline)
+
 ;; Autopair括号
 (require 'autopair)
 ;; 自动补全括号
 (autopair-global-mode)
 ;; 匹配括号高亮
 (show-paren-mode t)
+
+;; Tab 改为插入空格
+(setq-default indent-tabs-mode nil)
+;; C C++ 缩进4个空格
+(setq c-basic-offset 4)
+;; 没有这个 { } 就会瞎搞
+(setq c-default-style "linux")
+;; 缩进默认为2个空格
+(setq default-tab-width 2)
 
 ;; Auto complete
 (ac-config-default)
@@ -59,6 +80,8 @@
       company-transformers '(company-sort-by-backend-importance)
       company-continue-commands '(not helm-dabbrev)
       )
+
+(add-hook 'js-mode-hook     'js2-minor-mode)
 (add-hook 'go-mode-hook     'company-mode)
 (add-hook 'org-mode-hook    'company-mode)
 (add-hook 'elisp-mode-hook  'company-mode)
@@ -118,7 +141,13 @@
 ;;        "~/.emacs.d/source"))
 
 ;; 显示行号
+(add-to-list 'load-path "/usr/share/emacs/site-lisp")
+(require 'linum)
 (global-linum-mode t)
+(setq linum-format "%4d\u2502")
+
+(auto-image-file-mode t)
+(delete-selection-mode t)
 
 ;; Evil
 (require 'evil)
@@ -194,7 +223,6 @@
    "Major mode for editing GitHub Flavored Markdown files" t)
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
-
 ;; Mode-Line
 (require 'doom-modeline)
 (doom-modeline-init)
@@ -227,7 +255,17 @@
 (load (expand-file-name "~/.emacs.d/local/shell.el"))
 (load (expand-file-name "~/.emacs.d/local/projectile.el"))
 
+;; Javascript
+(require 'js2-mode)
+(add-to-list 'load-path "~/.emacs.d/elpa/js2-mode-20180724.801/")
+(autoload 'js2-mode "js2-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js2-jsx-mode))
+(add-to-list 'interpreter-mode-alist '("node" . js2-jsx-mode))
+
 ;; Go-mode
+(require 'go-mode)
 (add-to-list 'load-path "~/.emacs.d/elpa/go-mode-20181012.329/")
 (autoload 'go-mode "go-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
