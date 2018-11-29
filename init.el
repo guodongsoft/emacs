@@ -140,8 +140,9 @@
 ;;      '("~/work/project"
 ;;        "~/.emacs.d/source"))
 
-;; 显示行号
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
+
+;; 显示行号
 (require 'linum)
 (global-linum-mode t)
 (setq linum-format "%4d\u2502")
@@ -185,10 +186,6 @@
   (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
   (define-key evil-normal-state-local-map (kbd "o") 'neotree-enter)))
 
-;; Python补全
-(elpy-enable)
-(setq elpy-rpc-backend "jedi")
-
 ;; 启动 Org-mode 文本内语法高亮
 (require 'org)
 (setq org-src-fontify-natively t)
@@ -228,60 +225,35 @@
 (doom-modeline-init)
 (setq doom-modeline-buffer-file-name-style 'file-name)
 (setq-default mode-line-format
-              (list
-               '(:propertize " %l " face (:weight bold))
-               'mode-line-mule-info
-               'mode-line-modified
-               'mode-line-remote " "
-               '(:eval (propertize " %b "
-                                   'face
-                                   (if (buffer-modified-p)
-                                       '(:background "#FF00FF" :foreground "#FDF6E3" :weight bold)
-                                     '(:background "#FF00FF" :foreground "#FDF6E3" :weight normal))))
-               '(:propertize " %p/%I " face (:background "#8A2BE2" :foreground "#FDF6E3"))
-               '(:eval (propertize (concat " " (eyebrowse-mode-line-indicator) " ")))
-               '(:eval (propertize (format-time-string " %p·%H:%M ")
-                                   'help-echo
-                                   (format-time-string "%F %a")
-                                   'face
-                                   '(:inherit 'font-lock-doc-face :background "#B7CEEB" :foreground "#404040")))
-               '(:propertize vc-mode
-                             face
-                             (:inherit 'font-lock-keyword-face :background "#8B8386" :foreground "#76EE00" :weight bold))
-               " %m "))
+ (list
+  '(:propertize " %l " face (:weight bold))
+  'mode-line-mule-info
+  'mode-line-modified
+  'mode-line-remote " "
+  '(:eval
+    (propertize " %b "
+     'face
+     (if (buffer-modified-p)
+      '(:background "#FF00FF" :foreground "#FDF6E3" :weight bold)
+      '(:background "#FF00FF" :foreground "#FDF6E3" :weight normal))))
+  '(:propertize " %p/%I " face (:background "#8A2BE2" :foreground "#FDF6E3"))
+  '(:eval (propertize (concat " " (eyebrowse-mode-line-indicator) " ")))
+  '(:eval
+    (propertize (format-time-string " %p·%H:%M ")
+     'help-echo
+     (format-time-string "%F %a")
+     'face
+     '(:inherit 'font-lock-doc-face :background "#B7CEEB" :foreground "#404040")))
+  '(:propertize vc-mode
+    face
+    (:inherit 'font-lock-keyword-face :background "#8B8386" :foreground "#76EE00" :weight bold))
+  " %m "))
 
-;; ---------- 开发语言 ---------- Start
+;; 开发语言
+(load (expand-file-name "~/.emacs.d/local/language.el"))
 
-;; Common Lisp
-(require 'cl)
-
-;; SBCL
-(setq inferior-lisp-program "sbcl")
-(load (expand-file-name "~/quicklisp/slime-helper.el"))
-
+;; SHELL
 (load (expand-file-name "~/.emacs.d/local/shell.el"))
-(load (expand-file-name "~/.emacs.d/local/projectile.el"))
-
-;; Javascript
-(require 'js2-mode)
-(add-to-list 'load-path "~/.emacs.d/elpa/js2-mode-20180724.801/")
-(autoload 'js2-mode "js2-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js2-jsx-mode))
-(add-to-list 'interpreter-mode-alist '("node" . js2-jsx-mode))
-
-;; Go-mode
-(require 'go-mode)
-(add-to-list 'load-path "~/.emacs.d/elpa/go-mode-20181012.329/")
-(autoload 'go-mode "go-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
-(add-hook 'go-mode-hook
- (lambda ()
-  (set (make-local-variable 'company-backends) '(company-go))
-  (company-mode)))
-
-;; ---------- 开发语言 ---------- End
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
