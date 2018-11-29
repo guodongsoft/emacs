@@ -244,10 +244,10 @@
                                    'help-echo
                                    (format-time-string "%F %a")
                                    'face
-                                   '(:inherit 'font-lock-doc-face :background "#B7CEEB" :foreground "#8B0000")))
+                                   '(:inherit 'font-lock-doc-face :background "#B7CEEB" :foreground "#404040")))
                '(:propertize vc-mode
                              face
-                             (:inherit 'font-lock-keyword-face :background "#0000FF" :weight bold))
+                             (:inherit 'font-lock-keyword-face :background "#8B8386" :foreground "#76EE00" :weight bold))
                " %m "))
 
 ;; ---------- 开发语言 ---------- Start
