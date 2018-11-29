@@ -19,6 +19,6 @@
 	  (neotree-dir project-dir)
 	  (neotree-find file-name))
       (message "Could not find git project root."))))
-(define-key projectile-mode-map (kbd "C-c C-p") 'neotree-ffip-project-dir)
+(define-key projectile-mode-map (kbd "<f3>") 'neotree-ffip-project-dir)
 
 (load (expand-file-name "~/.emacs.d/local/rails.el"))

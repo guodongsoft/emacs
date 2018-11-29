@@ -1091,7 +1091,7 @@
 	      ((:keywords "languages" "sql")
 	       (:url . "http://elpa.gnu.org/packages/sql-indent.html"))])
  (ssh-deploy .
-	     [(2 0)
+	     [(3 0)
 	      ((emacs
 		(24)))
 	      "Deployment via TRAMP, global or per directory." tar
