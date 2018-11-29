@@ -27,6 +27,3 @@
  (lambda ()
   (set (make-local-variable 'company-backends) '(company-go))
   (company-mode)))
-
-;; Rails
-(load (expand-file-name "~/.emacs.d/local/rails.el"))

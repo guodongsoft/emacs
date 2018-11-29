@@ -33,6 +33,11 @@
 (setq column-number-mode t)
 (setq line-number-mode t)
 
+;; 显示行号
+(require 'linum)
+(global-linum-mode t)
+(setq linum-format "%4d\u2502")
+
 ;; 关闭菜单
 ;;(menu-bar-mode 0)
 
@@ -91,34 +96,6 @@
 (add-hook 'c-mode-hook      'company-mode)
 (add-hook 'c++-mode-hook    'company-mode)
 
-;; 设置编辑环境
-(require 'mozc)
-(set-language-environment "Japanese")
-(setq default-input-method "japanese-mozc")
-;;(setenv "LC_ALL" "en_US.UTF-8")
-;; 设置默认读入文件编码
-(prefer-coding-system 'utf-8)
-;; 设置写入文件编码
-(setq default-buffer-file-coding-system 'utf-8)
-;; 设置emacs 使用 utf-8
-(setq locale-coding-system 'utf-8)
-;; 设置键盘输入时的字符编码
-(set-keyboard-coding-system 'utf-8)
-(set-selection-coding-system 'utf-8)
-;; 文件默认保存为 utf-8
-(set-buffer-file-coding-system 'utf-8)
-(set-default buffer-file-coding-system 'utf8)
-(set-default-coding-systems 'utf-8)
-;; 解决粘贴中文出现乱码的问题
-(set-clipboard-coding-system 'utf-8)
-;; 终端中文乱码
-(set-terminal-coding-system 'utf-8)
-(modify-coding-system-alist 'process "*" 'utf-8)
-(setq default-process-coding-system '(utf-8 . utf-8))
-;; 解决文件目录名乱码
-(setq-default pathname-coding-system 'utf-8)
-(set-file-name-coding-system 'utf-8)
-
 ;;关闭备份
 (setq make-backup-files nil)
 
@@ -141,11 +118,6 @@
 ;;        "~/.emacs.d/source"))
 
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
-
-;; 显示行号
-(require 'linum)
-(global-linum-mode t)
-(setq linum-format "%4d\u2502")
 
 (auto-image-file-mode t)
 (delete-selection-mode t)
@@ -171,21 +143,6 @@
   )
 (set-theme)
 
-;; Neotree
-(require 'neotree)
-(defun my-neotree-toggle ()
- (interactive)
- (neotree-toggle)
- (set-theme))
-(global-set-key [f6] 'my-neotree-toggle)
-(setq neo-show-hidden-files t)
-
-(add-hook 'neotree-mode-hook
- (lambda ()
-  (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
-  (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
-  (define-key evil-normal-state-local-map (kbd "o") 'neotree-enter)))
-
 ;; 启动 Org-mode 文本内语法高亮
 (require 'org)
 (setq org-src-fontify-natively t)
@@ -204,12 +161,6 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (helm-mode t)
 
-;; TabBar and Gui
-(require 'tabbar)  
-(tabbar-mode t)  
-(global-set-key [(meta j)] 'tabbar-backward)  
-(global-set-key [(meta k)] 'tabbar-forward)  
-
 ;; MDwenjian
 (add-to-list 'load-path "~/.emacs.d/markdown-mode/repository")
 (autoload 'markdown-mode "markdown-mode"
@@ -220,63 +171,8 @@
   "Major mode for editing GitHub Flavored Markdown files" t)
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
-;; Mode-Line
-(require 'doom-modeline)
-(doom-modeline-init)
-(setq doom-modeline-buffer-file-name-style 'file-name)
-(setq-default mode-line-format
- (list
-  '(:propertize " %l " face (:weight bold))
-  'mode-line-mule-info
-  'mode-line-modified
-  'mode-line-remote " "
-  '(:eval
-    (propertize " %b "
-     'face
-     (if (buffer-modified-p)
-      '(:background "#FF00FF" :foreground "#FDF6E3" :weight bold)
-      '(:background "#FF00FF" :foreground "#FDF6E3" :weight normal))))
-  '(:propertize " %p/%I " face (:background "#8A2BE2" :foreground "#FDF6E3"))
-  '(:eval (propertize (concat " " (eyebrowse-mode-line-indicator) " ")))
-  '(:eval
-    (propertize (format-time-string " %p·%H:%M ")
-     'help-echo
-     (format-time-string "%F %a")
-     'face
-     '(:inherit 'font-lock-doc-face :background "#B7CEEB" :foreground "#404040")))
-  '(:propertize vc-mode
-    face
-    (:inherit 'font-lock-keyword-face :background "#8B8386" :foreground "#76EE00" :weight bold))
-  " %m "))
-;; Projectile
-
-;; 默认全局使用
-(projectile-global-mode)
-;; 默认打开缓存
-(setq projectile-enable-caching t)
-;; 使用f5键打开默认文件搜索
-(global-set-key [f5] 'projectile-find-file)
-
-(projectile-mode +1)
-
-(setq projectile-switch-project-action 'neotree-projectile-action)
-(defun neotree-ffip-project-dir ()
- "Open NeoTree using the git root."
- (interactive)
- (let ((project-dir (ffip-project-root))
-       (file-name (buffer-file-name)))
-  (if project-dir
-   (progn
-    (neotree-dir project-dir)
-    (neotree-find file-name))
-   (message "Could not find git project root."))))
-(define-key projectile-mode-map (kbd "<f3>") 'neotree-ffip-project-dir)
-
-;; 开发语言
-(load (expand-file-name "~/.emacs.d/local/language.el"))
-
-;; SHELL
-(load (expand-file-name "~/.emacs.d/local/shell.el"))
+;; Settings
+(load (expand-file-name "~/.emacs.d/setting/config.el"))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
