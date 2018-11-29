@@ -6,8 +6,12 @@
 # Package
 ## 1.Start with this in init.el
 - (require 'package)
-- (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-- (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+- (setq package-archives
+-  '(("melpa"        . "http://melpa.org/packages/")
+-    ("melpa-stable" . "https://stable.melpa.org/packages/")
+-    ("melpa-cn"     . "http://elpa.emacs-china.org/melpa/")
+-    ("org-cn"       . "http://elpa.emacs-china.org/org/")
+-    ("gnu-cn"       . "http://elpa.emacs-china.org/gnu/")))
 - (package-initialize)
 
 ## 2.Install script
