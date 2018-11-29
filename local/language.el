@@ -1,7 +1,3 @@
-;; Python补全
-(elpy-enable)
-(setq elpy-rpc-backend "jedi")
-
 ;; Common Lisp
 (require 'cl)
 
@@ -9,7 +5,9 @@
 (setq inferior-lisp-program "sbcl")
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
 
-(load (expand-file-name "~/.emacs.d/local/projectile.el"))
+;; Python补全
+(elpy-enable)
+(setq elpy-rpc-backend "jedi")
 
 ;; Javascript
 (require 'js2-mode)
@@ -29,3 +27,6 @@
  (lambda ()
   (set (make-local-variable 'company-backends) '(company-go))
   (company-mode)))
+
+;; Rails
+(load (expand-file-name "~/.emacs.d/local/rails.el"))
