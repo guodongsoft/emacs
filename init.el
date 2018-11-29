@@ -34,7 +34,7 @@
 (setq line-number-mode t)
 
 ;; 关闭菜单
-;;(menu-bar-mode -1)
+;;(menu-bar-mode 0)
 
 ;; 关闭文件滑动控件
 ;;(scroll-bar-mode 0)
@@ -131,13 +131,13 @@
 ;; 快速打开配置文件
 (defun open-init-file()
   (interactive)
-  (find-file "~/.emacs"))
+  (find-file "~/.emacs.d/init.el"))
 ;; 这一行代码，将函数 open-init-file 绑定到 <f2> 键上
 (global-set-key (kbd "<f2>") 'open-init-file)
 
 ;; Tags
 ;;(setq tags-table-list
-;;      '("~/work/project/J_SCORE_API"
+;;      '("~/work/project"
 ;;        "~/.emacs.d/source"))
 
 ;; 显示行号
@@ -151,7 +151,7 @@
 
 ;; Evil
 (require 'evil)
-(evil-mode 1)
+(evil-mode t)
 
 ;; Indent region
 (global-set-key (kbd "C-\\") 'indent-region)
@@ -205,22 +205,22 @@
 (global-set-key (kbd "C-x r b") #'helm-file-bookmarks)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 (global-set-key (kbd "M-x") 'helm-M-x)
-(helm-mode 1)
+(helm-mode t)
 
 ;; TabBar and Gui
 (require 'tabbar)  
-(tabbar-mode 1)  
+(tabbar-mode t)  
 (global-set-key [(meta j)] 'tabbar-backward)  
 (global-set-key [(meta k)] 'tabbar-forward)  
 
 ;; MDwenjian
 (add-to-list 'load-path "~/.emacs.d/markdown-mode/repository")
 (autoload 'markdown-mode "markdown-mode"
- "Major mode for editing Markdown files" t)
+  "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (autoload 'gfm-mode "markdown-mode"
-   "Major mode for editing GitHub Flavored Markdown files" t)
+  "Major mode for editing GitHub Flavored Markdown files" t)
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
 ;; Mode-Line
@@ -228,20 +228,27 @@
 (doom-modeline-init)
 (setq doom-modeline-buffer-file-name-style 'file-name)
 (setq-default mode-line-format
- (list '(:propertize " %l " face (:weight bold))
-  'mode-line-mule-info
-  'mode-line-modified
-  'mode-line-remote " "
-  '(:eval (propertize " %b " 'face
-      (if (buffer-modified-p)
-       '(:background "#90c4f9" :foreground "#fdf6e3" :weight bold)
-       '(:background "#3f99f3" :foreground "#fdf6e3" :weight normal))))
-  '(:propertize " %p/%I " face (:background "#f990e4" :foreground "#fdf6e3"))
-  '(:eval (propertize (concat " " (eyebrowse-mode-line-indicator) " ")))
-  '(:eval (propertize (format-time-string " %p·%H:%M ")
-      'help-echo (format-time-string "%F %a")
-      'face '(:inherit 'font-lock-doc-face :background "#cef1cb" :foreground "#5149e4")))
-  '(:propertize vc-mode face (:inherit font-lock-keyword-face :weight bold)) " %m " ))
+              (list
+               '(:propertize " %l " face (:weight bold))
+               'mode-line-mule-info
+               'mode-line-modified
+               'mode-line-remote " "
+               '(:eval (propertize " %b "
+                                   'face
+                                   (if (buffer-modified-p)
+                                       '(:background "#FF00FF" :foreground "#FDF6E3" :weight bold)
+                                     '(:background "#FF00FF" :foreground "#FDF6E3" :weight normal))))
+               '(:propertize " %p/%I " face (:background "#8A2BE2" :foreground "#FDF6E3"))
+               '(:eval (propertize (concat " " (eyebrowse-mode-line-indicator) " ")))
+               '(:eval (propertize (format-time-string " %p·%H:%M ")
+                                   'help-echo
+                                   (format-time-string "%F %a")
+                                   'face
+                                   '(:inherit 'font-lock-doc-face :background "#B7CEEB" :foreground "#8B0000")))
+               '(:propertize vc-mode
+                             face
+                             (:inherit 'font-lock-keyword-face :background "#0000FF" :weight bold))
+               " %m "))
 
 ;; ---------- 开发语言 ---------- Start
 
