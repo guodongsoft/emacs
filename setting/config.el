@@ -1,5 +1,5 @@
 ;; Tab bar
-;(load (expand-file-name "~/.emacs.d/setting/tabbar.el"))
+(load (expand-file-name "~/.emacs.d/setting/tabbar.el"))
 
 ;; Mode-Line
 (load (expand-file-name "~/.emacs.d/setting/modeline.el"))
