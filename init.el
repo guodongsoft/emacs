@@ -172,7 +172,10 @@
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
 ;; Plugin
-(load (expand-file-name "~/.emacs.d/plugin/config.el"))
+(setq plugin_dir "~/.emacs.d/plugin")
+(dolist (file (directory-files plugin_dir nil "^[^.].*[.]el$"))
+  (if (not (file-directory-p file))
+      (load (expand-file-name (concat plugin_dir "/" file)))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
