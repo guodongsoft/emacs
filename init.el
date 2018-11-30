@@ -171,8 +171,8 @@
   "Major mode for editing GitHub Flavored Markdown files" t)
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
-;; Settings
-(load (expand-file-name "~/.emacs.d/setting/config.el"))
+;; Plugin
+(load (expand-file-name "~/.emacs.d/plugin/config.el"))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
