@@ -1,3 +1,6 @@
+;; Emacs Lisp
+(add-hook 'elisp-mode-hook 'company-mode)
+
 ;; Common Lisp
 (require 'cl)
 

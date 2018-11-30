@@ -1,4 +1,10 @@
 ;; Javascript
+(add-hook 'js-mode-hook 'js2-minor-mode)
+
+(require 'js-comint)
+
+(setq js-indent-level 2)
+
 (require 'js2-mode)
 (add-to-list 'load-path "~/.emacs.d/elpa/js2-mode-20180724.801/")
 (autoload 'js2-mode "js2-mode" nil t)

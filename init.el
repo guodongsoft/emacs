@@ -58,14 +58,17 @@
 ;; 匹配括号高亮
 (show-paren-mode t)
 
-;; Tab 改为插入空格
-(setq-default indent-tabs-mode nil)
+;; 缩进默认设置
+(setq-default
+ ;; 缩进默认是2个空格
+ tab-width 2
+ standard-indent 2
+ ;; Tab 改为插入空格
+ indent-tabs-mode nil)
 ;; C C++ 缩进4个空格
 (setq c-basic-offset 4)
 ;; 没有这个 { } 就会瞎搞
 (setq c-default-style "linux")
-;; 缩进默认为2个空格
-(setq default-tab-width 2)
 
 ;; Auto complete
 (ac-config-default)
@@ -86,15 +89,11 @@
       company-continue-commands '(not helm-dabbrev)
       )
 
-(add-hook 'js-mode-hook     'js2-minor-mode)
-(add-hook 'go-mode-hook     'company-mode)
 (add-hook 'org-mode-hook    'company-mode)
-(add-hook 'elisp-mode-hook  'company-mode)
 (add-hook 'css-mode-hook    'company-mode)
-(add-hook 'after-init-hook  'global-company-mode)
-(add-hook 'python-mode-hook 'anaconda-mode)
 (add-hook 'c-mode-hook      'company-mode)
 (add-hook 'c++-mode-hook    'company-mode)
+(add-hook 'after-init-hook  'global-company-mode)
 
 ;;关闭备份
 (setq make-backup-files nil)
@@ -184,7 +183,8 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil))))
+    (js-comint neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil)))
+ '(tabbar-separator (quote (1.5))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
