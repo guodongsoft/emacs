@@ -153,6 +153,10 @@
 (setq inhibit-compacting-font-caches t)
 (setq neo-theme 'icons)
 
+;; Yasnippet
+(require 'yasnippet)
+(yas-global-mode 1)
+
 ;; Helm
 (require 'helm-config)
 (global-set-key (kbd "C-x r b") #'helm-file-bookmarks)
