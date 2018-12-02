@@ -95,10 +95,10 @@
 (add-hook 'c++-mode-hook    'company-mode)
 (add-hook 'after-init-hook  'global-company-mode)
 
-;;关闭备份
+;; 关闭备份
 (setq make-backup-files nil)
 
-;;关闭哔哔的警告提示音
+;; 关闭哔哔的警告提示音
 (setq ring-bell-function 'ignore)
 
 ;; （Y or N）
@@ -158,11 +158,11 @@
 (yas-global-mode 1)
 
 ;; Helm
-(require 'helm-config)
-(global-set-key (kbd "C-x r b") #'helm-file-bookmarks)
-(global-set-key (kbd "C-x C-f") #'helm-find-files)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(helm-mode t)
+;(require 'helm-config)
+;(global-set-key (kbd "C-x r b") #'helm-file-bookmarks)
+;(global-set-key (kbd "C-x C-f") #'helm-find-files)
+;(global-set-key (kbd "M-x") 'helm-M-x)
+;(helm-mode t)
 
 ;; MDwenjian
 (add-to-list 'load-path "~/.emacs.d/markdown-mode/repository")

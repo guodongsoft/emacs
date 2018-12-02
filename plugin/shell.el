@@ -1,7 +1,7 @@
 ;; Zsh
 (defun term()
   (interactive)
-  (ansi-term "/bin/zsh"))
+  (term "/bin/zsh"))
 
 (defun get-buffer-with-name (name)
   (unless (get-buffer name)
