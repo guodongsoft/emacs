@@ -1,3 +1,6 @@
+;; Themes
+(require 'init-themes)
+
 ;; Tabbar
 (require 'tabbar)
 
@@ -9,6 +12,9 @@
 
 ;; Modeline
 (require 'init-modeline)
+
+;; Evil
+;(require 'init-evil)
 
 ;; Project
 (require 'init-project)

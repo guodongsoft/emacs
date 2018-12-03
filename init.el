@@ -86,7 +86,6 @@
 
 ;; Company补全
 (global-company-mode t)
-(add-to-list 'load-path "~/.emacs.d/company-mode")
 (autoload 'company-mode "company" nil t)
 (setq company-idle-delay 0.2;菜单延迟
       company-minimum-prefix-length 1; 开始补全字数0
@@ -95,8 +94,7 @@
       company-dabbrev-downcase nil
       company-show-numbers t; 显示序号
       company-transformers '(company-sort-by-backend-importance)
-      company-continue-commands '(not helm-dabbrev)
-      )
+      company-continue-commands '(not helm-dabbrev))
 
 (add-hook 'org-mode-hook    'company-mode)
 (add-hook 'css-mode-hook    'company-mode)
@@ -134,7 +132,7 @@
 (require 'evil)
 (evil-mode t)
 
-;; Indent region
+;; indent region
 (global-set-key (kbd "C-\\") 'indent-region)
 
 ;; Use youdao dictionary
@@ -142,14 +140,6 @@
 
 ;; Emmet
 (global-set-key (kbd "C-c ,y") 'emmet-expand-yas)
-
-;; Themes
-(defun set-theme ()
-  (load-theme 'tango-dark t)
-  ;; 透明
-  (set-face-background 'default "0")
-  )
-(set-theme)
 
 ;; 启动 Org-mode 文本内语法高亮
 (require 'org)
