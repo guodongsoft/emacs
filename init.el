@@ -37,6 +37,7 @@
 (require 'linum)
 (global-linum-mode t)
 (setq linum-format "%4d\u2502")
+(set-face-foreground 'linum "orange")
 
 ;; 关闭菜单
 ;;(menu-bar-mode 0)
