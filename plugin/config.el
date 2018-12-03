@@ -19,4 +19,7 @@
 ;; Language 
 (require 'language)
 
+;; YAML
+(require 'yaml-mode)
+
 (provide 'config)
