@@ -1,8 +1,13 @@
+;;; init.el --- Initialization file for Emacs.
+;;; Commentary:
+
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 (require 'package)
+
+;;; Code:
 (setq package-archives
       '(("melpa"        . "http://melpa.org/packages/")
         ("melpa-stable" . "https://stable.melpa.org/packages/")
@@ -208,3 +213,5 @@
    (quote
     (clj-refactor js-comint neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil)))
  '(tabbar-separator (quote (1.5))))
+
+(provide 'init)

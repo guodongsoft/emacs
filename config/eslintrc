@@ -10,23 +10,29 @@
     },
     // 如果违反了规则情况下，这里的数字：0表示不不处理，1表示警告，2表示错误并退出
     "rules": {
-      "indent": ["error", 2 ],// 缩进风格
-      "semi": ["error", "never"],//语句禁止分号结尾
-      "linebreak-style": ["error", "unix" ],
-      "quotes": ["error", "single" ],
-      "comma-spacing": [ 2, { "before": false, "after": true } ],
+      "indent": [ "error", 2 ],// 缩进风格
+      "linebreak-style": [ "error", "unix" ],
+      //"linebreak-style": [0, "windows"],//换行风格
+      "quotes": [ "error", "single" ],
+      // 语句强制分号结尾
+      "semi": [ "error", "never" ],
+      "semi-spacing": [0, {"before": false, "after": true}],//分号前后空格
       // 定义对象的set存取器属性时，强制定义get
-      "accessor-pairs": 2,
+      //"accessor-pairs": 2,
+      // 在对象中使用getter/setter
+      "accessor-pairs": 0,
       // 指定数组的元素之间要以空格隔开(,后面)， never参数：[ 之前和 ] 之后不能带空格，always参数：[ 之前和 ] 之后必须带空格
       "array-bracket-spacing": [2, "never"],
       // 在块级作用域外访问块内定义的变量是否报错提示
       "block-scoped-var": 0,
       // if while function 后面的{必须与if在同一行，java风格。
       "brace-style": [2, "1tbs", { "allowSingleLine": true }],
+      //"brace-style": [1, "1tbs"],//大括号风格
       // 双峰驼命名格式
       "camelcase": 2,
       // 数组和对象键值对最后一个逗号， never参数：不能带末尾的逗号, always参数：必须带末尾的逗号，
       // always-multiline：多行模式必须带逗号，单行模式不能带逗号
+      //对象字面量项尾不能有逗号
       "comma-dangle": [2, "never"],
       // 控制逗号前后的空格
       "comma-spacing": [2, { "before": false, "after": true }],
@@ -42,6 +48,7 @@
       // 用于指统一在回调函数中指向this的变量名，箭头函数中的this已经可以指向外层调用者，应该没卵用了
       // e.g [0,"that"] 指定只能 var that = this. that不能指向其他任何值，this也不能赋值给that以外的其他值
       "consistent-this": 0,
+      //"consistent-this": [2, "that"],//this别名
       // 强制在子类构造函数中用super()调用父类构造函数，TypeScrip的编译器也会提示
       "constructor-super": 0,
       // if else while for do后面的代码块是否需要{ }包围，参数：
@@ -59,9 +66,9 @@
       //      object, '.' 号应与对象名在同一行
       "dot-location": [2, "property"],
       // 强制使用.号取属性
-      //   参数： allowKeywords：true 使用保留字做属性名时，只能使用.方式取属性
-      //                         false 使用保留字做属性名时, 只能使用[]方式取属性 e.g [2, {"allowKeywords": false}]
-      //          allowPattern:  当属性名匹配提供的正则表达式时，允许使用[]方式取值,否则只能用.号取值 e.g [2, {"allowPattern": "^[a-z]+(_[a-z]+)+$"}]
+      //    参数： allowKeywords：true 使用保留字做属性名时，只能使用.方式取属性
+      //                          false 使用保留字做属性名时, 只能使用[]方式取属性 e.g [2, {"allowKeywords": false}]
+      //           allowPattern:  当属性名匹配提供的正则表达式时，允许使用[]方式取值,否则只能用.号取值 e.g [2, {"allowPattern": "^[a-z]+(_[a-z]+)+$"}]
       "dot-notation": [2, {"allowKeywords": true}],
       // 文件末尾强制换行
       "eol-last": 2,
@@ -122,7 +129,6 @@
       "no-loop-func": 1,//禁止在循环中使用函数（如果没有引用外部变量不形成闭包就可以）
       "no-mixed-requires": [0, false],//声明时不能混用声明类型
       "no-mixed-spaces-and-tabs": [2, false],//禁止混用tab和空格
-      "linebreak-style": [0, "windows"],//换行风格
       "no-multi-spaces": 1,//不能用多余的空格
       "no-multi-str": 2,//字符串不能用\换行
       "no-multiple-empty-lines": [1, {"max": 2}],//空行最多不能超过2行
@@ -174,30 +180,9 @@
       "no-var": 0,//禁用var，用let和const代替
       "no-warning-comments": [1, { "terms": ["todo", "fixme", "xxx"], "location": "start" }],//不能有警告备注
       "no-with": 2,//禁用with
-      "array-bracket-spacing": [2, "never"],//是否允许非空数组里面有多余的空格
       "arrow-parens": 0,//箭头函数用小括号括起来
       "arrow-spacing": 0,//=>的前/后括号
-      "accessor-pairs": 0,//在对象中使用getter/setter
-      "block-scoped-var": 0,//块语句中使用var
-      "brace-style": [1, "1tbs"],//大括号风格
       "callback-return": 1,//避免多次调用回调什么的
-      "camelcase": 2,//强制驼峰法命名
-      "comma-dangle": [2, "never"],//对象字面量项尾不能有逗号
-      "comma-spacing": 0,//逗号前后的空格
-      "comma-style": [2, "last"],//逗号风格，换行时在行首还是行尾
-      "complexity": [0, 11],//循环复杂度
-      "computed-property-spacing": [0, "never"],//是否允许计算后的键名什么的
-      "consistent-return": 0,//return 后面是否允许省略
-      "consistent-this": [2, "that"],//this别名
-      "constructor-super": 0,//非派生类不能调用super，派生类必须调用super
-      "curly": [2, "all"],//必须使用 if(){} 中的{}
-      "default-case": 2,//switch语句最后必须有default
-      "dot-location": 0,//对象访问符的位置，换行的时候在行首还是行尾
-      "dot-notation": [0, { "allowKeywords": true }],//避免不必要的方括号
-      "eol-last": 0,//文件以单一的换行符结束
-      "eqeqeq": 2,//必须使用全等
-      "func-names": 0,//函数表达式必须有名字
-      "func-style": [0, "declaration"],//函数风格，规定只能使用函数声明/函数表达式
       "generator-star-spacing": 0,//生成器函数*的前后空格
       "guard-for-in": 0,//for in循环要用if语句过滤
       "handle-callback-err": 0,//nodejs 处理错误
@@ -222,13 +207,10 @@
       "prefer-const": 0,//首选const
       "prefer-spread": 0,//首选展开运算
       "prefer-reflect": 0,//首选Reflect的方法
-      "quotes": [1, "single"],//引号类型 `` "" ''
 //      "quote-props":[2, "always"],//对象字面量中的属性名是否强制双引号
       "radix": 2,//parseInt必须指定第二个参数
       "id-match": 0,//命名检测
       "require-yield": 0,//生成器函数必须有yield
-//      "semi": [2, "always"],//语句强制分号结尾
-//      "semi-spacing": [0, {"before": false, "after": true}],//分号前后空格
       "sort-vars": 0,//变量声明时排序
       "space-after-keywords": [0, "always"],//关键字后面是否要空一格
       "space-before-blocks": [0, "always"],//不以新行开始的块{前面要不要有空格

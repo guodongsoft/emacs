@@ -16,10 +16,12 @@
   (setq tab-with 2)
   (company-mode)))
 
-(require 'go-mode)
-(add-to-list 'load-path "~/.emacs.d/elpa/go-mode-20181012.329/")
-(autoload 'go-mode "go-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+;(require 'go-mode)
+;(add-to-list 'load-path "~/.emacs.d/elpa/go-mode-20181012.329/")
+;(autoload 'go-mode "go-mode" nil t)
+;(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+(add-to-list 'load-path "~/.emacs.d/plugin/golang/")
+(require 'go-config)
 
 ;; --- Javascript ---
 (setq js-indent-level 2)

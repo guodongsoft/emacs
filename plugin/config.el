@@ -16,7 +16,7 @@
 ;; Project
 (require 'init-project)
 
-;; Language 
+;; Language
 (require 'language)
 
 ;; YAML
