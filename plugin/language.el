@@ -75,6 +75,6 @@
 ;(setq elpy-rpc-backend "jedi")
 
 ;; --- Ruby ---
-;(require 'rails)
+;(require 'init-rails)
 
 (provide 'language)

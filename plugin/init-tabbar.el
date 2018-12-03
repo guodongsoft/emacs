@@ -61,4 +61,4 @@
 ;; USEFUL: set tabbar's separator gap
 (custom-set-variables '(tabbar-separator (quote (1.5))))
 
-(provide 'tabbar)
+(provide 'init-tabbar)

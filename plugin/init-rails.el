@@ -247,4 +247,4 @@
 	       :vanilla (concat projectile-rails-vanilla-command " " command))
 	      'projectile-rails-mode)))
 
-(provide 'language)
+(provide 'init-rails)

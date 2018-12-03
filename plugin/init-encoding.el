@@ -1,5 +1,6 @@
 ;; 设置编辑环境
 (require 'mozc)
+
 (set-language-environment "Japanese")
 (setq default-input-method "japanese-mozc")
 ;;(setenv "LC_ALL" "en_US.UTF-8")

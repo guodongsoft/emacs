@@ -1,11 +1,11 @@
 ;; Zsh
-(defun term()
+(defun xterm ()
   (interactive)
   (term "/bin/zsh"))
 
 (defun get-buffer-with-name (name)
   (unless (get-buffer name)
-    (ansi-term "/bin/zsh")
+    (term "/bin/zsh")
     (rename-buffer name)))
 
 (defun zsh ()
@@ -16,4 +16,4 @@
   (interactive)
   (get-buffer-with-name "rails"))
 
-(provide 'shell)
+(provide 'init-shell)
