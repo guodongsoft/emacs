@@ -10,8 +10,12 @@
 -  '(("melpa"        . "http://melpa.org/packages/")
 -    ("melpa-stable" . "https://stable.melpa.org/packages/")
 -    ("melpa-cn"     . "http://elpa.emacs-china.org/melpa/")
+-    ("marmalade"    . "http://marmalade-repo.org/packages/")
+-    ("elpy"         . "http://jorgenschaefer.github.io/packages/")
+-    ("gnu"          . "http://elpa.gnu.org/packages/")
 -    ("org-cn"       . "http://elpa.emacs-china.org/org/")
--    ("gnu-cn"       . "http://elpa.emacs-china.org/gnu/")))
+-    ("gnu-cn"       . "http://elpa.emacs-china.org/gnu/"))
+     package-enable-at-startup nil)
 - (package-initialize)
 
 ## 2.Install script

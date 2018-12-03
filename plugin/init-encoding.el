@@ -25,3 +25,5 @@
 ;; 解决文件目录名乱码
 (setq-default pathname-coding-system 'utf-8)
 (set-file-name-coding-system 'utf-8)
+
+(provide 'init-encoding)

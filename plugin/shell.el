@@ -15,3 +15,5 @@
 (defun rails ()
   (interactive)
   (get-buffer-with-name "rails"))
+
+(provide 'shell)

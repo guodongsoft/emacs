@@ -6,6 +6,7 @@ bookmarks
 source
 url
 *.dat
+network*.data
 *.eld
 *.cache
 \#*

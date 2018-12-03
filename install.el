@@ -1,10 +1,11 @@
 (require 'package)
 (setq package-archives
- '(("melpa"        . "http://melpa.org/packages/")
-   ("melpa-stable" . "https://stable.melpa.org/packages/")
-   ("melpa-cn"     . "http://elpa.emacs-china.org/melpa/")
-   ("org-cn"       . "http://elpa.emacs-china.org/org/")
-   ("gnu-cn"       . "http://elpa.emacs-china.org/gnu/")))
+      '(("melpa"        . "http://melpa.org/packages/")
+        ("melpa-stable" . "https://stable.melpa.org/packages/")
+        ("marmalade"    . "http://marmalade-repo.org/packages/")
+        ("elpy"         . "http://jorgenschaefer.github.io/packages/")
+        ("gnu"          . "http://elpa.gnu.org/packages/"))
+      package-enable-at-startup nil)
 (package-initialize)
 
 (with-no-warnings (require 'cl))

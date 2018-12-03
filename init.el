@@ -4,12 +4,20 @@
 ;; You may delete these explanatory comments.
 (require 'package)
 (setq package-archives
- '(("melpa"        . "http://melpa.org/packages/")
-   ("melpa-stable" . "https://stable.melpa.org/packages/")
-   ("melpa-cn"     . "http://elpa.emacs-china.org/melpa/")
-   ("org-cn"       . "http://elpa.emacs-china.org/org/")
-   ("gnu-cn"       . "http://elpa.emacs-china.org/gnu/")))
+      '(("melpa"        . "http://melpa.org/packages/")
+        ("melpa-stable" . "https://stable.melpa.org/packages/")
+        ("marmalade"    . "http://marmalade-repo.org/packages/")
+        ("elpy"         . "http://jorgenschaefer.github.io/packages/")
+        ("gnu"          . "http://elpa.gnu.org/packages/"))
+      package-enable-at-startup nil)
 (package-initialize)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
 
 ;; 显示加载时间
 (defvar mage-init-time 'nil)
@@ -175,20 +183,20 @@
   "Major mode for editing GitHub Flavored Markdown files" t)
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
+;; Plugin
+(add-to-list 'load-path "~/.emacs.d/plugin")
+(require 'config)
+
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(col-highlight ((t (:background "color-233"))))
  '(hl-line ((t (:background "color-233"))))
  '(lazy-highlight ((t (:background "black" :foreground "white" :underline t))))
  '(neo-dir-link-face ((t (:foreground "cyan"))))
  '(neo-file-link-face ((t (:foreground "white")))))
-(custom-set-variables)
-
-;; Plugin
-(setq plugin_dir "~/.emacs.d/plugin")
-(dolist (file (directory-files plugin_dir nil "^[^.].*[.]el$"))
-  (if (not (file-directory-p file))
-      (load (expand-file-name (concat plugin_dir "/" file)))))
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -196,11 +204,5 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (js-comint neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil)))
+    (clj-refactor js-comint neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil)))
  '(tabbar-separator (quote (1.5))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

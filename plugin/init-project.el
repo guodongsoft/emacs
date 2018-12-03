@@ -35,3 +35,5 @@
   (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
   (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
   (define-key evil-normal-state-local-map (kbd "o") 'neotree-enter)))
+
+(provide 'init-project)

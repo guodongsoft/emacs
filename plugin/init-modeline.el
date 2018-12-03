@@ -26,3 +26,4 @@
     (:inherit 'font-lock-keyword-face :background "#8B8386" :foreground "#76EE00" :weight bold))
   " %m "))
 
+(provide 'init-modeline)
