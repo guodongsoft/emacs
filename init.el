@@ -17,6 +17,10 @@
       package-enable-at-startup nil)
 (package-initialize)
 
+;; パスワード暗号化
+(add-hook 'comint-output-filter-functions
+          'comint-watch-for-password-prompt)
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
