@@ -174,6 +174,14 @@
   "Major mode for editing GitHub Flavored Markdown files" t)
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
+(custom-set-faces
+ '(col-highlight ((t (:background "color-233"))))
+ '(hl-line ((t (:background "color-233"))))
+ '(lazy-highlight ((t (:background "black" :foreground "white" :underline t))))
+ '(neo-dir-link-face ((t (:foreground "cyan"))))
+ '(neo-file-link-face ((t (:foreground "white")))))
+(custom-set-variables)
+
 ;; Plugin
 (setq plugin_dir "~/.emacs.d/plugin")
 (dolist (file (directory-files plugin_dir nil "^[^.].*[.]el$"))
