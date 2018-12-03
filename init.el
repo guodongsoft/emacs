@@ -57,8 +57,20 @@
 ;;(tool-bar-mode 0)
 
 ;; 回车缩进
-;(global-set-key "\C-m" 'newline-and-indent)
-;(global-set-key (kbd "C-<return>") 'newline)
+(global-set-key "\C-m" 'newline-and-indent)
+(global-set-key (kbd "C-<return>") 'newline)
+
+;; 多行注释
+(setq comment-style 'multi-line)
+(defun my-comment-or-uncomment-region (beg end &optional arg)
+  (interactive (if (use-region-p)
+                   (list (region-beginning) (region-end) nil)
+                 (list (line-beginning-position)
+                       (line-beginning-position 2))))
+  (comment-or-uncomment-region beg end arg)
+)
+(global-set-key [remap comment-or-uncomment-region] 'my-comment-or-uncomment-region)
+(global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
 
 ;; Autopair括号
 (require 'autopair)
