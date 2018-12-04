@@ -37,3 +37,4 @@
   (define-key evil-normal-state-local-map (kbd "o") 'neotree-enter)))
 
 (provide 'init-project)
+;;; init-project.el ends here

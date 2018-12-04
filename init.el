@@ -17,6 +17,10 @@
       package-enable-at-startup nil)
 (package-initialize)
 
+;;; Dired Jump
+;; C-x C-j
+(require 'dired-x)
+
 ;; パスワード暗号化
 (add-hook 'comint-output-filter-functions
           'comint-watch-for-password-prompt)
@@ -222,3 +226,4 @@
  '(tabbar-separator (quote (1.5))))
 
 (provide 'init)
+;;; init.el ends here

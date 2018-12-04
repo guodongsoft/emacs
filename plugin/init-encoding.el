@@ -28,3 +28,4 @@
 (set-file-name-coding-system 'utf-8)
 
 (provide 'init-encoding)
+;;; init-encoding.el ends here

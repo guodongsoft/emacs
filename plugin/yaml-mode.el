@@ -435,5 +435,4 @@ cross boundaries of block literals."
 (add-to-list 'auto-mode-alist '("\\.\\(e?ya?\\|ra\\)ml\\'" . yaml-mode))
 
 (provide 'yaml-mode)
-
 ;;; yaml-mode.el ends here

@@ -62,3 +62,4 @@
 (custom-set-variables '(tabbar-separator (quote (1.5))))
 
 (provide 'init-tabbar)
+;;; init-tabbar.el ends here

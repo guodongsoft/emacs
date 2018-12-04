@@ -80,3 +80,4 @@
 ;(require 'init-rails)
 
 (provide 'language)
+;;; language.el ends here

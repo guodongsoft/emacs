@@ -27,3 +27,4 @@
   " %m "))
 
 (provide 'init-modeline)
+;;; init-modeline.el ends here
