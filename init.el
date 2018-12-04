@@ -23,14 +23,10 @@
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
 
 ;;; Ido-mode
-(setq ido-enable-flex-matching t)
-(setq ido-use-filename-at-point 'guess)
-(setq ido-everywhere t)
+;(setq ido-enable-flex-matching t)
+;(setq ido-use-filename-at-point 'guess)
+;(setq ido-everywhere t)
 ;(ido-mode t)
-
-;;; Dired Jump
-;; C-x C-j
-(require 'dired-x)
 
 ;; パスワード暗号化
 (add-hook 'comint-output-filter-functions

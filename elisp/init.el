@@ -7,6 +7,9 @@
 (setq install-elisp-repository-directory "~/.emacs.d/elisp/emacswiki")
 (require 'install-elisp)
 
+;; Dired
+(require 'init-dired)
+
 ;; Themes
 (require 'init-themes)
 
