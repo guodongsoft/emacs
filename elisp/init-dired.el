@@ -19,7 +19,9 @@
 
 ;; 延迟加载
 (with-eval-after-load 'dired
-    (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file))
+    (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
+    (define-key dired-mode-map (kbd "G") 'evil-goto-line)
+    (define-key dired-mode-map (kbd "\\") 'dired-do-chgrp))
 
 (provide 'init-dired)
 ;;; init-dired.el ends here
