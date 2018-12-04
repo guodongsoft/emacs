@@ -1,3 +1,6 @@
+;;; init-modeline.el --- Modeline's initialization file
+;;; Commentary:
+
 (require 'doom-modeline)
 (doom-modeline-init)
 (setq doom-modeline-buffer-file-name-style 'file-name)

@@ -110,12 +110,12 @@
 (add-to-list 'load-path "~/.emacs.d/download")
 
 ;; Autopair括号
-;(require 'autopair)
+(require 'autopair)
 ;; 自动补全括号
-;(autopair-global-mode)
+(autopair-global-mode)
 ;; 匹配括号高亮
-;(show-paren-mode t)
-;(set-default 'autopair-dont-activate #'(lambda () (eq major-mode 'sldb-mode)))
+(show-paren-mode t)
+(set-default 'autopair-dont-activate #'(lambda () (eq major-mode 'sldb-mode)))
 
 ;; 智能提示
 (require 'company)
@@ -209,9 +209,8 @@
   "Major mode for editing GitHub Flavored Markdown files" t)
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
-;; Plugin
-(add-to-list 'load-path "~/.emacs.d/plugin")
-(require 'config)
+(add-to-list 'load-path "~/.emacs.d/elisp")
+(require 'init)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

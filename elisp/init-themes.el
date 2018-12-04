@@ -1,4 +1,8 @@
+;;; init-themes.el --- Themes's initialization file
+;;; Commentary:
+
 ;; Themes
+;;; Code:
 (defvar my-themes '(zenburn-theme
                    monokai-theme
                    idea-darkula-theme

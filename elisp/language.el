@@ -1,3 +1,6 @@
+;;; language.el --- Develop language settings
+;;; Commentary:
+
 ;; --- Lisp ---
 ;; Emacs Lisp
 (add-hook 'elisp-mode-hook 'company-mode)
@@ -28,7 +31,7 @@
 ;(add-to-list 'load-path "~/.emacs.d/elpa/go-mode-20181012.329/")
 ;(autoload 'go-mode "go-mode" nil t)
 ;(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
-(add-to-list 'load-path "~/.emacs.d/plugin/golang/")
+(add-to-list 'load-path "~/.emacs.d/elisp/golang")
 (require 'go-config)
 
 ;; --- Javascript ---

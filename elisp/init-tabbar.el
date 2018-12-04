@@ -1,3 +1,7 @@
+;;; init-tabbar.el --- Tabbar's initialization file
+;;; Commentary:
+
+;;; Code:
 (add-to-list 'load-path "~/.emacs.d/elpa/tabbar-20180726.1735")
 
 (require 'tabbar)
@@ -21,7 +25,7 @@
 
 (defun my-tabbar-buffer-groups ()
  "Return the list of group names the current buffer belongs to.
- Return a list of one element based on major mode."
+Return a list of one element based on major mode."
  (list
   (cond
    ((or (get-buffer-process (current-buffer))

@@ -1,4 +1,8 @@
+;;; init-shell.el --- Shell's initialization file
+;;; Commentary:
+
 ;; Zsh
+;;; Code:
 (defun xterm ()
   (interactive)
   (ansi-term "/bin/zsh"))

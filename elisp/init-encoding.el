@@ -1,6 +1,10 @@
+;;; init-encoding.el --- Encoding's initialization file
+;;; Commentary:
+
 ;; 设置编辑环境
 (require 'mozc)
 
+;;; Code:
 (set-language-environment "Japanese")
 (setq default-input-method "japanese-mozc")
 ;;(setenv "LC_ALL" "en_US.UTF-8")
