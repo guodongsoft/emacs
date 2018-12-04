@@ -9,6 +9,14 @@
 (setq inferior-lisp-program "sbcl")
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
 
+;; --- C C++ ---
+(add-hook 'c-mode-hook      'company-mode)
+(add-hook 'c++-mode-hook    'company-mode)
+;; 缩进4个空格
+(setq c-basic-offset 4)
+;; 没有这个 { } 就会瞎搞
+(setq c-default-style "linux")
+
 ;; --- Go ---
 (add-hook 'go-mode-hook
  (lambda ()
@@ -24,6 +32,7 @@
 (require 'go-config)
 
 ;; --- Javascript ---
+(add-hook 'css-mode-hook    'company-mode)
 (setq js-indent-level 2)
 
 ;; デフォルトではJSHintの優先度が高くなっているようなので、JSHintを無効にする

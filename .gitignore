@@ -10,3 +10,5 @@ network*.data
 *.eld
 *.cache
 \#*
+*.last
+tramp

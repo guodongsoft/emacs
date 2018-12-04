@@ -12,10 +12,21 @@
       '(("melpa"        . "http://melpa.org/packages/")
         ("melpa-stable" . "https://stable.melpa.org/packages/")
         ("marmalade"    . "http://marmalade-repo.org/packages/")
+        ("gnu"          . "http://elpa.gnu.org/packages/")
         ("elpy"         . "http://jorgenschaefer.github.io/packages/")
-        ("gnu"          . "http://elpa.gnu.org/packages/"))
+        ("melpa-cn"     . "http://elpa.emacs-china.org/melpa/")
+        ("org-cn"       . "http://elpa.emacs-china.org/org/")
+        ("gnu-cn"       . "http://elpa.emacs-china.org/gnu/"))
       package-enable-at-startup nil)
 (package-initialize)
+
+(add-to-list 'load-path "/usr/share/emacs/site-lisp")
+
+;;; Ido-mode
+(setq ido-enable-flex-matching t)
+(setq ido-use-filename-at-point 'guess)
+(setq ido-everywhere t)
+;(ido-mode t)
 
 ;;; Dired Jump
 ;; C-x C-j
@@ -85,13 +96,6 @@
 (global-set-key [remap comment-or-uncomment-region] 'my-comment-or-uncomment-region)
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
 
-;; Autopair括号
-(require 'autopair)
-;; 自动补全括号
-(autopair-global-mode)
-;; 匹配括号高亮
-(show-paren-mode t)
-
 ;; 缩进默认设置
 (setq-default
  ;; 缩进默认是2个空格
@@ -99,17 +103,24 @@
  standard-indent 2
  ;; Tab 改为插入空格
  indent-tabs-mode nil)
-;; C C++ 缩进4个空格
-(setq c-basic-offset 4)
-;; 没有这个 { } 就会瞎搞
-(setq c-default-style "linux")
 
-;; Auto complete
-(ac-config-default)
-(ac-set-trigger-key "TAB")
-(setq ac-auto-start nil)
+(add-hook 'org-mode-hook    'company-mode)
+(add-hook 'after-init-hook  'global-company-mode)
 
-;; Company补全
+(add-to-list 'load-path "~/.emacs.d/download")
+
+;; Autopair括号
+;(require 'autopair)
+;; 自动补全括号
+;(autopair-global-mode)
+;; 匹配括号高亮
+;(show-paren-mode t)
+;(set-default 'autopair-dont-activate #'(lambda () (eq major-mode 'sldb-mode)))
+
+;; 智能提示
+(require 'company)
+(require 'company-ycmd)
+(require 'company-web)
 (global-company-mode t)
 (autoload 'company-mode "company" nil t)
 (setq company-idle-delay 0.2;菜单延迟
@@ -120,12 +131,10 @@
       company-show-numbers t; 显示序号
       company-transformers '(company-sort-by-backend-importance)
       company-continue-commands '(not helm-dabbrev))
-
-(add-hook 'org-mode-hook    'company-mode)
-(add-hook 'css-mode-hook    'company-mode)
-(add-hook 'c-mode-hook      'company-mode)
-(add-hook 'c++-mode-hook    'company-mode)
-(add-hook 'after-init-hook  'global-company-mode)
+(require 'auto-complete)
+(ac-config-default)
+(ac-set-trigger-key "TAB")
+(setq ac-auto-start nil)
 
 ;; 关闭备份
 (setq make-backup-files nil)
@@ -151,8 +160,6 @@
 ;; Tramp
 (require 'tramp)
 (setq tramp-default-method "ssh")
-
-(add-to-list 'load-path "/usr/share/emacs/site-lisp")
 
 (auto-image-file-mode t)
 (delete-selection-mode t)
@@ -226,7 +233,7 @@
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-    (js-comint neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil)))
+    (autopair auto-compile company company-web company-ycmd magit js-comint neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil)))
  '(tabbar-separator (quote (1.5))))
 
 (provide 'init)
