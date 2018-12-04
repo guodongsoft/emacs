@@ -175,7 +175,7 @@
 
 ;; Yasnippet
 (require 'yasnippet)
-(yas-global-mode 1)
+(yas-global-mode t)
 
 ;; Helm
 ;(require 'helm-config)
@@ -213,9 +213,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(flycheck-disabled-checkers (quote (javascript-jshint javascript-jscs)))
+ '(gud-gdb-command-name "gdb --annotate=1")
+ '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-    (clj-refactor js-comint neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil)))
+    (js-comint neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil)))
  '(tabbar-separator (quote (1.5))))
 
 (provide 'init)
