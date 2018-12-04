@@ -148,6 +148,10 @@
 ;;      '("~/work/project"
 ;;        "~/.emacs.d/source"))
 
+;; Tramp
+(require 'tramp)
+(setq tramp-default-method "ssh")
+
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
 
 (auto-image-file-mode t)
