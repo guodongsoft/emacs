@@ -216,14 +216,14 @@
  '(col-highlight ((t (:background "color-233"))))
  '(hl-line ((t (:background "color-233"))))
  '(lazy-highlight ((t (:background "black" :foreground "white" :underline t))))
- '(magit-diff-added ((((type tty)) (:foreground "orange"))))
- '(magit-diff-added-highlight ((((type tty)) (:foreground "orange"))))
- '(magit-diff-context-highlight ((((type tty)) (:foreground "whitespace"))))
+ '(magit-diff-added ((((type tty)) (:foreground "green"))))
+ '(magit-diff-added-highlight ((((type tty)) (:foreground "LimeGreen"))))
+ '(magit-diff-context-highlight ((((type tty)) (:foreground "default"))))
  '(magit-diff-file-heading ((((type tty)) nil)))
  '(magit-diff-hunk-heading ((t (:background "#282822" :foreground "#00FFFF"))))
  '(magit-diff-lines-boundary ((t (:background "#blue" :foreground "#00FFFF"))))
  '(magit-diff-removed ((((type tty)) (:foreground "red"))))
- '(magit-diff-removed-highlight ((((type tty)) (:foreground "red"))))
+ '(magit-diff-removed-highlight ((((type tty)) (:foreground "IndianRed"))))
  '(magit-diff-removed-hightlight ((t (:background "#gray20" :foreground "#FF0000"))))
  '(magit-hash ((t (:foreground "red"))))
  '(magit-section-heading ((t (:background "#282822" :foreground "#00FFFF"))))
@@ -240,7 +240,7 @@
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-    (evil-magit magit-gitflow autopair auto-compile company company-web company-ycmd magit js-comint neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil)))
+    (evil-paredit paredit evil-magit magit-gitflow autopair auto-compile company company-web company-ycmd magit js-comint neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil)))
  '(tabbar-separator (quote (1.5))))
 
 (provide 'init)
