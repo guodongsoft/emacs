@@ -4,6 +4,7 @@
 ;; Install-elisp
 ;;; Code:
 (add-to-list 'load-path "~/.emacs.d/elisp/emacswiki")
+(add-to-list 'load-path "~/.emacs.d/elisp/emacswiki/common")
 (setq install-elisp-repository-directory "~/.emacs.d/elisp/emacswiki")
 (require 'install-elisp)
 
