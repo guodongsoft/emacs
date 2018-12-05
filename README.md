@@ -19,7 +19,7 @@
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
 ```
 
-# TAGS
+## TAGS
 find . -name "*.el" -or -name "*.c" | etags -
 
 ## Source
@@ -27,6 +27,14 @@ find . -name "*.el" -or -name "*.c" | etags -
 git://git.savannah.gnu.org/emacs.git
 https://git.savannah.gnu.org/git/emacs.git
 ssh://git.savannah.gnu.org:/srv/git/emacs.git
+```
+
+## アップグレードする方法
+```
+以下のコマンドでアップグレードしてください。
+そのためにはpackage-utilsパッケージが必要です。
+M-x package-install package-utils (初めてアップグレードする場合のみ)
+M-x package-utils-upgrade-by-name ample-theme
 ```
 
 # EXWM

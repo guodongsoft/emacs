@@ -16,6 +16,16 @@
 ;(require 'magit-gitflow)
 ;(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 
+(custom-set-faces
+ ;; other faces
+ '(magit-diff-added ((((type tty)) (:foreground "orange"))))
+ '(magit-diff-added-highlight ((((type tty)) (:foreground "orange"))))
+ '(magit-diff-context-highlight ((((type tty)) (:foreground "orange"))))
+ '(magit-diff-file-heading ((((type tty)) nil)))
+ '(magit-diff-removed ((((type tty)) (:foreground "red"))))
+ '(magit-diff-removed-highlight ((((type tty)) (:foreground "red"))))
+ '(magit-section-highlight ((((type tty)) nil))))
+
 ;; (custom-set-faces
 ;;  '(diff-added ((t (:foreground "orange" :background nil :inherit nil))))
 ;;  '(diff-removed ((t (:foreground "#00FF00" :background nil :inherit nil))))
