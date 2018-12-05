@@ -5,7 +5,7 @@
 ;; Author: Vincent Zhang <seagle0128@gmail.com>
 ;; Homepage: https://github.com/seagle0128/doom-modeline
 ;; Version: 0.9.0
-;; Package-Version: 20181203.1622
+;; Package-Version: 20181204.2032
 ;; Package-Requires: ((emacs "25.1") (all-the-icons "1.0.0") (shrink-path "0.2.0") (eldoc-eval "0.1") (dash "2.11.0"))
 ;; Keywords: faces mode-line
 
@@ -42,6 +42,7 @@
 ;; - A customizable mode-line height (see doom-modeline-height)
 ;; - An error/warning count segment for flycheck
 ;; - A workspace number segment for eyebrowse
+;; - A perspective name segment for persp-mode
 ;; - A window number segment for winum and window-numbering
 ;; - An indicator for evil state
 ;; - An indicator for god state
@@ -109,6 +110,9 @@ The icons may not be showed correctly in terminal and on Windows.")
 (defvar doom-modeline-major-mode-icon t
   "Whether show the icon for major mode. It should respect `doom-modeline-icon'.")
 
+(defvar doom-modeline-minor-modes nil
+  "Whether display minor modes or not. Non-nil to display in mode-line.")
+
 
 ;;
 ;; compatibility
@@ -148,6 +152,7 @@ It returns a file name which can be used directly as argument of
 (defvar flycheck-current-errors)
 (defvar iedit-mode)
 (defvar iedit-occurrences-overlays)
+(defvar persp-nil-name)
 (defvar projectile-dynamic-mode-line)
 (defvar text-scale-mode-amount)
 (defvar winum-auto-setup-mode-line)
@@ -179,6 +184,9 @@ It returns a file name which can be used directly as argument of
 (declare-function iedit-prev-occurrence 'iedit-lib)
 (declare-function image-get-display-property 'image-mode)
 (declare-function magit-toplevel 'magit-git)
+(declare-function safe-persp-name 'persp-mode)
+(declare-function get-current-persp 'persp-mode)
+(declare-function persp-contain-buffer-p 'persp-mode)
 (declare-function project-current 'project)
 (declare-function project-roots 'project)
 (declare-function projectile-project-root 'projectile)
@@ -260,22 +268,28 @@ active.")
 (defface doom-modeline-evil-emacs-state '((t (:inherit doom-modeline-warning)))
   "Face for the Emacs state tag in evil state indicator.")
 
-(defface doom-modeline-evil-insert-state'((t (:inherit doom-modeline-urgent)))
+(defface doom-modeline-evil-insert-state '((t (:inherit doom-modeline-urgent)))
   "Face for the insert state tag in evil state indicator.")
 
-(defface doom-modeline-evil-motion-state'((t :inherit doom-modeline-buffer-path))
+(defface doom-modeline-evil-motion-state '((t :inherit doom-modeline-buffer-path))
   "Face for the motion state tag in evil state indicator.")
 
-(defface doom-modeline-evil-normal-state'((t (:inherit doom-modeline-info)))
+(defface doom-modeline-evil-normal-state '((t (:inherit doom-modeline-info)))
   "Face for the normal state tag in evil state indicator.")
 
-(defface doom-modeline-evil-operator-state'((t (:inherit doom-modeline-buffer-path)))
+(defface doom-modeline-evil-operator-state '((t (:inherit doom-modeline-buffer-path)))
   "Face for the operator state tag in evil state indicator.")
 
-(defface doom-modeline-evil-visual-state'((t (:inherit doom-modeline-buffer-file)))
+(defface doom-modeline-evil-visual-state '((t (:inherit doom-modeline-buffer-file)))
   "Face for the visual state tag in evil state indicator.")
 
-(defface doom-modeline-evil-replace-state'((t (:inherit doom-modeline-buffer-modified)))
+(defface doom-modeline-evil-replace-state '((t (:inherit doom-modeline-buffer-modified)))
+  "Face for the replace state tag in evil state indicator.")
+
+(defface doom-modeline-persp-name '((t (:inherit font-lock-comment-face :italic t)))
+  "Face for the replace state tag in evil state indicator.")
+
+(defface doom-modeline-persp-buffer-not-in-persp '((t (:inherit font-lock-doc-face :bold t)))
   "Face for the replace state tag in evil state indicator.")
 
 
@@ -575,8 +589,8 @@ If DEFAULT is non-nil, set the default mode-line for all buffers."
                               'doom-modeline-buffer-file))))
            (when face `(:inherit ,face))))))
      'help-echo (concat buffer-file-truename
-                        (unless (string-equal (buffer-name)
-                                              (file-name-nondirectory buffer-file-truename))
+                        (unless (string= (file-name-nondirectory buffer-file-truename)
+                                         (buffer-name))
                           (concat "\n" (buffer-name)))))))
 
 (defun doom-modeline--buffer-file-name-truncate (file-path true-file-path &optional truncate-tail)
@@ -651,7 +665,7 @@ Example:
              (propertize
               (if (and truncate-project-root-parent
                        (not (string-empty-p root-path-parent))
-                       (not (string-equal root-path-parent "/")))
+                       (not (string= root-path-parent "/")))
                   (shrink-path--dirs-internal root-path-parent t)
                 (abbreviate-file-name root-path-parent))
               'face sp-props)))
@@ -664,7 +678,7 @@ Example:
           (when-let (relative-path (file-relative-name
                                     (or (file-name-directory file-path) "./")
                                     project-root))
-            (if (string-equal relative-path "./")
+            (if (string= relative-path "./")
                 ""
               (if truncate-project-relative-path
                   (substring (shrink-path--dirs-internal relative-path t) 1)
@@ -802,14 +816,25 @@ directory, the file name, and its state (modified, read-only or non-existent)."
 (doom-modeline-def-segment buffer-encoding
   "Displays the encoding and eol style of the buffer the same way Atom does."
   (concat (pcase (coding-system-eol-type buffer-file-coding-system)
-            (0 "LF  ")
-            (1 "CRLF  ")
-            (2 "CR  "))
+            (0 " LF ")
+            (1 " RLF ")
+            (2 " CR "))
           (let ((sys (coding-system-plist buffer-file-coding-system)))
             (cond ((memq (plist-get sys :category) '(coding-category-undecided coding-category-utf-8))
-                   "UTF-8")
+                   " UTF-8 ")
                   (t (upcase (symbol-name (plist-get sys :name))))))
-          "  "))
+          " "))
+
+
+;;
+;; remote host
+;;
+
+(doom-modeline-def-segment remote-host
+  "Hostname for remote buffers."
+  (when default-directory
+    (when-let ((host (file-remote-p default-directory 'host)))
+      (concat "@" host))))
 
 
 ;;
@@ -846,6 +871,28 @@ mouse-3: Toggle minor modes"
 (doom-modeline-def-segment process
   "The process info."
   mode-line-process)
+
+
+;;
+;; minor modes
+;;
+
+(doom-modeline-def-segment minor-modes
+  (when doom-modeline-minor-modes
+    `((:propertize  ("" minor-mode-alist)
+                    mouse-face mode-line-highlight
+                    help-echo "Minor mode\n\
+mouse-1: Display minor mode menu\n\
+mouse-2: Show help for minor mode\n\
+mouse-3: Toggle minor modes"
+                    local-map ,mode-line-minor-mode-keymap)
+      (:propertize "%n"
+                   mouse-face mode-line-highlight
+                   help-echo "mouse-2: Remove narrowing from buffer"
+                   local-map ,(make-mode-line-mouse-map
+                               'mouse-2 #'mode-line-widen))
+      " ")))
+
 
 ;;
 ;; vcs
@@ -1226,13 +1273,51 @@ Requires `eyebrowse-mode' to be enabled."
 
 
 ;;
+;; perspective name
+;;
+
+(defvar-local doom-modeline--persp-name nil)
+(defun doom-modeline-update-persp-name (&rest _)
+  "Update perspective name in mode-line."
+  (setq doom-modeline--persp-name
+        ;; Support `persp-mode', while not support `perspective'
+        (when (and (bound-and-true-p persp-mode)
+                   (fboundp 'safe-persp-name)
+                   (fboundp 'get-current-persp))
+          (let ((persp (get-current-persp)))
+            (propertize
+             (format " #%s " (safe-persp-name persp))
+             'face (if (and persp
+                            (not (persp-contain-buffer-p (current-buffer) persp)))
+                       'doom-modeline-persp-buffer-not-in-persp
+                     'doom-modeline-persp-name))))))
+
+(add-hook 'find-file-hook #'doom-modeline-update-persp-name)
+(add-hook 'after-revert-hook #'doom-modeline-update-persp-name)
+(add-hook 'persp-after-load-state-functions #'doom-modeline-update-persp-name)
+(add-hook 'persp-created-functions #'doom-modeline-update-persp-name)
+(add-hook 'persp-renamed-functions #'doom-modeline-update-persp-name)
+
+(advice-add #'select-window :after #'doom-modeline-update-persp-name)
+(advice-add #'persp-add-buffer :after #'doom-modeline-update-persp-name)
+(advice-add #'persp-remove-buffer :after #'doom-modeline-update-persp-name)
+
+(doom-modeline-def-segment persp-name
+  "The current perspective name."
+  (if (doom-modeline--active)
+      doom-modeline--persp-name
+    ""))
+
+
+;;
 ;; global
 ;;
 
 (doom-modeline-def-segment global
   "For the time string and whatever uses global-mode-string."
-  (if (< 0 (length global-mode-string))
-      '(" " global-mode-string "  ")
+  (if (and (doom-modeline--active)
+           (< 0 (length global-mode-string)))
+      '("" global-mode-string " ")
     ""))
 
 
@@ -1312,25 +1397,19 @@ See `mode-line-percent-position'.")
 
 (doom-modeline-def-segment input-method
   "The current input method."
-  (cond
-   (current-input-method
-    (concat current-input-method-title "  "))
-   ((and (bound-and-true-p evil-local-mode)
-         (bound-and-true-p evil-input-method))
-    (concat
-     (nth 3 (assoc default-input-method input-method-alist))
-     "  "))))
-
-
-;;
-;; remote host
-;;
-
-(doom-modeline-def-segment remote-host
-  "Hostname for remote buffers."
-  (when default-directory
-    (when-let ((host (file-remote-p default-directory 'host)))
-      (concat "@" host))))
+  (when (doom-modeline--active)
+    (propertize
+     (cond
+      (current-input-method
+       (concat " " current-input-method-title " "))
+      ((and (bound-and-true-p evil-local-mode)
+            (bound-and-true-p evil-input-method))
+       (concat
+        " "
+        (nth 3 (assoc default-input-method input-method-alist))
+        " "))
+      (t ""))
+     'face 'doom-modeline-buffer-major-mode)))
 
 
 ;;
@@ -1339,7 +1418,7 @@ See `mode-line-percent-position'.")
 
 (doom-modeline-def-modeline 'main
   '(bar workspace-number window-number evil-state god-state ryo-modal-state matches " " buffer-info remote-host buffer-position " " selection-info)
-  '(global input-method buffer-encoding major-mode process vcs flycheck))
+  '(global persp-name minor-modes input-method buffer-encoding major-mode process vcs flycheck))
 
 (doom-modeline-def-modeline 'minimal
   '(bar matches " " buffer-info)

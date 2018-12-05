@@ -237,7 +237,7 @@
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-    (evil-magit magit-gitflow autopair auto-compile company company-web company-ycmd magit js-comint neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil)))
+    (ample-theme evil-magit magit-gitflow autopair auto-compile company company-web company-ycmd magit js-comint neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil)))
  '(tabbar-separator (quote (1.5))))
 
 (provide 'init)

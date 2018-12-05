@@ -5,17 +5,20 @@
 ;;; Code:
 (require 'magit)
 (require 'evil-magit)
+
 (setq-default magit-auto-revert-mode nil)
 (setq vc-handled-backends '())
 (eval-after-load "vc" '(remove-hook 'find-file-hooks 'vc-find-file-hook))
 (bind-key "C-x m" 'magit-status)
 (bind-key "C-c l" 'magit-blame)
-(require 'magit-gitflow)
-(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 
-(custom-set-faces
- '(diff-added ((t (:foreground "orange" :background nil :inherit nil))))
- '(diff-removed ((t (:foreground "#00FF00" :background nil :inherit nil))))
+;(setq magit-gitflow-popup-key "C-n")
+;(require 'magit-gitflow)
+;(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
+
+;; (custom-set-faces
+;;  '(diff-added ((t (:foreground "orange" :background nil :inherit nil))))
+;;  '(diff-removed ((t (:foreground "#00FF00" :background nil :inherit nil))))
 
  ;; ;; cursorが載っていない状態でのaddedのface
  ;; '(magit-diff-added ((t (:background "#282822" :foreground "#00FF00"))))
@@ -44,8 +47,8 @@
  ;; '(diff-our ((t (:foreground "orange" :background nil :inherit nil))))
  ;; '(diff-our-highlight ((t (:foreground "orange" :background nil :inherit nil))))
 
- ;; '(diff-base ((t (:foreground "orange" :background nil :inherit nil))))
- ;; '(diff-base-highlight ((t (:foreground "orange" :background nil :inherit nil))))
+ ;; '(diff-base ((t (:foreground "orange" :background "#000000" :inherit nil))))
+ ;; '(diff-base-highlight ((t (:foreground "orange" :background "#000000" :inherit nil))))
 
  ;; '(diff-context ((t (:foreground "orange" :background nil :inherit nil))))
  ;; '(diff-context-highlight ((t (:foreground "orange" :background nil :inherit nil))))
@@ -60,7 +63,7 @@
 ;section-secondary-heading '((t :weight bold))
 
  ;; '(magit-diff-whitespace-warning ((t (:background "#282822" :foreground "#00FFFF"))))
- '(magit-hash ((t (:foreground "red" :background nil :inherit nil)))))
+ ;; '(magit-hash ((t (:foreground "red" :background nil :inherit nil)))))
 
 (provide 'init-magit)
 ;;; init-magit.el ends here
