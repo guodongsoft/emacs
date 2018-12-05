@@ -17,8 +17,6 @@
 
 (defun set-theme ()
   (load-theme 'tango-dark t)
- ;(load-theme 'ample-flat t)
- ;(load-theme 'ample-light t)
   ;; 透明
   (set-face-background 'default "0"))
 (set-theme)

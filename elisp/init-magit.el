@@ -20,7 +20,7 @@
  ;; other faces
  '(magit-diff-added ((((type tty)) (:foreground "orange"))))
  '(magit-diff-added-highlight ((((type tty)) (:foreground "orange"))))
- '(magit-diff-context-highlight ((((type tty)) (:foreground "orange"))))
+ '(magit-diff-context-highlight ((((type tty)) (:foreground "whitespace"))))
  '(magit-diff-file-heading ((((type tty)) nil)))
  '(magit-diff-removed ((((type tty)) (:foreground "red"))))
  '(magit-diff-removed-highlight ((((type tty)) (:foreground "red"))))
@@ -29,6 +29,7 @@
 ;; (custom-set-faces
 ;;  '(diff-added ((t (:foreground "orange" :background nil :inherit nil))))
 ;;  '(diff-removed ((t (:foreground "#00FF00" :background nil :inherit nil))))
+
 
  ;; ;; cursorが載っていない状態でのaddedのface
  ;; '(magit-diff-added ((t (:background "#282822" :foreground "#00FF00"))))
