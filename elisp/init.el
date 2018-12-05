@@ -23,8 +23,8 @@
 ;; Magit
 (require 'init-magit)
 
-;; Shell
-(require 'init-shell)
+;; Term
+(require 'init-term)
 
 ;; Encoding
 (require 'init-encoding)
