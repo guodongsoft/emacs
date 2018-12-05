@@ -4,13 +4,14 @@
 ;; Magit
 ;;; Code:
 (require 'magit)
-(require 'magit-diff)
+(require 'evil-magit)
 (setq-default magit-auto-revert-mode nil)
 (setq vc-handled-backends '())
 (eval-after-load "vc" '(remove-hook 'find-file-hooks 'vc-find-file-hook))
 (bind-key "C-x m" 'magit-status)
 (bind-key "C-c l" 'magit-blame)
-
+(require 'magit-gitflow)
+(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 
 (custom-set-faces
  '(diff-added ((t (:foreground "orange" :background nil :inherit nil))))
@@ -40,21 +41,26 @@
 
  ;; '(magit-diff-conflict-heading ((t (:background "#282822" :foreground "#00FFFF"))))
 
- ;; '(magit-diff-our ((t (:background "#282822" :foreground "#00FFFF"))))
- ;; '(magit-diff-our-highlight ((t (:background "#282822" :foreground "#00FFFF"))))
+ ;; '(diff-our ((t (:foreground "orange" :background nil :inherit nil))))
+ ;; '(diff-our-highlight ((t (:foreground "orange" :background nil :inherit nil))))
 
- ;; '(magit-diff-base ((t (:background "#282822" :foreground "#00FFFF"))))
- ;; '(magit-diff-base-highlight ((t (:background "#282822" :foreground "#00FFFF"))))
+ ;; '(diff-base ((t (:foreground "orange" :background nil :inherit nil))))
+ ;; '(diff-base-highlight ((t (:foreground "orange" :background nil :inherit nil))))
 
- ;; '(magit-diff-context ((t (:background "#282822" :foreground "#00FFFF"))))
- ;; '(magit-diff-context-highlight ((t (:background "#282822" :foreground "#00FFFF"))))
+ ;; '(diff-context ((t (:foreground "orange" :background nil :inherit nil))))
+ ;; '(diff-context-highlight ((t (:foreground "orange" :background nil :inherit nil))))
 
- ;; '(magit-diff-their ((t (:background "#282822" :foreground "#00FFFF"))))
- ;; '(magit-diff-their-highlight ((t (:background "#282822" :foreground "#00FFFF"))))
+ ;; '(diff-diff-their ((t (:foreground "orange" :background nil :inherit nil))))
+ ;; '(diff-diff-their-highlight ((t (:foreground "orange" :background nil :inherit nil))))
 
- ;; '(magit-section-heading ((t (:background "#282822" :foreground "#00FFFF"))))
+ ;; '(section-heading ((t (:foreground "orange" :background nil :inherit nil))))
+ ;; '(section-heading-selection ((t (:foreground "orange" :background nil :inherit nil))))
+ ;; '(section-highlight ((t (:foreground "orange" :background nil :inherit nil))))
+
+;section-secondary-heading '((t :weight bold))
+
  ;; '(magit-diff-whitespace-warning ((t (:background "#282822" :foreground "#00FFFF"))))
- '(magit-hash ((t (:foreground "red")))))
+ '(magit-hash ((t (:foreground "red" :background nil :inherit nil)))))
 
 (provide 'init-magit)
 ;;; init-magit.el ends here
