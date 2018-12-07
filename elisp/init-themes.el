@@ -3,15 +3,15 @@
 
 ;; Themes
 ;;; Code:
-(defvar my-themes '(monokai-theme
-                   idea-darkula-theme
-                   jazz-theme
-                   planet-theme
-                   obsidian-theme))
+;; (defvar my-themes '(monokai-theme
+;;                    idea-darkula-theme
+;;                    jazz-theme
+;;                    planet-theme
+;;                    obsidian-theme))
 
-(dolist (theme my-themes)
-  (unless (package-installed-p theme)
-    (eval `(use-package ,theme :ensure t :defer t))))
+;; (dolist (theme my-themes)
+;;   (unless (package-installed-p theme)
+;;     (eval `(use-package ,theme :ensure t :defer t))))
 
 (defun set-theme ()
   (load-theme 'tango-dark t)

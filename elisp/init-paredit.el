@@ -14,13 +14,13 @@
 
 (add-hook 'slime-repl-mode-hook                  (lambda () (paredit-mode +1)))
 
-(add-hook 'emacs-lisp-mode-hook                  'evil-paredit-mode)
-(add-hook 'emacs-lisp-mode-hook                  'evil-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook            'evil-paredit-mode)
-(add-hook 'ielm-mode-hook                        'evil-paredit-mode)
-(add-hook 'lisp-mode-hook                        'evil-paredit-mode)
-(add-hook 'scheme-mode-hook                      'evil-paredit-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook 'evil-paredit-mode)
+;; (add-hook 'emacs-lisp-mode-hook                  'evil-paredit-mode)
+;; (add-hook 'emacs-lisp-mode-hook                  'evil-paredit-mode)
+;; (add-hook 'lisp-interaction-mode-hook            'evil-paredit-mode)
+;; (add-hook 'ielm-mode-hook                        'evil-paredit-mode)
+;; (add-hook 'lisp-mode-hook                        'evil-paredit-mode)
+;; (add-hook 'scheme-mode-hook                      'evil-paredit-mode)
+;; (add-hook 'eval-expression-minibuffer-setup-hook 'evil-paredit-mode)
 
 ;; Stop SLIME's REPL from grabbing DEL,
 ;; which is annoying when backspacing over a '('

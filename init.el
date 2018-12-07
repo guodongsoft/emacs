@@ -228,11 +228,11 @@
  '(tabbar-button-highlight ((t (:inherit tabbar-default))))
  '(tabbar-default ((t (:inherit variable-pitch :background "#E3E3E3" :foreground "black" :weight bold))))
  '(tabbar-highlight ((t (:underline t))))
- '(tabbar-selected ((t (:inherit tabbar-default :background "#48D1CC"))))
- '(tabbar-separator ((t (:inherit tabbar-default :background "#C1FFC1"))))
- '(tabbar-unselected ((t (:inherit tabbar-default))))
  '(tabbar-modified ((t (:inherit tabbar-default :foreground "red"))))
- '(tabbar-selected-modified ((t (:inherit tabbar-default :background "#48D1CC" :foreground "red")))))
+ '(tabbar-selected ((t (:inherit tabbar-default :background "#48D1CC"))))
+ '(tabbar-selected-modified ((t (:inherit tabbar-default :background "#48D1CC" :foreground "red"))))
+ '(tabbar-separator ((t (:inherit tabbar-default :background "#C1FFC1"))))
+ '(tabbar-unselected ((t (:inherit tabbar-default)))))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -243,7 +243,7 @@
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-    (counsel go-projectile projectile color-theme go-autocomplete evil-paredit paredit evil-magit magit-gitflow autopair auto-compile company company-web company-ycmd magit js-comint neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil)))
+    (proceed all-the-icons tabbar yasnippet flycheck counsel go-projectile projectile color-theme go-autocomplete evil-paredit paredit evil-magit magit-gitflow autopair auto-compile auto-complete company company-web company-ycmd magit js-comint js2-mode doom-modeline neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil use-package)))
  '(tabbar-separator (quote (1.5))))
 
 (provide 'init)
