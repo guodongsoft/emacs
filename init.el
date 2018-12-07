@@ -22,12 +22,6 @@
 
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
 
-;;; Ido-mode
-;(setq ido-enable-flex-matching t)
-;(setq ido-use-filename-at-point 'guess)
-;(setq ido-everywhere t)
-;(ido-mode t)
-
 ;; パスワード暗号化
 (add-hook 'comint-output-filter-functions
           'comint-watch-for-password-prompt)
@@ -68,13 +62,13 @@
 (set-face-foreground 'linum "orange")
 
 ;; 关闭菜单
-;;(menu-bar-mode 0)
+(menu-bar-mode -1)
 
 ;; 关闭文件滑动控件
-;;(scroll-bar-mode 0)
+;;(scroll-bar-mode -1)
 
 ;; 关闭工具栏
-;;(tool-bar-mode 0)
+;;(tool-bar-mode -1)
 
 ;; 回车缩进
 (global-set-key "\C-m" 'newline-and-indent)
