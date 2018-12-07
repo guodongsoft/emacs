@@ -234,9 +234,11 @@
  '(tabbar-button-highlight ((t (:inherit tabbar-default))))
  '(tabbar-default ((t (:inherit variable-pitch :background "#E3E3E3" :foreground "black" :weight bold))))
  '(tabbar-highlight ((t (:underline t))))
- '(tabbar-selected ((t (:inherit tabbar-default :background "#B4CDCD"))))
+ '(tabbar-selected ((t (:inherit tabbar-default :background "#48D1CC"))))
  '(tabbar-separator ((t (:inherit tabbar-default :background "#C1FFC1"))))
- '(tabbar-unselected ((t (:inherit tabbar-default)))))
+ '(tabbar-unselected ((t (:inherit tabbar-default))))
+ '(tabbar-modified ((t (:inherit tabbar-default :foreground "red"))))
+ '(tabbar-selected-modified ((t (:inherit tabbar-default :background "#48D1CC" :foreground "red")))))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

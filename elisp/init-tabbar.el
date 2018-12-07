@@ -29,14 +29,6 @@
 
 ;; the color of the tabbar background
 (setq tabbar-background-color "#E3E3E3")
-(custom-set-faces
- '(tabbar-default ((t (:inherit variable-pitch :background "#E3E3E3" :foreground "black" :weight bold))))
- '(tabbar-button ((t (:inherit tabbar-default :foreground "dark red"))))
- '(tabbar-button-highlight ((t (:inherit tabbar-default))))
- '(tabbar-highlight ((t (:underline t))))
- '(tabbar-selected ((t (:inherit tabbar-default :background "#B4CDCD"))))
- '(tabbar-separator ((t (:inherit tabbar-default :background "#C1FFC1"))))
- '(tabbar-unselected ((t (:inherit tabbar-default)))))
 
 (defun my-tabbar-buffer-groups ()
  "Return the list of group names the current buffer belongs to.
