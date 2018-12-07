@@ -229,7 +229,14 @@
  '(magit-section-heading ((t (:background "#282822" :foreground "#00FFFF"))))
  '(magit-section-highlight ((((type tty)) nil)))
  '(neo-dir-link-face ((t (:foreground "cyan"))))
- '(neo-file-link-face ((t (:foreground "white")))))
+ '(neo-file-link-face ((t (:foreground "white"))))
+ '(tabbar-button ((t (:inherit tabbar-default :foreground "dark red"))))
+ '(tabbar-button-highlight ((t (:inherit tabbar-default))))
+ '(tabbar-default ((t (:inherit variable-pitch :background "#E3E3E3" :foreground "black" :weight bold))))
+ '(tabbar-highlight ((t (:underline t))))
+ '(tabbar-selected ((t (:inherit tabbar-default :background "#B4CDCD"))))
+ '(tabbar-separator ((t (:inherit tabbar-default :background "#C1FFC1"))))
+ '(tabbar-unselected ((t (:inherit tabbar-default)))))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -240,7 +247,7 @@
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-    (evil-paredit paredit evil-magit magit-gitflow autopair auto-compile company company-web company-ycmd magit js-comint neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil)))
+    (go-projectile projectile color-theme go-autocomplete evil-paredit paredit evil-magit magit-gitflow autopair auto-compile company company-web company-ycmd magit js-comint neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil)))
  '(tabbar-separator (quote (1.5))))
 
 (provide 'init)

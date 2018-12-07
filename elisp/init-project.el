@@ -4,14 +4,17 @@
 ;; Projectile
 ;; 默认全局使用
 ;;; Code:
+(require 'projectile)
 (projectile-mode)
 ;; 默认打开缓存
 (setq projectile-enable-caching t)
 ;; 使用f5键打开默认文件搜索
 (global-set-key [f5] 'projectile-find-file)
 
-(projectile-mode +1)
+(projectile-mode t)
 
+;; Neotree
+(require 'neotree)
 (setq projectile-switch-project-action 'neotree-projectile-action)
 (defun neotree-ffip-project-dir ()
  "Open NeoTree using the git root."
@@ -25,8 +28,6 @@
    (message "Could not find git project root."))))
 (define-key projectile-mode-map (kbd "<f3>") 'neotree-ffip-project-dir)
 
-;; Neotree
-(require 'neotree)
 (defun my-neotree-toggle ()
  (interactive)
  (neotree-toggle)

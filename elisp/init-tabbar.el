@@ -2,8 +2,6 @@
 ;;; Commentary:
 
 ;;; Code:
-(add-to-list 'load-path "~/.emacs.d/elpa/tabbar-20180726.1735")
-
 (require 'tabbar)
 (tabbar-mode t)
 (global-set-key [(meta j)] 'tabbar-backward)
@@ -14,56 +12,47 @@
 (global-set-key (kbd "<M-left>")  'tabbar-backward-tab)
 (global-set-key (kbd "<M-right>") 'tabbar-forward-tab)
 
-(setq
- tabbar-scroll-left-help-function nil ;don't show help information
- tabbar-scroll-right-help-function nil
- tabbar-help-on-tab-function nil
- tabbar-home-help-function nil
- tabbar-buffer-home-button (quote (("") "")) ;don't show tabbar button
- tabbar-scroll-left-button (quote (("") ""))
- tabbar-scroll-right-button (quote (("") "")))
+;; タブ上でマウスホイール操作無効
+(tabbar-mwheel-mode nil)
+;; グループ化しない
+(setq tabbar-buffer-groups-function nil)
+;; 左に表示されるボタンを無効化
+(dolist (btn '(tabbar-buffer-home-button
+               tabbar-scroll-left-button
+               tabbar-scroll-right-button))
+        (set btn (cons (cons "" nil)
+                 (cons "" nil))))
+;; ウインドウからはみ出たタブを省略して表示
+(setq tabbar-auto-scroll-flag nil)
+;; タブとタブの間の長さ
+(setq tabbar-separator '(1.5))
+
+;; the color of the tabbar background
+(setq tabbar-background-color "#E3E3E3")
+(custom-set-faces
+ '(tabbar-default ((t (:inherit variable-pitch :background "#E3E3E3" :foreground "black" :weight bold))))
+ '(tabbar-button ((t (:inherit tabbar-default :foreground "dark red"))))
+ '(tabbar-button-highlight ((t (:inherit tabbar-default))))
+ '(tabbar-highlight ((t (:underline t))))
+ '(tabbar-selected ((t (:inherit tabbar-default :background "#B4CDCD"))))
+ '(tabbar-separator ((t (:inherit tabbar-default :background "#C1FFC1"))))
+ '(tabbar-unselected ((t (:inherit tabbar-default)))))
 
 (defun my-tabbar-buffer-groups ()
  "Return the list of group names the current buffer belongs to.
 Return a list of one element based on major mode."
  (list
   (cond
-   ((or (get-buffer-process (current-buffer))
+   ((or
+     (get-buffer-process (current-buffer))
      ;; Check if the major mode derives from `comint-mode' or `compilation-mode'.
      (tabbar-buffer-mode-derived-p
       major-mode '(comint-mode compilation-mode)))
-    "Process")
+     "Process")
    ((string-equal "*" (substring (buffer-name) 0 1)) "Emacs Buffer")
    ((eq major-mode 'dired-mode) "Dired")
    (t "User Buffer"))))
-
 (setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
-
-; close default tabs，and move all files into one group
-(setq tabbar-buffer-list-function
- (lambda ()
-  (remove-if
-   (lambda (buffer)
-    (find (aref (buffer-name buffer) 0) " *"))
-   (buffer-list))))
-(setq tabbar-buffer-groups-function (lambda()(list "All")))
-(set-face-attribute 'tabbar-button nil)
-
-;;set tabbar's backgroud color
-(set-face-attribute 'tabbar-default nil
-                    :background "gray"
-                    :foreground "gray30")
-(set-face-attribute 'tabbar-selected nil
-                    :inherit 'tabbar-default
-                    :background "#9ACD32"
-                    :foreground "#A05220"
-                    :box '(:line-width 2 :color "gray") )
-(set-face-attribute 'tabbar-unselected nil
-                    :inherit 'tabbar-default
-                    :box '(:line-width 2 :color "gray"))
-
-;; USEFUL: set tabbar's separator gap
-(custom-set-variables '(tabbar-separator (quote (1.5))))
 
 (provide 'init-tabbar)
 ;;; init-tabbar.el ends here
