@@ -2,9 +2,11 @@
 ;;; Commentary:
 
 ;; Projectile
-;; 默认全局使用
-;;; Code:
 (require 'projectile)
+(add-to-list 'load-path "~/.emacs.d/elisp/emacswiki/find-file-in-project")
+(require 'find-file-in-project)
+
+;;; Code:
 (projectile-mode)
 ;; 默认打开缓存
 (setq projectile-enable-caching t)
@@ -26,9 +28,10 @@
     (neotree-dir project-dir)
     (neotree-find file-name))
    (message "Could not find git project root."))))
-(define-key projectile-mode-map (kbd "<f3>") 'neotree-ffip-project-dir)
+(define-key projectile-mode-map (kbd "C-c C-p") 'neotree-ffip-project-dir)
 
 (defun my-neotree-toggle ()
+ "Toggle NeoTree."
  (interactive)
  (neotree-toggle)
  (set-theme))
