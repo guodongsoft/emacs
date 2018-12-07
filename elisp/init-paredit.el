@@ -6,24 +6,17 @@
 (require 'paredit-everywhere)
 
 ;;; Code:
-;; (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-;; (add-hook 'emacs-lisp-mode-hook                  #'enable-paredit-mode)
-;; (add-hook 'lisp-interaction-mode-hook            #'enable-paredit-mode)
-;; (add-hook 'ielm-mode-hook                        #'enable-paredit-mode)
-;; (add-hook 'lisp-mode-hook                        #'enable-paredit-mode)
-;; (add-hook 'scheme-mode-hook                      #'enable-paredit-mode)
-;; (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+(add-hook 'emacs-lisp-mode-hook                  #'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook            #'enable-paredit-mode)
+(add-hook 'ielm-mode-hook                        #'enable-paredit-mode)
+(add-hook 'lisp-mode-hook                        #'enable-paredit-mode)
+(add-hook 'scheme-mode-hook                      #'enable-paredit-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+(add-hook 'slime-repl-mode-hook                  (lambda () (paredit-mode +1)))
 
-;(add-hook 'slime-repl-mode-hook                  (lambda () (paredit-mode +1)))
-(add-hook 'prog-mode-hook 'paredit-everywhere-mode)
 (add-hook 'emacs-lisp-mode-hook                  'evil-paredit-mode)
-
-;; (add-hook 'emacs-lisp-mode-hook                  'evil-paredit-mode)
-;; (add-hook 'lisp-interaction-mode-hook            'evil-paredit-mode)
-;; (add-hook 'ielm-mode-hook                        'evil-paredit-mode)
-;; (add-hook 'lisp-mode-hook                        'evil-paredit-mode)
-;; (add-hook 'scheme-mode-hook                      'evil-paredit-mode)
-;; (add-hook 'eval-expression-minibuffer-setup-hook 'evil-paredit-mode)
+(add-hook 'prog-mode-hook                        'paredit-everywhere-mode)
 
 ;; Stop SLIME's REPL from grabbing DEL,
 ;; which is annoying when backspacing over a '('
