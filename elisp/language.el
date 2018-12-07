@@ -24,17 +24,6 @@
 (setq c-default-style "linux")
 
 ;; --- Go ---
-(require 'go-projectile)
-(add-hook 'go-mode-hook
- (lambda ()
-  (set (make-local-variable 'company-backends) '(company-go))
-  (setq tab-with 2)
-  (company-mode)))
-
-;(require 'go-mode)
-;(add-to-list 'load-path "~/.emacs.d/elpa/go-mode-20181012.329/")
-;(autoload 'go-mode "go-mode" nil t)
-;(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 (add-to-list 'load-path "~/.emacs.d/elisp/golang")
 (require 'go-config)
 
@@ -71,7 +60,7 @@
           (lambda ()
             (add-hook 'after-save-hook #'eslint-fix-file-and-revert)))
 
-(add-to-list 'load-path "~/.emacs.d/elpa/js2-mode-20180724.801/")
+;(add-to-list 'load-path "~/.emacs.d/elpa/js2-mode-20180724.801/")
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))

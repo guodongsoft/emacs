@@ -94,10 +94,8 @@
  ;; Tab 改为插入空格
  indent-tabs-mode nil)
 
-(add-hook 'org-mode-hook    'company-mode)
-(add-hook 'after-init-hook  'global-company-mode)
-
-(add-to-list 'load-path "~/.emacs.d/download")
+;; Popup
+(require 'popup)
 
 ;; Autopair括号
 (require 'autopair)
@@ -122,9 +120,13 @@
       company-transformers '(company-sort-by-backend-importance)
       company-continue-commands '(not helm-dabbrev))
 (require 'auto-complete)
+(require 'auto-complete-config)
 (ac-config-default)
 (ac-set-trigger-key "TAB")
 (setq ac-auto-start nil)
+
+(add-hook 'org-mode-hook    'company-mode)
+(add-hook 'after-init-hook  'global-company-mode)
 
 ;; 关闭备份
 (setq make-backup-files nil)
@@ -157,6 +159,7 @@
 ;; Evil
 (require 'evil)
 (evil-mode t)
+(setq evil-shift-with 2)
 
 ;; indent region
 (global-set-key (kbd "C-\\") 'indent-region)
@@ -243,7 +246,7 @@
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-    (paredit-everywhere proceed all-the-icons tabbar yasnippet flycheck counsel go-projectile projectile color-theme go-autocomplete evil-paredit paredit evil-magit magit-gitflow autopair auto-compile auto-complete company company-web company-ycmd magit js-comint js2-mode doom-modeline neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil use-package)))
+    (flymake flymake-go flycheck-gometalinter go-errcheck company-go paredit-everywhere proceed all-the-icons tabbar yasnippet flycheck counsel go-projectile projectile color-theme go-autocomplete evil-paredit paredit evil-magit magit-gitflow autopair auto-compile auto-complete company company-web company-ycmd magit js-comint js2-mode doom-modeline neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil use-package)))
  '(tabbar-separator (quote (1.5))))
 
 (provide 'init)

@@ -2,18 +2,33 @@
 ;; golang develop environment configure
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(require 'go-projectile)
+(require 'go-mode)
+;(require 'go-mode-autoloads)
+
 ;;;;;; go-mode ;;;;;;;
-(require 'go-mode-autoloads)
+(add-hook 'go-mode-hook
+ (lambda ()
+  (set (make-local-variable 'company-backends) '(company-go))
+  (company-mode)))
+
 (add-hook 'before-save-hook 'gofmt-before-save)
-(add-hook 'go-mode-hook (lambda()
-			  (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+(add-hook 'go-mode-hook
+          (lambda()
+            (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
+
+;; 设置为t表示忽略大小写，设置为nil表示区分大小写
+;; 默认情况下为smart，表示如果输入的字符串不含有大写字符才会忽略大小写
+(setq ac-ignore-case t)
+(add-hook 'go-mode-hook
+          #'(lambda() (setq ac-sources '(ac-source-go ac-source-abbrev ac-source-dictionary))))
 
 ;; 如果是Mac OS X系统，则需要借助exec-path-from-shell将GOPATH环境变量拷贝到emacs中
 ;; 具体问题可以参考https://github.com/purcell/exec-path-from-shell
 ;; 该插件在common目录下已经安装，此处可以直接使用
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-copy-env "GOPATH"))
-
 
 ;;;;;; goflymake ;;;;;;
 ;; 如果你要使用goflymake，请参考https://github.com/dougm/goflymake先安装一下goflymake。
@@ -26,18 +41,19 @@
 (add-hook 'flymake-mode-hook
 	  (lambda()
 	    (local-set-key (kbd "C-c C-e p") 'flymake-goto-prev-error)))
-(add-hook 'flymake-mode-hook
-	  (lambda()
-	    (local-set-key (kbd "C-c C-e m") 'flymake-popup-current-error-menu)))
-
+;; (add-hook 'flymake-mode-hook
+;; 	  (lambda()
+;; 	    (local-set-key (kbd "C-c C-e m") 'flymake-popup-current-error-menu)))
 
 ;;(require 'go-flycheck)
-
 
 ;;;;; auto-complete ;;;;;;
 ;; 如果要使用company-go，则需要先安装gocode，请参考
 ;; https://github.com/nsf/gocode
 (require 'go-autocomplete)
+
+(require 'auto-complete-config)
+(ac-config-default)
 
 ;;;;;; company-go ;;;;;;
 ;; company-go是auto-complete的一个替代品，比auto-complete小，
