@@ -246,7 +246,7 @@
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-    (flymake flymake-go flycheck-gometalinter go-errcheck company-go paredit-everywhere proceed all-the-icons tabbar yasnippet flycheck counsel go-projectile projectile color-theme go-autocomplete evil-paredit paredit evil-magit magit-gitflow autopair auto-compile auto-complete company company-web company-ycmd magit js-comint js2-mode doom-modeline neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil use-package)))
+    (go-dlv flymake flymake-go flycheck-gometalinter go-errcheck company-go paredit-everywhere proceed all-the-icons tabbar yasnippet flycheck counsel go-projectile projectile color-theme go-autocomplete evil-paredit paredit evil-magit magit-gitflow autopair auto-compile auto-complete company company-web company-ycmd magit js-comint js2-mode doom-modeline neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil use-package)))
  '(tabbar-separator (quote (1.5))))
 
 (provide 'init)
