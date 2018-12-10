@@ -24,8 +24,7 @@
 (setq c-default-style "linux")
 
 ;; --- Go ---
-(add-to-list 'load-path "~/.emacs.d/elisp/golang")
-(require 'go-config)
+(require 'init-golang)
 
 ;; --- Javascript ---
 (add-hook 'css-mode-hook    'company-mode)
