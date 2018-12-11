@@ -197,7 +197,7 @@
 (global-set-key (kbd "C-c ,y") 'emmet-expand-yas)
 
 ;; 启动 Org-mode 文本内语法高亮
-(require 'org)
+(use-package org :ensure t)
 (setq org-src-fontify-natively t)
 
 ;; Fonts
@@ -208,8 +208,13 @@
 (setq neo-theme 'icons)
 
 ;; Yasnippet
-(require 'yasnippet)
-(yas-global-mode t)
+(use-package yasnippet
+  :ensure t
+  :init
+  (add-hook 'prog-mode-hook #'yas-minor-mode)
+  :config
+  (yas-global-mode)
+  (use-package yasnippet-snippets :ensure t))
 
 ;; MDwenjian
 (add-to-list 'load-path "~/.emacs.d/markdown-mode/repository")
