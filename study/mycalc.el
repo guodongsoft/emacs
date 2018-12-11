@@ -138,4 +138,3 @@ whitespace is necessary, except to separate numbers."
   (setq major-mode 'calc-mode)
   (setq mode-name "Calculator")
   (use-local-map calc-mode-map))
-
