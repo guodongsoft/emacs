@@ -1,7 +1,22 @@
-# 准备
-## 1.使用pip 安装：rope jedi flake8 importmagic autopep8 yapf
+# 字体
+## 打开emacs以后M-x all-the-icons-install-fonts
 
-## 2. 字体：打开emacs以后M-x all-the-icons-install-fonts
+# Python
+## 使用pip 安装：rope jedi flake8 importmagic autopep8 yapf
+
+# Go
+- go get -u -v github.com/nsf/gocode
+- go get -u -v github.com/rogpeppe/godef
+- go get -u -v golang.org/x/tools/cmd/guru
+- go get -u -v golang.org/x/tools/cmd/gorename
+- go get -u -v golang.org/x/tools/cmd/goimports
+- go get -u -v github.com/fatih/gomodifytags
+- go get -u -v golang.org/x/tools/cmd/godoc
+- go get -u -v github.com/k0kubun/pp
+- go get -u -v github.com/motemen/gore
+- go get -u -v github.com/sourcegraph/go-langserver
+- go get -u -v github.com/golangci/golangci-lint/cmd/golangci-lint
+- go get -u -v github.com/derekparker/delve/cmd/dlv
 
 # Quicklisp
 ## 1.Install
@@ -19,17 +34,17 @@
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
 ```
 
-## TAGS
+# TAGS
 find . -name "*.el" -or -name "*.c" | etags -
 
-## Source
+# Source
 ```
 git://git.savannah.gnu.org/emacs.git
 https://git.savannah.gnu.org/git/emacs.git
 ssh://git.savannah.gnu.org:/srv/git/emacs.git
 ```
 
-## アップグレードする方法
+# アップグレードする方法
 ```
 以下のコマンドでアップグレードしてください。
 そのためにはpackage-utilsパッケージが必要です。
