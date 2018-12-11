@@ -6,6 +6,8 @@
 ;; --- js ---
 (use-package js2-mode
   :ensure t
+  :bind (("C-c ]" . tide-jump-to-definition)
+         ("C-c t" . tide-jump-back))
   :mode (("\\.js\\'" . js2-mode)
          ("\\.jsx?\\'" . js2-jsx-mode)
          ("\\.json\\'" . javascript-mode))
