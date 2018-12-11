@@ -3,7 +3,8 @@
 
 ;; Company
 ;; 是 complete anything 的意思
-;; 是一種 auto-complete 自動完成 
+;; 是一種 auto-complete 自動完成
+;;; Code:
 (use-package company
   :ensure t
   :config
@@ -38,7 +39,8 @@
 (advice-add 'company-complete-common
             :before (lambda () (setq my-company-point (point))))
 (advice-add 'company-complete-common
-            :after (lambda () (when (equal my-company-point (point)) (yas-expand))))
+            :after (lambda () (when (equal my-company-point (point))
+                                (yas-expand))))
 
 (provide 'init-company)
 ;;; init-company.el ends here

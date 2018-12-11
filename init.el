@@ -72,8 +72,8 @@
  indent-tabs-mode nil)
 
 ;; hideshow
-;; C-c @ C-a  -> show all 
-;; C-c @ C-h  -> hide 
+;; C-c @ C-a  -> show all
+;; C-c @ C-h  -> hide
 ;; C-c @ C-s  -> show
 (add-hook 'prog-mode-hook #'hs-minor-mode)
 
@@ -127,6 +127,11 @@
 
 ;; Popup
 ;(use-package popup :ensure t)
+
+(use-package flycheck
+  :ensure t
+  :config
+  (global-flycheck-mode t))
 
 ;; Language Server Protocol
 (use-package lsp-mode :ensure t)
