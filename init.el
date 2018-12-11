@@ -77,31 +77,9 @@
 ;; C-c @ C-s  -> show
 (add-hook 'prog-mode-hook #'hs-minor-mode)
 
-
-
-
-
-
-
-
-;; ;; Autopair括号
-;; (require 'autopair)
-;; ;; 自动补全括号
-;; (autopair-global-mode)
-;; (set-default 'autopair-dont-activate #'(lambda () (eq major-mode 'sldb-mode)))
-
-
-
-
-
-
 ;; パスワード暗号化
 (add-hook 'comint-output-filter-functions
           'comint-watch-for-password-prompt)
-
-
-(eval-when-compile
-  (require 'use-package))
 
 ;; 显示加载时间
 (defvar mage-init-time 'nil)
@@ -233,13 +211,6 @@
 (require 'yasnippet)
 (yas-global-mode t)
 
-;; Helm
-;(require 'helm-config)
-;(global-set-key (kbd "C-x r b") #'helm-file-bookmarks)
-;(global-set-key (kbd "C-x C-f") #'helm-find-files)
-;(global-set-key (kbd "M-x") 'helm-M-x)
-;(helm-mode t)
-
 ;; MDwenjian
 (add-to-list 'load-path "~/.emacs.d/markdown-mode/repository")
 (autoload 'markdown-mode "markdown-mode"
@@ -294,7 +265,7 @@
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-    (company-lsp lsp-go lsp-mode golint go-dlv flymake flymake-go flycheck-gometalinter go-errcheck company-go paredit-everywhere proceed all-the-icons tabbar yasnippet flycheck counsel go-projectile projectile color-theme go-autocomplete evil-paredit paredit evil-magit magit-gitflow autopair auto-compile auto-complete company company-web company-ycmd magit js-comint js2-mode doom-modeline neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil use-package)))
+    (company-lsp lsp-go lsp-mode golint go-dlv flymake flymake-go flycheck-gometalinter go-errcheck company-go paredit-everywhere proceed all-the-icons tabbar yasnippet flycheck counsel go-projectile projectile color-theme go-autocomplete evil-paredit paredit evil-magit magit-gitflow auto-compile auto-complete company company-web company-ycmd magit js-comint js2-mode doom-modeline neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil use-package)))
  '(tabbar-separator (quote (1.5))))
 
 (provide 'init)
