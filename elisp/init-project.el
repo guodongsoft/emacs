@@ -2,21 +2,26 @@
 ;;; Commentary:
 
 ;; Projectile
-(require 'projectile)
-(add-to-list 'load-path "~/.emacs.d/elisp/emacswiki/find-file-in-project")
-(require 'find-file-in-project)
+(use-package projectile
+  :ensure t
+  :bind-keymap ("C-c p" . projectile-command-map)
+  :config
+  (projectile-mode t)
+  (setq projectile-completion-system 'ivy)
+  ;; 默认打开缓存
+  (setq projectile-enable-caching t)
+  (use-package counsel-projectile
+    :ensure t)
+  )
 
-;;; Code:
-(projectile-mode)
-;; 默认打开缓存
-(setq projectile-enable-caching t)
-;; 使用f5键打开默认文件搜索
-(global-set-key [f5] 'projectile-find-file)
+(use-package ag :ensure t) 
 
-(projectile-mode t)
+;; 使用f5键打开内容搜索
+(global-set-key [f5] 'projectile-ag)
 
 ;; Neotree
-(require 'neotree)
+(use-package neotree :ensure t) 
+
 ;; 显示隐藏文件
 (setq neo-show-hidden-files t)
 (setq neo-smart-open t)

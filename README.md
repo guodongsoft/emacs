@@ -21,6 +21,26 @@
 - go get -u -v github.com/golangci/golangci-lint/cmd/golangci-lint
 - go get -u -v github.com/golang/lint/golint
 
+# Projectile
+- C-c p ?
+- C-c p D projectile-dired
+- C-c p I projectile-ibuffer
+- C-c p S projectile-save-project-buffers
+- C-c p T projectile-find-test-file
+- C-c p V projectile-browse-dirty-projects
+- C-c p c projectile-compile-project
+- C-c p d projectile-find-dir
+- C-c p e projectile-recentf
+- C-c p f projectile-find-file
+- C-c p p projectile-switch-project
+- C-c p s g projectile-grep
+- C-c p s r projectile-ripgrep
+- C-c p s s projectile-ag
+
+# ag
+apt-get install silversearcher-ag
+brew install the_silver_searcher
+
 # Quicklisp
 ## 1.Install
 - see quicklisp/Install

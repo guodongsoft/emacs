@@ -22,13 +22,83 @@
 
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
 
+;; set autosave and backup directory
+(defconst emacs-tmp-dir (format "%s/%s%s/" temporary-file-directory "emacs" (user-uid)))
+(setq backup-directory-alist `((".*" . ,emacs-tmp-dir)))
+(setq auto-save-file-name-transforms `((".*" ,emacs-tmp-dir t)))
+(setq auto-save-list-file-prefix emacs-tmp-dir)
+
+;; use-package
+;; ensure属性设为t: 若package未安装, 就安装该package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+;; diminish: 次模式在modeline中不显示, 只需显示主模式
+(use-package diminish :ensure t)
+
+(use-package bind-key :ensure t)
+
+;; auto package update
+(use-package auto-package-update
+  :ensure t
+  :config
+  (setq auto-package-update-delete-old-versions t)
+  (setq auto-package-update-hide-results t)
+  (auto-package-update-maybe))
+
+;; 关闭菜单
+(menu-bar-mode -1)
+;; 关闭文件滑动控件
+;;(scroll-bar-mode -1)
+;; 关闭工具栏
+;;(tool-bar-mode -1)
+
+;; 匹配括号高亮
+(show-paren-mode t)
+;; 自动补全括号
+(electric-pair-mode t)
+(setq electric-pair-pairs
+      '(
+        (?\' . ?\')
+        ))
+
+;; 缩进默认设置
+(setq-default
+ ;; 缩进默认是2个空格
+ tab-width 2
+ standard-indent 2
+ ;; Tab改为插入空格
+ indent-tabs-mode nil)
+
+;; hideshow
+;; C-c @ C-a  -> show all 
+;; C-c @ C-h  -> hide 
+;; C-c @ C-s  -> show
+(add-hook 'prog-mode-hook #'hs-minor-mode)
+
+
+
+
+
+
+
+
+;; ;; Autopair括号
+;; (require 'autopair)
+;; ;; 自动补全括号
+;; (autopair-global-mode)
+;; (set-default 'autopair-dont-activate #'(lambda () (eq major-mode 'sldb-mode)))
+
+
+
+
+
+
 ;; パスワード暗号化
 (add-hook 'comint-output-filter-functions
           'comint-watch-for-password-prompt)
 
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
 
 (eval-when-compile
   (require 'use-package))
@@ -61,15 +131,6 @@
 (setq linum-format "%4d\u2502")
 (set-face-foreground 'linum "orange")
 
-;; 关闭菜单
-(menu-bar-mode -1)
-
-;; 关闭文件滑动控件
-;;(scroll-bar-mode -1)
-
-;; 关闭工具栏
-;;(tool-bar-mode -1)
-
 ;; 回车缩进
 (global-set-key "\C-m" 'newline-and-indent)
 (global-set-key (kbd "C-<return>") 'newline)
@@ -86,24 +147,8 @@
 (global-set-key [remap comment-or-uncomment-region] 'my-comment-or-uncomment-region)
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
 
-;; 缩进默认设置
-(setq-default
- ;; 缩进默认是2个空格
- tab-width 2
- standard-indent 2
- ;; Tab 改为插入空格
- indent-tabs-mode nil)
-
 ;; Popup
 (require 'popup)
-
-;; Autopair括号
-(require 'autopair)
-;; 自动补全括号
-(autopair-global-mode)
-;; 匹配括号高亮
-(show-paren-mode t)
-(set-default 'autopair-dont-activate #'(lambda () (eq major-mode 'sldb-mode)))
 
 ;; 智能提示
 (require 'company)

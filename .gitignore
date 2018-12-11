@@ -11,5 +11,6 @@ network*.data
 *.cache
 \#*
 .\#*
+.*
 *.last
 tramp
