@@ -10,7 +10,6 @@
 - go get -u -v golang.org/x/tools/cmd/gorename
 - go get -u -v golang.org/x/tools/cmd/goimports
 - go get -u -v golang.org/x/tools/cmd/godoc
-- go get -u -v golang.org/x/tools/cmd/vet
 - go get -u -v github.com/derekparker/delve/cmd/dlv
 - go get -u -v github.com/fatih/gomodifytags
 - go get -u -v github.com/k0kubun/pp
