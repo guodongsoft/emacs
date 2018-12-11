@@ -111,16 +111,21 @@
 (require 'company-web)
 (global-company-mode t)
 (autoload 'company-mode "company" nil t)
-(setq company-idle-delay 0.2;菜单延迟
-      company-minimum-prefix-length 1; 开始补全字数0
+(setq company-idle-delay 0.2 ; 菜单延迟
+      company-minimum-prefix-length 1 ; 开始补全字数0
       company-require-match nil
       company-dabbrev-ignore-case nil
       company-dabbrev-downcase nil
-      company-show-numbers t; 显示序号
+      company-show-numbers t ; 显示序号
       company-transformers '(company-sort-by-backend-importance)
       company-continue-commands '(not helm-dabbrev))
 (require 'auto-complete)
 (require 'auto-complete-config)
+
+;; Language Server Protocol
+(require 'lsp-mode)
+(require 'company-lsp)
+
 (ac-config-default)
 (ac-set-trigger-key "TAB")
 (setq ac-auto-start nil)
@@ -163,10 +168,8 @@
 
 ;; indent region
 (global-set-key (kbd "C-\\") 'indent-region)
-
 ;; Use youdao dictionary
 (global-set-key (kbd "C-c y") 'youdao-dictionary-search-at-point)
-
 ;; Emmet
 (global-set-key (kbd "C-c ,y") 'emmet-expand-yas)
 
@@ -246,7 +249,7 @@
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-    (golint go-dlv flymake flymake-go flycheck-gometalinter go-errcheck company-go paredit-everywhere proceed all-the-icons tabbar yasnippet flycheck counsel go-projectile projectile color-theme go-autocomplete evil-paredit paredit evil-magit magit-gitflow autopair auto-compile auto-complete company company-web company-ycmd magit js-comint js2-mode doom-modeline neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil use-package)))
+    (company-lsp lsp-go lsp-mode golint go-dlv flymake flymake-go flycheck-gometalinter go-errcheck company-go paredit-everywhere proceed all-the-icons tabbar yasnippet flycheck counsel go-projectile projectile color-theme go-autocomplete evil-paredit paredit evil-magit magit-gitflow autopair auto-compile auto-complete company company-web company-ycmd magit js-comint js2-mode doom-modeline neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil use-package)))
  '(tabbar-separator (quote (1.5))))
 
 (provide 'init)

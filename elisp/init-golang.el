@@ -4,6 +4,7 @@
 (require 'go-projectile)
 (require 'go-mode)
 (require 'go-errcheck)
+(require 'lsp-go)
 
 ;;; Code:
 
@@ -21,7 +22,11 @@
             (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
             (local-set-key (kbd "C-c C-c") 'go-errcheck)
             (setq ac-sources '(ac-source-go ac-source-abbrev ac-source-dictionary))
+            #'flycheck-mode
+            #'lsp-go-enable
+            #'company-mode-on
             (company-mode)))
+(set-variable 'gofmt-command "goimports")
 
 ;;;;;; flycheck ;;;;;;
 ;; https://github.com/favadi/flycheck-gometalinter
