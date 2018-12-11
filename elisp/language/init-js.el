@@ -9,7 +9,7 @@
   :bind (("C-c ]" . tide-jump-to-definition)
          ("C-c t" . tide-jump-back))
   :mode (("\\.js\\'" . js2-mode)
-         ("\\.jsx?\\'" . js2-jsx-mode)
+         ("\\.jsx\\'" . js2-jsx-mode)
          ("\\.json\\'" . javascript-mode))
   :init
   (setq js-indent-level 2)
