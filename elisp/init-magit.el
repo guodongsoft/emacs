@@ -2,15 +2,16 @@
 ;;; Commentary:
 
 ;; Magit
-;;; Code:
-(require 'magit)
-(require 'evil-magit)
+(use-package magit
+  :ensure t
+  :bind (("C-x g" . magit-status)
+         ("C-c l" . magit-blame)))
+
+(use-package evil-magit :ensure t)
 
 (setq-default magit-auto-revert-mode nil)
 (setq vc-handled-backends '())
 (eval-after-load "vc" '(remove-hook 'find-file-hooks 'vc-find-file-hook))
-(bind-key "C-x m" 'magit-status)
-(bind-key "C-c l" 'magit-blame)
 
 (custom-set-faces
  ;; other faces
