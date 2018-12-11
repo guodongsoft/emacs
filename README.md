@@ -5,18 +5,22 @@
 ## 使用pip 安装：rope jedi flake8 importmagic autopep8 yapf
 
 # Go
-- go get -u -v github.com/nsf/gocode
-- go get -u -v github.com/rogpeppe/godef
+- go get -u -v golang.org/x/tools/cmd/cover
 - go get -u -v golang.org/x/tools/cmd/guru
 - go get -u -v golang.org/x/tools/cmd/gorename
 - go get -u -v golang.org/x/tools/cmd/goimports
-- go get -u -v github.com/fatih/gomodifytags
 - go get -u -v golang.org/x/tools/cmd/godoc
+- go get -u -v golang.org/x/tools/cmd/vet
+- go get -u -v github.com/derekparker/delve/cmd/dlv
+- go get -u -v github.com/fatih/gomodifytags
 - go get -u -v github.com/k0kubun/pp
 - go get -u -v github.com/motemen/gore
+- go get -u -v github.com/nsf/gocode
+- go get -u -v github.com/jstemmer/gotags
+- go get -u -v github.com/rogpeppe/godef
 - go get -u -v github.com/sourcegraph/go-langserver
 - go get -u -v github.com/golangci/golangci-lint/cmd/golangci-lint
-- go get -u -v github.com/derekparker/delve/cmd/dlv
+- go get -u -v github.com/golang/lint/golint
 
 # Quicklisp
 ## 1.Install
