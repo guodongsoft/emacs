@@ -31,10 +31,10 @@
 ;; https://github.com/favadi/flycheck-gometalinter
 ;; Install gometalinter and install all available checkers with:
 ;;    `gometalinter --install --update`
-;; (require 'flycheck-gometalinter)
-;; (eval-after-load 'flycheck
-;;   '(add-hook 'flycheck-mode-hook #'flycheck-gometalinter-setup))
-;; (add-hook 'after-init-hook #'global-flycheck-mode)
+(require 'flycheck-gometalinter)
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-gometalinter-setup))
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; skips 'vendor' directories and sets GO15VENDOREXPERIMENT=1
 (setq flycheck-gometalinter-vendor t)
