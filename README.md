@@ -21,6 +21,10 @@
 - go get -u -v github.com/golangci/golangci-lint/cmd/golangci-lint
 - go get -u -v github.com/golang/lint/golint
 
+# Js
+- npm install -g eslint 
+- npm install -g prettier
+
 # Projectile
 - C-c p ?
 - C-c p D projectile-dired
