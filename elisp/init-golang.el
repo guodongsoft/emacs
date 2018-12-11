@@ -19,8 +19,7 @@
 (add-hook 'go-mode-hook
           (lambda ()
             (set (make-local-variable 'company-backends) '(company-go))
-            (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
-            (local-set-key (kbd "C-c C-c") 'go-errcheck)
+            (local-set-key (kbd "C-c c") 'go-errcheck)
             (setq ac-sources '(ac-source-go ac-source-abbrev ac-source-dictionary))
             #'flycheck-mode
             #'lsp-go-enable
