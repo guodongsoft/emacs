@@ -126,35 +126,11 @@
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
 
 ;; Popup
-(require 'popup)
-
-;; 智能提示
-(require 'company)
-(require 'company-ycmd)
-(require 'company-web)
-(global-company-mode t)
-(autoload 'company-mode "company" nil t)
-(setq company-idle-delay 0.2 ; 菜单延迟
-      company-minimum-prefix-length 1 ; 开始补全字数0
-      company-require-match nil
-      company-dabbrev-ignore-case nil
-      company-dabbrev-downcase nil
-      company-show-numbers t ; 显示序号
-      company-transformers '(company-sort-by-backend-importance)
-      company-continue-commands '(not helm-dabbrev))
-(require 'auto-complete)
-(require 'auto-complete-config)
+;(use-package popup :ensure t)
 
 ;; Language Server Protocol
-(require 'lsp-mode)
-(require 'company-lsp)
-
-(ac-config-default)
-(ac-set-trigger-key "TAB")
-(setq ac-auto-start nil)
-
-(add-hook 'org-mode-hook    'company-mode)
-(add-hook 'after-init-hook  'global-company-mode)
+(use-package lsp-mode :ensure t)
+(use-package company-lsp :ensure t)
 
 ;; 关闭备份
 (setq make-backup-files nil)

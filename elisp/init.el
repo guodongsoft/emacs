@@ -8,6 +8,9 @@
 (setq install-elisp-repository-directory "~/.emacs.d/elisp/emacswiki")
 (require 'install-elisp)
 
+;; Company
+(require 'init-company)
+
 ;; Dired
 (require 'init-dired)
 
