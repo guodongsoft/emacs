@@ -20,6 +20,9 @@
 ;; Anything.el
 (require 'init-anything)
 
+;; Ivy
+(require 'init-ivy)
+
 ;; Magit
 (require 'init-magit)
 
