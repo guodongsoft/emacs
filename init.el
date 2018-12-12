@@ -21,6 +21,7 @@
 (package-initialize)
 
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
+(global-set-key (kbd "M-#") 'sort-lines)
 
 ;; set autosave and backup directory
 (defconst emacs-tmp-dir (format "%s/%s%s/" temporary-file-directory "emacs" (user-uid)))
