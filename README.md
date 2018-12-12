@@ -18,8 +18,9 @@
 - go get -u -v github.com/jstemmer/gotags
 - go get -u -v github.com/rogpeppe/godef
 - go get -u -v github.com/sourcegraph/go-langserver
-- go get -u -v github.com/golangci/golangci-lint/cmd/golangci-lint
+#- go get -u -v github.com/golangci/golangci-lint/cmd/golangci-lint
 - go get -u -v github.com/golang/lint/golint
+- gocode set autobuild true
 
 # Js
 - npm install -g eslint 

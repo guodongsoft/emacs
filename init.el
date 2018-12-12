@@ -104,7 +104,7 @@
 (setq line-number-mode t)
 
 ;; 显示行号
-(require 'linum)
+(use-package linum :ensure t)
 (global-linum-mode t)
 (setq linum-format "%4d\u2502")
 (set-face-foreground 'linum "orange")
@@ -124,9 +124,6 @@
 )
 (global-set-key [remap comment-or-uncomment-region] 'my-comment-or-uncomment-region)
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
-
-;; Popup
-;(use-package popup :ensure t)
 
 (use-package flycheck
   :ensure t
@@ -159,14 +156,14 @@
 ;;        "~/.emacs.d/source"))
 
 ;; Tramp
-(require 'tramp)
+(use-package tramp :ensure t)
 (setq tramp-default-method "ssh")
 
 (auto-image-file-mode t)
 (delete-selection-mode t)
 
 ;; Evil
-(require 'evil)
+(use-package evil :ensure t)
 (evil-mode t)
 (setq evil-shift-with 2)
 
@@ -183,7 +180,7 @@
 
 ;; Fonts
 (set-default-font "Monaco-11")
-(require 'all-the-icons)
+(use-package all-the-icons :ensure t)
 (setq all-the-icons-color-icons nil)
 (setq inhibit-compacting-font-caches t)
 (setq neo-theme 'icons)
@@ -207,13 +204,13 @@
   "Major mode for editing GitHub Flavored Markdown files" t)
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
-(use-package autoinsert
-  :ensure t
-  :config
-  (setq auto-insert-query nil)
-  (setq auto-insert-directory (locate-user-emacs-file "templates"))
-  (add-hook 'find-file-hook 'auto-insert)
-  (auto-insert-mode t))
+;; (use-package autoinsert
+;;   :ensure t
+;;   :config
+;;   (setq auto-insert-query nil)
+;;   (setq auto-insert-directory (locate-user-emacs-file "templates/"))
+;;   (add-hook 'find-file-hook 'auto-insert)
+;;   (auto-insert-mode t))
 
 (add-to-list 'load-path "~/.emacs.d/elisp")
 (require 'init)
