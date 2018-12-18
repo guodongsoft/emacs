@@ -1,3 +1,12 @@
+# Install
+## 第一种方式：
+- brew unlink emacs
+- brew uninstall emacs
+- brew install emacs --with-modules --with-cocoa --with-gnutls --with-librsvg --with-mailutils --with-imagemagick@6
+
+## 第二种方式：
+- https://emacsformacosx.com/builds
+
 # 字体
 ## 打开emacs以后M-x all-the-icons-install-fonts
 

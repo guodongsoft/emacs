@@ -20,6 +20,27 @@
       package-enable-at-startup nil)
 (package-initialize)
 
+;; Mac OSX判定
+(when (eq system-type 'darwin)
+ ;; default Latin font (e.g. Consolas)
+ (set-face-attribute 'default nil :family "Monaco")
+
+ ;; default font size (point * 10)
+ ;;
+ ;; WARNING!  Depending on the default font,
+ ;; if the size is not supported very well, the frame will be clipped
+ ;; so that the beginning of the buffer may not be visible correctly.
+ (set-face-attribute 'default nil :height 120)
+
+ ;; use specific font for Korean charset.
+ ;; if you want to use different font size for specific charset,
+ ;; add :size POINT-SIZE in the font-spec.
+ (set-fontset-font t 'hangul (font-spec :name "NanumGothicCoding"))
+
+ ;; you may want to add different for other charset in this way.
+ (set-fontset-font t 'japanese-jisx0208 (font-spec :family "Kochi Gothic"))
+ )
+
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
 (global-set-key (kbd "M-#") 'sort-lines)
 
@@ -49,11 +70,11 @@
   (auto-package-update-maybe))
 
 ;; 关闭菜单
-(menu-bar-mode -1)
+;(menu-bar-mode -1)
 ;; 关闭文件滑动控件
-;;(scroll-bar-mode -1)
+;(scroll-bar-mode -1)
 ;; 关闭工具栏
-;;(tool-bar-mode -1)
+(tool-bar-mode -1)
 
 ;; 匹配括号高亮
 (show-paren-mode t)
@@ -107,7 +128,8 @@
 ;; 显示行号
 (use-package linum :ensure t)
 (global-linum-mode t)
-(setq linum-format "%4d\u2502")
+;(setq linum-format "%4d\u2502")
+(setq linum-format "%4d")
 (set-face-foreground 'linum "orange")
 
 ;; 回车缩进
@@ -252,12 +274,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
  '(flycheck-disabled-checkers (quote (javascript-jshint javascript-jscs)))
  '(gud-gdb-command-name "gdb --annotate=1")
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
     (company-lsp lsp-go lsp-mode golint go-dlv flymake flymake-go flycheck-gometalinter go-errcheck company-go paredit-everywhere proceed all-the-icons tabbar yasnippet flycheck counsel go-projectile projectile color-theme go-autocomplete evil-paredit paredit evil-magit magit-gitflow auto-compile auto-complete company company-web company-ycmd magit js-comint js2-mode doom-modeline neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil use-package)))
+ '(show-paren-mode t)
  '(tabbar-separator (quote (1.5))))
 
 (provide 'init)

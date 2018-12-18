@@ -2,6 +2,7 @@
 ;;; Commentary:
 
 ;; Projectile
+;;; Code:
 (use-package projectile
   :ensure t
   :bind-keymap ("C-c p" . projectile-command-map)
@@ -11,16 +12,15 @@
   ;; 默认打开缓存
   (setq projectile-enable-caching t)
   (use-package counsel-projectile
-    :ensure t)
-  )
+    :ensure t))
 
-(use-package ag :ensure t) 
+(use-package ag :ensure t)
 
 ;; 使用f5键打开内容搜索
 (global-set-key [f5] 'projectile-ag)
 
 ;; Neotree
-(use-package neotree :ensure t) 
+(use-package neotree :ensure t)
 
 ;; 显示隐藏文件
 (setq neo-show-hidden-files t)
