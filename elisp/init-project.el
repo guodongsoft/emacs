@@ -21,6 +21,8 @@
 
 ;; Neotree
 (use-package neotree :ensure t)
+(setq inhibit-compacting-font-caches t)
+(setq neo-theme 'icons)
 
 ;; 显示隐藏文件
 (setq neo-show-hidden-files t)
