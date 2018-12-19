@@ -23,7 +23,7 @@
 (cond
  ;; Mac OSX判定
  ((eq system-type 'darwin)
-  (
+  (progn
    ;; default Latin font (e.g. Consolas)
    (set-face-attribute 'default nil :family "Monaco")
 
@@ -40,10 +40,16 @@
    (set-fontset-font t 'hangul (font-spec :name "NanumGothicCoding"))
 
    ;; you may want to add different for other charset in this way.
-   (set-fontset-font t 'japanese-jisx0208 (font-spec :family "Kochi Gothic"))))
+   (set-fontset-font t 'japanese-jisx0208 (font-spec :family "Kochi Gothic"))
+   ))
 
  ;; Linux判定
- ((eq system-type 'gnu/linux) nil)
+ ((eq system-type 'gnu/linux)
+  (progn
+    (set-fontset-font t 'japanese-jisx0208 "TakaoPGothic")
+    (add-to-list 'face-font-rescale-alist '(".*Takao P.*" . 0.85))
+    ))
+
  (t nil))
 
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
