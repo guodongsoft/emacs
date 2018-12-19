@@ -10,7 +10,7 @@
 ## Ubuntu
 ### configure && make
 - sudo apt-get install build-essential texinfo libx11-dev libxpm-dev libjpeg-dev libpng-dev libgif-dev libtiff-dev libgtk2.0-dev libncurses-dev
-- # for gtk3 build replace libgtk2.0-dev with libgtk-3-dev
+- for gtk3 build replace libgtk2.0-dev with libgtk-3-dev
 - git clone --depth=1 git://git.savannah.gnu.org/emacs.git
 - ./autogen.sh # not needed when installing from tarball
 - ./configure
@@ -23,9 +23,9 @@
 
 # Term
 ## 環境変数 TERM の設定
-- # eterm-color.ti から生成した terminfo を利用する。tiファイルのパスは自分で判断して変更してください
+- eterm-color.ti から生成した terminfo を利用する。tiファイルのパスは自分で判断して変更してください
 - tic -o ~/.terminfo /usr/local/share/emacs/23.1/etc/e/eterm-color.ti
-- # Mac OS X で app 形式の場合は以下のような場所にあります
+- Mac OS X で app 形式の場合は以下のような場所にあります
 - tic -o ~/.terminfo /Applications/Emacs.app/Contents/Resources/etc/e/eterm-color.ti
 ## Shell の設定ファイル (.zshrc、.bashrc 等) に以下ような設定を記述する 
 - if [ "$EMACS" ];then
@@ -33,10 +33,10 @@
 - fi
 
 # All the icons
-## 打开emacs以后M-x all-the-icons-install-fonts
+- 打开emacs以后M-x all-the-icons-install-fonts
 
 # Python
-## 使用pip 安装：rope jedi flake8 importmagic autopep8 yapf
+- 使用pip 安装：rope jedi flake8 importmagic autopep8 yapf
 
 # Go
 - go get -u -v golang.org/x/tools/cmd/cover
