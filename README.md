@@ -7,7 +7,7 @@
 ## 第二种方式：
 - https://emacsformacosx.com/builds
 
-# 字体
+# All the icons
 ## 打开emacs以后M-x all-the-icons-install-fonts
 
 # Python

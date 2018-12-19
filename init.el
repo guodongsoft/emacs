@@ -202,7 +202,6 @@
 (setq org-src-fontify-natively t)
 
 ;; Fonts
-(set-default-font "Monaco-11")
 (use-package all-the-icons :ensure t)
 (setq all-the-icons-color-icons nil)
 (setq inhibit-compacting-font-caches t)
