@@ -1,11 +1,25 @@
 # Install
-## 第一种方式：
+## Mac
+### 第一种方式：
 - brew unlink emacs
 - brew uninstall emacs
 - brew install emacs --with-modules --with-cocoa --with-gnutls --with-librsvg --with-mailutils --with-imagemagick@6
-
-## 第二种方式：
+### 第二种方式：
 - https://emacsformacosx.com/builds
+
+## Ubuntu
+### configure && make
+- sudo apt-get install build-essential texinfo libx11-dev libxpm-dev libjpeg-dev libpng-dev libgif-dev libtiff-dev libgtk2.0-dev libncurses-dev
+- # for gtk3 build replace libgtk2.0-dev with libgtk-3-dev
+- git clone --depth=1 git://git.savannah.gnu.org/emacs.git
+- ./autogen.sh # not needed when installing from tarball
+- ./configure
+- make bootstrap
+- sudo make install
+### use the package
+- sudo add-apt-repository -y ppa:ubuntu-elisp
+- sudo apt-get update
+- sudo apt-get install emacs-snapshot
 
 # Term
 ## 環境変数 TERM の設定

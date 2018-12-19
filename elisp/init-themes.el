@@ -16,7 +16,7 @@
 (defun set-theme ()
   (load-theme 'tango-dark t)
   ;; 透明
-  (set-face-background 'default "0"))
+  (set-face-background 'default nil))
 (set-theme)
 
 (provide 'init-themes)

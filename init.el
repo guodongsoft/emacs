@@ -18,7 +18,7 @@
         ("org-cn"       . "http://elpa.emacs-china.org/org/")
         ("gnu-cn"       . "http://elpa.emacs-china.org/gnu/"))
       package-enable-at-startup nil)
-(package-initialize)
+(unless package--initialized (package-initialize t))
 
 ;; Mac OSX判定
 (when (eq system-type 'darwin)
