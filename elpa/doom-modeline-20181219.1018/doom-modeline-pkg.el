@@ -1,0 +1,2 @@
+;;; -*- no-byte-compile: t -*-
+(define-package "doom-modeline" "20181219.1018" "A minimal and modern modeline" '((emacs "25.1") (all-the-icons "1.0.0") (shrink-path "0.2.0") (eldoc-eval "0.1") (dash "2.11.0")) :commit "0d6e5f7d50f2539820cb09bd84fbf7fb61fe895b" :keywords '("faces" "mode-line") :authors '(("Vincent Zhang" . "seagle0128@gmail.com")) :maintainer '("Vincent Zhang" . "seagle0128@gmail.com") :url "https://github.com/seagle0128/doom-modeline")
