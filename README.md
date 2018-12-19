@@ -7,6 +7,17 @@
 ## 第二种方式：
 - https://emacsformacosx.com/builds
 
+# Term
+## 環境変数 TERM の設定
+- # eterm-color.ti から生成した terminfo を利用する。tiファイルのパスは自分で判断して変更してください
+- tic -o ~/.terminfo /usr/local/share/emacs/23.1/etc/e/eterm-color.ti
+- # Mac OS X で app 形式の場合は以下のような場所にあります
+- tic -o ~/.terminfo /Applications/Emacs.app/Contents/Resources/etc/e/eterm-color.ti
+## Shell の設定ファイル (.zshrc、.bashrc 等) に以下ような設定を記述する 
+- if [ "$EMACS" ];then
+-   export TERM=Eterm-color
+- fi
+
 # All the icons
 ## 打开emacs以后M-x all-the-icons-install-fonts
 
@@ -27,7 +38,6 @@
 - go get -u -v github.com/jstemmer/gotags
 - go get -u -v github.com/rogpeppe/godef
 - go get -u -v github.com/sourcegraph/go-langserver
-#- go get -u -v github.com/golangci/golangci-lint/cmd/golangci-lint
 - go get -u -v github.com/golang/lint/golint
 - gocode set autobuild true
 

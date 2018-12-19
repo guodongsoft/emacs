@@ -5,8 +5,9 @@
 ;; Copyright (C) 2008 ~ 2016 Andy Stewart, all rights reserved.
 ;; Copyright (C) 2010, ahei, all rights reserved.
 ;; Created: <2008-09-19 23:02:42>
-;; Version: 1.4
-;; Last-Updated: 2017-03-03 13:48:38
+;; Version: 1.3
+;; Package-Version: 20160619.933
+;; Last-Updated: 2016-06-19 17:30:20
 ;; URL: http://www.emacswiki.org/emacs/download/multi-term.el
 ;; Keywords: term, terminal, multiple buffer
 ;; Compatibility: GNU Emacs 23.2.1, GNU Emacs 24.4 (and prereleases)
@@ -28,7 +29,7 @@
 
 ;; Features that might be required by this library:
 ;;
-;;  `term' `cl-lib' `advice'
+;;  `term' `cl' `advice'
 ;;
 
 ;;; Commentary:
@@ -126,9 +127,6 @@
 ;;
 
 ;;; Change log:
-;;
-;; 2017/03/03
-;;      * Switch to cl-lib
 ;;
 ;; 2016/06/19
 ;;      * Add Hogren's patch: `term-send-delete-word' and binding to key 'M-d'.
@@ -271,7 +269,7 @@
 
 ;;; Require:
 (require 'term)
-(require 'cl-lib)
+(require 'cl)
 (require 'advice)
 
 ;;; Code:
@@ -700,7 +698,7 @@ If DIRECTION `PREVIOUS', switch to the previous term.
 Option OFFSET for skip OFFSET number term buffer."
   (if multi-term-buffer-list
       (let ((buffer-list-len (length multi-term-buffer-list))
-            (my-index (cl-position (current-buffer) multi-term-buffer-list)))
+            (my-index (position (current-buffer) multi-term-buffer-list)))
         (if my-index
             (let ((target-index (if (eq direction 'NEXT)
                                     (mod (+ my-index offset) buffer-list-len)
@@ -717,7 +715,7 @@ So this function unbinds some keys with `term-raw-map',
 and binds some keystroke with `term-raw-map'."
   (let (bind-key bind-command)
     ;; Unbind base key that conflict with user's keys-tokes.
-    (cl-dolist (unbind-key term-unbind-key-list)
+    (dolist (unbind-key term-unbind-key-list)
       (cond
        ((stringp unbind-key) (setq unbind-key (read-kbd-macro unbind-key)))
        ((vectorp unbind-key) nil)
@@ -726,7 +724,7 @@ and binds some keystroke with `term-raw-map'."
     ;; Add some i use keys.
     ;; If you don't like my keystroke,
     ;; just modified `term-bind-key-alist'
-    (cl-dolist (element term-bind-key-alist)
+    (dolist (element term-bind-key-alist)
       (setq bind-key (car element))
       (setq bind-command (cdr element))
       (cond
@@ -791,9 +789,9 @@ Otherwise return nil."
     (walk-windows
      (lambda (w)
        (with-selected-window w
-         (cl-incf window-number)
+         (incf window-number)
          (if (window-dedicated-p w)
-             (cl-incf dedicated-window-number)))))
+             (incf dedicated-window-number)))))
     (if (and (> dedicated-window-number 0)
              (= (- window-number dedicated-window-number) 1))
         t nil)))
@@ -805,7 +803,7 @@ Dedicated window can't deleted by command `delete-other-windows'."
   (let ((multi-term-dedicated-active-p (multi-term-window-exist-p multi-term-dedicated-window)))
     (if multi-term-dedicated-active-p
         (let ((current-window (selected-window)))
-          (cl-dolist (win (window-list))
+          (dolist (win (window-list))
             (when (and (window-live-p win)
                        (not (eq current-window win))
                        (not (window-dedicated-p win)))
