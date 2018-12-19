@@ -20,26 +20,31 @@
       package-enable-at-startup nil)
 (unless package--initialized (package-initialize t))
 
-;; Mac OSX判定
-(when (eq system-type 'darwin)
- ;; default Latin font (e.g. Consolas)
- (set-face-attribute 'default nil :family "Monaco")
+(cond
+ ;; Mac OSX判定
+ ((eq system-type 'darwin)
+  (
+   ;; default Latin font (e.g. Consolas)
+   (set-face-attribute 'default nil :family "Monaco")
 
- ;; default font size (point * 10)
- ;;
- ;; WARNING!  Depending on the default font,
- ;; if the size is not supported very well, the frame will be clipped
- ;; so that the beginning of the buffer may not be visible correctly.
- (set-face-attribute 'default nil :height 120)
+   ;; default font size (point * 10)
+   ;;
+   ;; WARNING!  Depending on the default font,
+   ;; if the size is not supported very well, the frame will be clipped
+   ;; so that the beginning of the buffer may not be visible correctly.
+   (set-face-attribute 'default nil :height 120)
 
- ;; use specific font for Korean charset.
- ;; if you want to use different font size for specific charset,
- ;; add :size POINT-SIZE in the font-spec.
- (set-fontset-font t 'hangul (font-spec :name "NanumGothicCoding"))
+   ;; use specific font for Korean charset.
+   ;; if you want to use different font size for specific charset,
+   ;; add :size POINT-SIZE in the font-spec.
+   (set-fontset-font t 'hangul (font-spec :name "NanumGothicCoding"))
 
- ;; you may want to add different for other charset in this way.
- (set-fontset-font t 'japanese-jisx0208 (font-spec :family "Kochi Gothic"))
- )
+   ;; you may want to add different for other charset in this way.
+   (set-fontset-font t 'japanese-jisx0208 (font-spec :family "Kochi Gothic"))))
+
+ ;; Linux判定
+ ((eq system-type 'gnu/linux) nil)
+ (t nil))
 
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
 (global-set-key (kbd "M-#") 'sort-lines)
