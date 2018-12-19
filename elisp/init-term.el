@@ -74,7 +74,9 @@
 
 (setq multi-term-dedicated-close-back-to-open-buffer-p t)
 
-(defun term-send-tab  () (interactive) (term-send-raw-string "\C-i"))
+(defun term-send-tab ()
+  (interactive)
+  (term-send-raw-string "\C-i"))
 
 ;; interrupt
 (defadvice term-interrupt-subjob
@@ -102,7 +104,7 @@
              ;; C-h を term 内文字削除にする
              (define-key term-raw-map (kbd "C-h") 'term-send-backspace)
              ;; C-y を term 内ペーストにする
-             (define-key term-raw-map (kbd "C-y") 'term-paste)
+             ;(define-key term-raw-map (kbd "C-y") 'term-paste)
              (define-key term-raw-map (kbd "M-d") 'term-send-forward-kill-word)
              (define-key term-raw-map (kbd "M-<backspace>") 'term-send-backward-kill-word)
              (define-key term-raw-map (kbd "M-w") 'term-send-backward-kill-word)
