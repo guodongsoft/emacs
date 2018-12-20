@@ -1,7 +1,6 @@
-;;; settings.el --- Elisp directory's initialization file
+;;; settings.el --- Settings file
 ;;; Commentary:
 
-;; Install-elisp
 ;;; Code:
 (add-to-list 'load-path "~/.emacs.d/lisp/emacswiki")
 (add-to-list 'load-path "~/.emacs.d/lisp/emacswiki/common")
