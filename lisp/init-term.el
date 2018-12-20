@@ -27,20 +27,33 @@
 
 ;; shell の存在を確認
 (defun skt:shell ()
+  "Find shell."
   (or (executable-find "zsh")
       (executable-find "bash")
       ;; (executable-find "f_zsh") ;; Emacs + Cygwin を利用する人は Zsh の代りにこれにしてください
       ;; (executable-find "f_bash") ;; Emacs + Cygwin を利用する人は Bash の代りにこれにしてください
       (executable-find "cmdproxy")
-      (error "can't find 'shell' command in PATH!!")))
+      (error "Can't find 'shell' command in PATH!!")))
 
 ;; Shell 名の設定
-(setq shell-file-name (skt:shell))
-(setenv "SHELL" shell-file-name)
-(setq explicit-shell-file-name shell-file-name)
+(custom-set-variables
+ '(shell-file-name (skt:shell))
+ '(explicit-shell-file-name shell-file-name)
 
-;; Emacs が保持する terminfo を利用する
-(setq system-uses-terminfo nil)
+ ;; Emacs が保持する terminfo を利用する
+ '(system-uses-terminfo nil)
+
+ '(multi-term-program shell-file-name)
+
+ ;; t: skip dedicated window when using `other-window'.
+ '(multi-term-dedicated-skip-other-window-p t)
+
+ ;; focus dedicated window after open
+ '(multi-term-dedicated-select-after-open-p t)
+
+ '(multi-term-dedicated-close-back-to-open-buffer-p t))
+
+(setenv "SHELL" shell-file-name)
 
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
@@ -48,7 +61,6 @@
 (eval-when-compile (require 'cl) (require 'multi-term) (require 'term))
 
 (use-package multi-term :ensure t)
-(setq multi-term-program shell-file-name)
 
 ;; "C-z"、"C-x"、"C-c"、"C-h"、"C-y"、"<ESC>" のキーが奪われなくなりますので、ほとんどの操作は Emacs 的にできるはずです。
 ;; 他のキーも奪われたくなければ以下のようにキーを追加します。
@@ -66,26 +78,21 @@
 ;; (delete "C-c" term-unbind-key-list)
 ;; (delete "C-y" term-unbind-key-list)
 
-;; t: skip dedicated window when using `other-window'.
-(setq multi-term-dedicated-skip-other-window-p t)
-
-;; focus dedicated window after open
-(setq multi-term-dedicated-select-after-open-p t)
-
-(setq multi-term-dedicated-close-back-to-open-buffer-p t)
-
 (defun term-send-tab ()
+  "Term send tab."
   (interactive)
   (term-send-raw-string "\C-i"))
 
-;; interrupt
+;; Interrupt
 (defadvice term-interrupt-subjob
   (around ad-term-interrupt-subjob activate)
+  "Term send raw string."
   (term-send-raw-string "\C-c"))
 
-;; paste via helm interface
+;; Paste via helm interface
 (defadvice insert-for-yank
   (around insert-for-yank-on-term (str) activate)
+  "Check term mode."
   (if (eq major-mode 'term-mode)
       (term-send-raw-string (ad-get-arg 0))
     ad-do-it))
@@ -140,6 +147,7 @@
 (shell-pop-set-internal-mode-shell shell-file-name)
 
 (defun my-shell-pop ()
+  "Shell popup."
   (interactive)
   (if (cl-search "terminal" (buffer-name))
       (shell-pop-out)

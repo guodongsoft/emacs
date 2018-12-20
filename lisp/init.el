@@ -30,7 +30,7 @@
 (require 'init-magit)
 
 ;; Term
-;(require 'init-term)
+(require 'init-term)
 
 ;; Encoding
 (require 'init-encoding)
