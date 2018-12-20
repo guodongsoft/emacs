@@ -5,10 +5,8 @@
 ;;; Code:
 (add-to-list 'load-path "~/.emacs.d/lisp/emacswiki")
 (add-to-list 'load-path "~/.emacs.d/lisp/emacswiki/common")
-(require 'install-elisp)
 
-(require 'custom-variables)
-
+;; Flycheck
 (use-package flycheck
   :ensure t
   :config
@@ -25,44 +23,27 @@
 (use-package evil :ensure t)
 (evil-mode t)
 
-;; Anything.el
-(require 'custom-anything)
+(defvar require-list)
+(setq require-list
+      '(
+        install-elisp
+        custom-variables
+        custom-term
+        custom-anything
+        custom-company
+        custom-dired
+        custom-ivy
+        custom-magit
+        custom-modeline
+        custom-tabbar
+        encoding
+        language
+        project
+        yaml-mode
+        ))
 
-;; Company
-(require 'custom-company)
-
-;; Dired
-(require 'custom-dired)
-
-;; Ivy
-(require 'custom-ivy)
-
-;; Magit
-(require 'custom-magit)
-
-;; Modeline
-(require 'custom-modeline)
-
-;; Tabbar
-(require 'custom-tabbar)
-
-;; Term
-(require 'custom-term)
-
-;; Encoding
-(require 'encoding)
-
-;; Language
-(require 'language)
-
-;; Project
-(require 'project)
-
-;; Themes
-;(require 'themes)
-
-;; YAML
-(require 'yaml-mode)
+(dolist (req require-list)
+  (require req))
 
 (provide 'settings)
 ;;; settings.el ends here
