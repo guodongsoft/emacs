@@ -1,4 +1,4 @@
-;;; init-encoding.el --- Encoding's initialization file
+;;; encoding.el --- Encoding's initialization file
 ;;; Commentary:
 
 ;; 设置编辑环境
@@ -49,5 +49,5 @@
 ;; 解决文件目录名乱码
 (setq-default pathname-coding-system 'utf-8)
 
-(provide 'init-encoding)
-;;; init-encoding.el ends here
+(provide 'encoding)
+;;; encoding.el ends here

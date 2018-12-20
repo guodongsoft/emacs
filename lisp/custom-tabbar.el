@@ -1,4 +1,4 @@
-;;; init-tabbar.el --- Tabbar's initialization file
+;;; custom-tabbar.el --- Tabbar's initialization file
 ;;; Commentary:
 
 ;;; Code:
@@ -46,5 +46,5 @@ Return a list of one element based on major mode."
    (t "User Buffer"))))
 (setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
 
-(provide 'init-tabbar)
-;;; init-tabbar.el ends here
+(provide 'custom-tabbar)
+;;; custom-tabbar.el ends here

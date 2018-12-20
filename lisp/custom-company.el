@@ -1,4 +1,4 @@
-;;; init-company.el --- company
+;;; custom-company.el --- company
 ;;; Commentary:
 
 ;; Company
@@ -42,5 +42,5 @@
             :after (lambda () (when (equal my-company-point (point))
                                 (yas-expand))))
 
-(provide 'init-company)
-;;; init-company.el ends here
+(provide 'custom-company)
+;;; custom-company.el ends here

@@ -20,10 +20,16 @@
       package-enable-at-startup nil)
 (when (version< emacs-version "27.0") (package-initialize))
 
-(add-to-list 'load-path "/usr/share/emacs/site-lisp")
-(add-to-list 'load-path "~/.emacs.d/lisp")
+;; use-package
+;; ensure属性设为t: 若package未安装, 就安装该package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
-(require 'custom-variables)
+(add-to-list 'load-path "/usr/share/emacs/site-lisp")
+
+(add-to-list 'load-path "~/.emacs.d/lisp")
+(require 'settings)
 
 (cond
  ;; Mac OSX判定
@@ -58,12 +64,6 @@
  (t nil))
 
 (global-set-key (kbd "M-#") 'sort-lines)
-
-;; use-package
-;; ensure属性设为t: 若package未安装, 就安装该package
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
 
 ;; diminish: 次模式在modeline中不显示, 只需显示主模式
 (use-package diminish :ensure t)
@@ -142,15 +142,6 @@
 (global-set-key [remap comment-or-uncomment-region] 'my-comment-or-uncomment-region)
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
 
-(use-package flycheck
-  :ensure t
-  :config
-  (global-flycheck-mode t))
-
-;; Language Server Protocol
-(use-package lsp-mode :ensure t)
-(use-package company-lsp :ensure t)
-
 ;; （Y or N）
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -172,10 +163,6 @@
 
 (auto-image-file-mode t)
 (delete-selection-mode t)
-
-;; Evil
-(use-package evil :ensure t)
-(evil-mode t)
 
 ;; indent region
 (global-set-key (kbd "C-\\") 'indent-region)
@@ -216,8 +203,6 @@
 ;;   (setq auto-insert-directory (locate-user-emacs-file "templates/"))
 ;;   (add-hook 'find-file-hook 'auto-insert)
 ;;   (auto-insert-mode t))
-
-(require 'init)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

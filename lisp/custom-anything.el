@@ -1,4 +1,4 @@
-;;; init-anything.el --- Anything's initialization file
+;;; custom-anything.el --- Anything's initialization file
 ;;; Commentary:
 
 (add-to-list 'load-path "~/.emacs.d/lisp/emacswiki/anything")
@@ -13,5 +13,5 @@
 ;; Bind C-o to complete shell history
 (anything-complete-shell-history-setup-key "\C-o")
 
-(provide 'init-anything)
-;;; init-anything.el ends here
+(provide 'custom-anything)
+;;; custom-anything.el ends here

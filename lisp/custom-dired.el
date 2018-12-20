@@ -1,4 +1,4 @@
-;;; init-dired.el --- Dired's initialization file
+;;; custom-dired.el --- Dired's initialization file
 ;;; Commentary:
 
 ;;; Dired Jump
@@ -23,5 +23,5 @@
     (define-key dired-mode-map (kbd "G") 'evil-goto-line)
     (define-key dired-mode-map (kbd "\\") 'dired-do-chgrp))
 
-(provide 'init-dired)
-;;; init-dired.el ends here
+(provide 'custom-dired)
+;;; custom-dired.el ends here

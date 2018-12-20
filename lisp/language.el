@@ -1,9 +1,13 @@
 ;;; language.el --- Develop language settings
 ;;; Commentary:
 
-(require 'init-paredit)
+(require 'custom-paredit)
 
 (add-to-list 'load-path "~/.emacs.d/lisp/language")
+
+;; Language Server Protocol
+(use-package lsp-mode :ensure t)
+(use-package company-lsp :ensure t)
 
 ;; --- Lisp ---
 ;;; Code:

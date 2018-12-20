@@ -1,4 +1,4 @@
-;;; init-term.el --- Term's initialization file
+;;; custom-term.el --- Term's initialization file
 ;;; Commentary:
 
 ;;; Code:
@@ -156,5 +156,5 @@
 ;; ショートカットも好みで変更してください
 (global-set-key [f4] 'my-shell-pop)
 
-(provide 'init-term)
-;;; init-term.el ends here
+(provide 'custom-term)
+;;; custom-term.el ends here

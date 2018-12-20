@@ -1,4 +1,4 @@
-;;; init-ivy.el --- Ivy mode
+;;; custom-ivy.el --- Ivy mode
 ;;; Commentary:
 
 ;; Ivy
@@ -26,5 +26,5 @@
   :ensure t
   :bind (("C-s" . swiper)))
 
-(provide 'init-ivy)
-;;; init-ivy.el ends here
+(provide 'custom-ivy)
+;;; custom-ivy.el ends here

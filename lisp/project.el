@@ -1,4 +1,4 @@
-;;; init-project.el --- Project's initialization file
+;;; project.el --- Project's initialization file
 ;;; Commentary:
 
 ;; Projectile
@@ -55,5 +55,5 @@
 (evil-define-key 'normal neotree-mode-map (kbd "A")   'neotree-stretch-toggle)
 (evil-define-key 'normal neotree-mode-map (kbd "H")   'neotree-hidden-file-toggle)
 
-(provide 'init-project)
-;;; init-project.el ends here
+(provide 'project)
+;;; project.el ends here

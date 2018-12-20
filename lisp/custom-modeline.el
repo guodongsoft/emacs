@@ -1,4 +1,4 @@
-;;; init-modeline.el --- Modeline's initialization file
+;;; custom-modeline.el --- Modeline's initialization file
 ;;; Commentary:
 
 (require 'doom-modeline)
@@ -29,5 +29,5 @@
     (:inherit 'font-lock-keyword-face :background "#8B8386" :foreground "#76EE00" :weight bold))
   " %m "))
 
-(provide 'init-modeline)
-;;; init-modeline.el ends here
+(provide 'custom-modeline)
+;;; custom-modeline.el ends here

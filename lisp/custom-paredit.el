@@ -1,4 +1,4 @@
-;;; paredit.el --- Paredit settings
+;;; custom-paredit.el --- Paredit settings
 ;;; Commentary:
 
 (require 'paredit)
@@ -101,5 +101,5 @@
   (insert comt)))))
 (define-key paredit-mode-map (kbd "M-^") 'paredit-delete-indentation)
 
-(provide 'init-paredit)
-;;; init-paredit.el ends here
+(provide 'custom-paredit)
+;;; custom-paredit.el ends here

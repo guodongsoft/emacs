@@ -1,4 +1,4 @@
-;;; init-magit.el --- Magit's initialization file
+;;; custom-magit.el --- Magit's initialization file
 ;;; Commentary:
 
 ;; Magit
@@ -23,5 +23,5 @@
  '(magit-diff-removed-highlight ((((type tty)) (:foreground "IndianRed"))))
  '(magit-section-highlight ((((type tty)) nil))))
 
-(provide 'init-magit)
-;;; init-magit.el ends here
+(provide 'custom-magit)
+;;; custom-magit.el ends here
