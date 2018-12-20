@@ -186,8 +186,8 @@
   (yas-global-mode)
   (use-package yasnippet-snippets :ensure t))
 
-;; MDwenjian
-(add-to-list 'load-path "~/.emacs.d/markdown-mode/repository")
+;; Markdown
+(use-package markdown-mode :ensure t)
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
@@ -240,15 +240,50 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(all-the-icons-color-icons nil)
+ '(auto-save-file-name-transforms (\` ((".*" (\, emacs-tmp-dir) t))))
+ '(auto-save-list-file-prefix emacs-tmp-dir)
+ '(backup-directory-alist (\` ((".*" \, emacs-tmp-dir))))
  '(column-number-mode t)
+ '(comint-buffer-maximum-size 20000)
+ '(comint-completion-addsuffix t)
+ '(comint-get-old-input (lambda nil "") t)
+ '(comint-input-ignoredups t)
+ '(comint-input-ring-size 5000)
+ '(comint-move-point-for-output nil)
+ '(comint-prompt-read-only nil)
+ '(comint-scroll-show-maximum-output t)
+ '(comint-scroll-to-bottom-on-input t)
+ '(comment-style (quote multi-line))
+ '(electric-pair-pairs (quote ((39 . 39))))
+ '(evil-shift-with 2)
+ '(explicit-shell-file-name shell-file-name)
  '(flycheck-disabled-checkers (quote (javascript-jshint javascript-jscs)))
+ '(frame-title-format "%b" t)
  '(gud-gdb-command-name "gdb --annotate=1")
+ '(inhibit-compacting-font-caches t t)
+ '(inhibit-startup-screen t)
+ '(install-elisp-repository-directory "~/.emacs.d/lisp/emacswiki")
  '(large-file-warning-threshold nil)
+ '(line-number-mode t)
+ '(linum-format "%4d")
+ '(make-backup-files nil)
+ '(multi-term-dedicated-close-back-to-open-buffer-p t)
+ '(multi-term-dedicated-select-after-open-p t)
+ '(multi-term-dedicated-skip-other-window-p t)
+ '(multi-term-program shell-file-name)
+ '(neo-theme (quote icons))
+ '(org-src-fontify-natively t)
  '(package-selected-packages
    (quote
     (company-lsp lsp-go lsp-mode golint go-dlv flymake flymake-go flycheck-gometalinter go-errcheck company-go paredit-everywhere proceed all-the-icons tabbar yasnippet flycheck counsel go-projectile projectile color-theme go-autocomplete evil-paredit paredit evil-magit magit-gitflow auto-compile auto-complete company company-web company-ycmd magit js-comint js2-mode doom-modeline neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil use-package)))
+ '(protect-buffer-bury-p nil)
+ '(ring-bell-function (quote ignore))
+ '(shell-file-name (skt:shell))
  '(show-paren-mode t)
- '(tabbar-separator (quote (1.5))))
+ '(system-uses-terminfo nil t)
+ '(tabbar-separator (quote (1.5)))
+ '(tramp-default-method "ssh" nil (tramp)))
 
 (provide 'init)
 ;;; init.el ends here

@@ -1,9 +1,10 @@
-# Install
+# --Install--
 ## Mac
 ### 第一种方式：
 - brew unlink emacs
 - brew uninstall emacs
 - brew install emacs --with-modules --with-cocoa --with-gnutls --with-librsvg --with-mailutils --with-imagemagick@6
+
 ### 第二种方式：
 - https://emacsformacosx.com/builds
 
@@ -16,28 +17,51 @@
 - ./configure
 - make bootstrap
 - sudo make install
+
 ### use the package
 - sudo add-apt-repository -y ppa:ubuntu-elisp
 - sudo apt-get update
 - sudo apt-get install emacs-snapshot
 
-# Term
+# --Term--
 ## 環境変数 TERM の設定
 - eterm-color.ti から生成した terminfo を利用する。tiファイルのパスは自分で判断して変更してください
 - tic -o ~/.terminfo /usr/local/share/emacs/23.1/etc/e/eterm-color.ti
 - Mac OS X で app 形式の場合は以下のような場所にあります
 - tic -o ~/.terminfo /Applications/Emacs.app/Contents/Resources/etc/e/eterm-color.ti
+
 ## Shell の設定ファイル (.zshrc、.bashrc 等) に以下ような設定を記述する 
 - if [ "$EMACS" ];then
 -   export TERM=Eterm-color
 - fi
 
-# All the icons
+# --Markdown--
+## 编辑命令
+- C-c C-t n 插入 hash 样式的标题，其中 n 为 1~5，表示从第一级标题到第五级标题。
+- C-c C-t t 插入 underline 样式的标题，这是一级。
+- C-c C-t s 同上，这是二级。
+- C-c C-a l 插入链接，格式为 [text](url)。
+- C-c C-i i 插入图像，格式为 ![text](url)。
+- C-c C-s b 插入引用内容。
+- C-c C-s c 插入代码。
+- C-c C-p b 加粗。
+- C-c C-p i 斜体。
+- C-c - 插入水平线。
+
+## 大纲视图 
+- 按 S-Tab 将在大纲视图、目录视图、及正常视图间切换。
+
+## 预览(需要安装 Markdown 程序包)
+- C-c C-c m 在当前缓冲运行 Markdown，并在另一个缓冲预览。
+- C-c C-c p 同上，但在浏览器中预览。
+
+# --All the icons--
 - 打开emacs以后M-x all-the-icons-install-fonts
 
-# Powerline fonts
+# --Powerline fonts--
 ## Ubuntu
 - sudo apt-get install fonts-powerline
+
 ## Other environments
 - git clone https://github.com/powerline/fonts.git --depth=1
 - cd fonts
@@ -45,10 +69,10 @@
 - cd ..
 - rm -rf fonts
 
-# Python
+# --Python--
 - 使用pip 安装：rope jedi flake8 importmagic autopep8 yapf
 
-# Go
+# --Go--
 - go get -u -v golang.org/x/tools/cmd/cover
 - go get -u -v golang.org/x/tools/cmd/guru
 - go get -u -v golang.org/x/tools/cmd/gorename
@@ -65,12 +89,12 @@
 - go get -u -v github.com/golang/lint/golint
 - gocode set autobuild true
 
-# Js
+# --Js--
 - npm install -g eslint 
 - npm install -g prettier
 - npm install -g typescript
 
-# Projectile
+# --Projectile--
 - C-c p ?
 - C-c p D projectile-dired
 - C-c p I projectile-ibuffer
@@ -86,11 +110,11 @@
 - C-c p s r projectile-ripgrep
 - C-c p s s projectile-ag
 
-# ag
+# --ag--
 apt-get install silversearcher-ag
 brew install the_silver_searcher
 
-# Quicklisp
+# --Quicklisp--
 ## 1.Install
 - see quicklisp/Install
 
@@ -106,17 +130,17 @@ brew install the_silver_searcher
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
 ```
 
-# TAGS
+# --TAGS--
 find . -name "*.el" -or -name "*.c" | etags -
 
-# Source
+# --Source--
 ```
 git://git.savannah.gnu.org/emacs.git
 https://git.savannah.gnu.org/git/emacs.git
 ssh://git.savannah.gnu.org:/srv/git/emacs.git
 ```
 
-# アップグレードする方法
+# --アップグレードする方法--
 ```
 以下のコマンドでアップグレードしてください。
 そのためにはpackage-utilsパッケージが必要です。
@@ -124,5 +148,5 @@ M-x package-install package-utils (初めてアップグレードする場合の
 M-x package-utils-upgrade-by-name ample-theme
 ```
 
-# EXWM
+# --EXWM--
 cp ~/.emacs.d/elpa/exwm*/xinitrc ~/.xinitrc
