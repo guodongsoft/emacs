@@ -3,9 +3,9 @@
 
 ;; Install-elisp
 ;;; Code:
-(add-to-list 'load-path "~/.emacs.d/elisp/emacswiki")
-(add-to-list 'load-path "~/.emacs.d/elisp/emacswiki/common")
-(setq install-elisp-repository-directory "~/.emacs.d/elisp/emacswiki")
+(add-to-list 'load-path "~/.emacs.d/lisp/emacswiki")
+(add-to-list 'load-path "~/.emacs.d/lisp/emacswiki/common")
+;(setq install-elisp-repository-directory "~/.emacs.d/lisp/emacswiki")
 (require 'install-elisp)
 
 ;; Company
@@ -30,7 +30,7 @@
 (require 'init-magit)
 
 ;; Term
-(require 'init-term)
+;(require 'init-term)
 
 ;; Encoding
 (require 'init-encoding)

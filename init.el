@@ -20,6 +20,66 @@
       package-enable-at-startup nil)
 (when (version< emacs-version "27.0") (package-initialize))
 
+(add-to-list 'load-path "/usr/share/emacs/site-lisp")
+(add-to-list 'load-path "~/.emacs.d/lisp")
+
+(require 'custom-variables)
+;; (custom-set-variables
+;;  '(backup-directory-alist `((".*" . ,emacs-tmp-dir)))
+;;  '(auto-save-file-name-transforms `((".*" ,emacs-tmp-dir t)))
+;;  '(auto-save-list-file-prefix emacs-tmp-dir)
+
+;;  '(tramp-default-method "ssh")          ; uses ControlMaster
+
+;;  '(comint-scroll-to-bottom-on-input t)  ; always insert at the bottom
+;;  '(comint-scroll-to-bottom-on-output nil) ; always add output at the bottom
+;;  '(comint-scroll-show-maximum-output t) ; scroll to show max possible output
+;;  ;'(comint-completion-autolist t)        ; show completion list when ambiguous
+;;  '(comint-input-ignoredups t)           ; no duplicates in command history
+;;  '(comint-completion-addsuffix t)       ; insert space/slash after file completion
+;;  '(comint-buffer-maximum-size 20000)    ; max length of the buffer in lines
+;;  '(comint-prompt-read-only nil)         ; if this is t, it breaks shell-command
+;;  '(comint-get-old-input (lambda () "")) ; what to run when i press enter on a
+;;                                         ; line above the current prompt
+;;  '(comint-input-ring-size 5000)         ; max shell history size
+;;  '(protect-buffer-bury-p nil)
+;;  '(evil-shift-with 2)
+
+;;  ;; 启动 Org-mode 文本内语法高亮
+;;  '(org-src-fontify-natively t)
+
+;;  '(all-the-icons-color-icons nil)
+;;  '(inhibit-compacting-font-caches t)
+;;  '(neo-theme 'icons)
+
+;;  ;; 关闭启动帮助画面
+;;  '(inhibit-startup-screen t)
+;;  '(inhibit-startup-message t)
+;;  '(inhibit-splash-screen t)
+
+;;  ;; 在标题栏提示你目前在什么位置
+;;  '(frame-title-format "%b")
+
+;;  ;; 显示列号、行号
+;;  '(column-number-mode t)
+;;  '(line-number-mode t)
+
+;;  ;'(linum-format "%4d\u2502")
+;;  '(linum-format "%4d")
+
+;;  ;; 多行注释
+;;  '(comment-style 'multi-line)
+
+;;  ;; 关闭备份
+;;  '(make-backup-files nil)
+
+;;  ;; 关闭哔哔的警告提示音
+;;  '(ring-bell-function 'ignore)
+
+;;  ;; 自动补全括号
+;;  '(electric-pair-pairs '((?\' . ?\')))
+;; )
+
 (cond
  ;; Mac OSX判定
  ((eq system-type 'darwin)
@@ -52,14 +112,13 @@
 
  (t nil))
 
-(add-to-list 'load-path "/usr/share/emacs/site-lisp")
 (global-set-key (kbd "M-#") 'sort-lines)
 
 ;; set autosave and backup directory
 (defconst emacs-tmp-dir (format "%s/%s%s/" temporary-file-directory "emacs" (user-uid)))
-(setq backup-directory-alist `((".*" . ,emacs-tmp-dir)))
-(setq auto-save-file-name-transforms `((".*" ,emacs-tmp-dir t)))
-(setq auto-save-list-file-prefix emacs-tmp-dir)
+;(setq backup-directory-alist `((".*" . ,emacs-tmp-dir)))
+;(setq auto-save-file-name-transforms `((".*" ,emacs-tmp-dir t)))
+;(setq auto-save-list-file-prefix emacs-tmp-dir)
 
 ;; use-package
 ;; ensure属性设为t: 若package未安装, 就安装该package
@@ -91,10 +150,7 @@
 (show-paren-mode t)
 ;; 自动补全括号
 (electric-pair-mode t)
-(setq electric-pair-pairs
-      '(
-        (?\' . ?\')
-        ))
+;(setq electric-pair-pairs '((?\' . ?\')))
 
 ;; 缩进默认设置
 (setq-default
@@ -117,30 +173,18 @@
 ;; 显示加载时间
 (defvar mage-init-time 'nil)
 (defun mage-display-benchmark()
- (message "Mage loaded %s packages in %.03fs"
-  (length package-activated-list)
-  (or mage-init-time
-   (setq mage-init-time
-    (float-time (time-subtract (current-time) before-init-time))))))
+  "Mage display benchmark."
+  (message
+   "Mage loaded %s packages in %.03fs"
+   (length package-activated-list)
+   (or mage-init-time
+       (setq mage-init-time
+             (float-time (time-subtract (current-time) before-init-time))))))
 (add-hook 'emacs-startup-hook #'mage-display-benchmark)
-
-;; 关闭启动帮助画面
-(setq inhibit-startup-screen t)
-(setq inhibit-startup-message t)
-(setq inhibit-splash-screen t)
-
-;; 在标题栏提示你目前在什么位置
-(setq frame-title-format "%b")
-
-;; 显示列号、行号
-(setq column-number-mode t)
-(setq line-number-mode t)
 
 ;; 显示行号
 (use-package linum :ensure t)
 (global-linum-mode t)
-;(setq linum-format "%4d\u2502")
-(setq linum-format "%4d")
 (set-face-foreground 'linum "orange")
 
 ;; 回车缩进
@@ -148,8 +192,9 @@
 (global-set-key (kbd "C-<return>") 'newline)
 
 ;; 多行注释
-(setq comment-style 'multi-line)
+;(setq comment-style 'multi-line)
 (defun my-comment-or-uncomment-region (beg end &optional arg)
+  "Comment or uncomment region (BEG END ARG)."
   (interactive (if (use-region-p)
                    (list (region-beginning) (region-end) nil)
                  (list (line-beginning-position)
@@ -169,16 +214,17 @@
 (use-package company-lsp :ensure t)
 
 ;; 关闭备份
-(setq make-backup-files nil)
+;(setq make-backup-files nil)
 
 ;; 关闭哔哔的警告提示音
-(setq ring-bell-function 'ignore)
+;(setq ring-bell-function 'ignore)
 
 ;; （Y or N）
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; 快速打开配置文件
 (defun open-init-file()
+  "Open init file."
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 ;; 这一行代码，将函数 open-init-file 绑定到 <f2> 键上
@@ -191,7 +237,7 @@
 
 ;; Tramp
 (use-package tramp :ensure t)
-(setq tramp-default-method "ssh")
+;(setq tramp-default-method "ssh")
 
 (auto-image-file-mode t)
 (delete-selection-mode t)
@@ -199,7 +245,7 @@
 ;; Evil
 (use-package evil :ensure t)
 (evil-mode t)
-(setq evil-shift-with 2)
+;(setq evil-shift-with 2)
 
 ;; indent region
 (global-set-key (kbd "C-\\") 'indent-region)
@@ -210,13 +256,13 @@
 
 ;; 启动 Org-mode 文本内语法高亮
 (use-package org :ensure t)
-(setq org-src-fontify-natively t)
+;(setq org-src-fontify-natively t)
 
 ;; Fonts
 (use-package all-the-icons :ensure t)
-(setq all-the-icons-color-icons nil)
-(setq inhibit-compacting-font-caches t)
-(setq neo-theme 'icons)
+;(setq all-the-icons-color-icons nil)
+;(setq inhibit-compacting-font-caches t)
+;(setq neo-theme 'icons)
 
 ;; Yasnippet
 (use-package yasnippet
@@ -245,7 +291,6 @@
 ;;   (add-hook 'find-file-hook 'auto-insert)
 ;;   (auto-insert-mode t))
 
-(add-to-list 'load-path "~/.emacs.d/elisp")
 (require 'init)
 
 (custom-set-faces

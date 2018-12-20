@@ -3,7 +3,7 @@
 
 (require 'init-paredit)
 
-(add-to-list 'load-path "~/.emacs.d/elisp/language")
+(add-to-list 'load-path "~/.emacs.d/lisp/language")
 
 ;; --- Lisp ---
 ;;; Code:

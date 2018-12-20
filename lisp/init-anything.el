@@ -1,7 +1,7 @@
 ;;; init-anything.el --- Anything's initialization file
 ;;; Commentary:
 
-(add-to-list 'load-path "~/.emacs.d/elisp/emacswiki/anything")
+(add-to-list 'load-path "~/.emacs.d/lisp/emacswiki/anything")
 (require 'anything-complete)
 ;; Automatically collect symbols by 150 secs
 ;;; Code:
