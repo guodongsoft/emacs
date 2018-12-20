@@ -35,7 +35,7 @@
 -   export TERM=Eterm-color
 - fi
 
-## fish
+## fish インストール
 ### Ubuntu
 - sudo apt-add-repository ppa:fish-shell/release-2
 - sudo apt-get update
@@ -43,6 +43,26 @@
 
 ### Mac
 - brew install fish
+
+## powerline インストール
+### Ubuntu
+- sudo apt-get install powerline
+
+### Mac
+- pip install psutil
+- pip install powerline-shell
+
+## fisherman インストール
+- curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+
+## fishのテーマ変更
+- どのようなテーマがあるかは、以下ページが参考になります。
+- https://github.com/oh-my-fish/oh-my-fish/blob/master/docs/Themes.md
+- ここで「bobthefish」というテーマを利用しており、以下手順でインストールしています。
+- fisher add oh-my-fish/theme-bobthefish
+- git clone https://github.com/powerline/fonts.git
+- fonts/install.sh
+- rm -rf fonts
 
 # --Markdown--
 ## 编辑命令
