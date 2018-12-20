@@ -35,6 +35,16 @@
 # All the icons
 - 打开emacs以后M-x all-the-icons-install-fonts
 
+# Powerline fonts
+## Ubuntu
+- sudo apt-get install fonts-powerline
+## Other environments
+- git clone https://github.com/powerline/fonts.git --depth=1
+- cd fonts
+- ./install.sh
+- cd ..
+- rm -rf fonts
+
 # Python
 - 使用pip 安装：rope jedi flake8 importmagic autopep8 yapf
 
