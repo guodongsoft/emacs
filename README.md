@@ -35,6 +35,15 @@
 -   export TERM=Eterm-color
 - fi
 
+## fish
+### Ubuntu
+- sudo apt-add-repository ppa:fish-shell/release-2
+- sudo apt-get update
+- sudo apt-get install fish
+
+### Mac
+- brew install fish
+
 # --Markdown--
 ## 编辑命令
 - C-c C-t n 插入 hash 样式的标题，其中 n 为 1~5，表示从第一级标题到第五级标题。
