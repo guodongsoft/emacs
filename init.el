@@ -18,7 +18,7 @@
         ("org-cn"       . "http://elpa.emacs-china.org/org/")
         ("gnu-cn"       . "http://elpa.emacs-china.org/gnu/"))
       package-enable-at-startup nil)
-(unless package--initialized (package-initialize t))
+(when (version< emacs-version "27.0") (package-initialize))
 
 (cond
  ;; Mac OSX判定
