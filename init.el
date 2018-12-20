@@ -24,61 +24,6 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
 (require 'custom-variables)
-;; (custom-set-variables
-;;  '(backup-directory-alist `((".*" . ,emacs-tmp-dir)))
-;;  '(auto-save-file-name-transforms `((".*" ,emacs-tmp-dir t)))
-;;  '(auto-save-list-file-prefix emacs-tmp-dir)
-
-;;  '(tramp-default-method "ssh")          ; uses ControlMaster
-
-;;  '(comint-scroll-to-bottom-on-input t)  ; always insert at the bottom
-;;  '(comint-scroll-to-bottom-on-output nil) ; always add output at the bottom
-;;  '(comint-scroll-show-maximum-output t) ; scroll to show max possible output
-;;  ;'(comint-completion-autolist t)        ; show completion list when ambiguous
-;;  '(comint-input-ignoredups t)           ; no duplicates in command history
-;;  '(comint-completion-addsuffix t)       ; insert space/slash after file completion
-;;  '(comint-buffer-maximum-size 20000)    ; max length of the buffer in lines
-;;  '(comint-prompt-read-only nil)         ; if this is t, it breaks shell-command
-;;  '(comint-get-old-input (lambda () "")) ; what to run when i press enter on a
-;;                                         ; line above the current prompt
-;;  '(comint-input-ring-size 5000)         ; max shell history size
-;;  '(protect-buffer-bury-p nil)
-;;  '(evil-shift-with 2)
-
-;;  ;; 启动 Org-mode 文本内语法高亮
-;;  '(org-src-fontify-natively t)
-
-;;  '(all-the-icons-color-icons nil)
-;;  '(inhibit-compacting-font-caches t)
-;;  '(neo-theme 'icons)
-
-;;  ;; 关闭启动帮助画面
-;;  '(inhibit-startup-screen t)
-;;  '(inhibit-startup-message t)
-;;  '(inhibit-splash-screen t)
-
-;;  ;; 在标题栏提示你目前在什么位置
-;;  '(frame-title-format "%b")
-
-;;  ;; 显示列号、行号
-;;  '(column-number-mode t)
-;;  '(line-number-mode t)
-
-;;  ;'(linum-format "%4d\u2502")
-;;  '(linum-format "%4d")
-
-;;  ;; 多行注释
-;;  '(comment-style 'multi-line)
-
-;;  ;; 关闭备份
-;;  '(make-backup-files nil)
-
-;;  ;; 关闭哔哔的警告提示音
-;;  '(ring-bell-function 'ignore)
-
-;;  ;; 自动补全括号
-;;  '(electric-pair-pairs '((?\' . ?\')))
-;; )
 
 (cond
  ;; Mac OSX判定
@@ -114,12 +59,6 @@
 
 (global-set-key (kbd "M-#") 'sort-lines)
 
-;; set autosave and backup directory
-(defconst emacs-tmp-dir (format "%s/%s%s/" temporary-file-directory "emacs" (user-uid)))
-;(setq backup-directory-alist `((".*" . ,emacs-tmp-dir)))
-;(setq auto-save-file-name-transforms `((".*" ,emacs-tmp-dir t)))
-;(setq auto-save-list-file-prefix emacs-tmp-dir)
-
 ;; use-package
 ;; ensure属性设为t: 若package未安装, 就安装该package
 (unless (package-installed-p 'use-package)
@@ -148,9 +87,9 @@
 
 ;; 匹配括号高亮
 (show-paren-mode t)
+
 ;; 自动补全括号
 (electric-pair-mode t)
-;(setq electric-pair-pairs '((?\' . ?\')))
 
 ;; 缩进默认设置
 (setq-default
@@ -192,7 +131,6 @@
 (global-set-key (kbd "C-<return>") 'newline)
 
 ;; 多行注释
-;(setq comment-style 'multi-line)
 (defun my-comment-or-uncomment-region (beg end &optional arg)
   "Comment or uncomment region (BEG END ARG)."
   (interactive (if (use-region-p)
@@ -213,12 +151,6 @@
 (use-package lsp-mode :ensure t)
 (use-package company-lsp :ensure t)
 
-;; 关闭备份
-;(setq make-backup-files nil)
-
-;; 关闭哔哔的警告提示音
-;(setq ring-bell-function 'ignore)
-
 ;; （Y or N）
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -237,7 +169,6 @@
 
 ;; Tramp
 (use-package tramp :ensure t)
-;(setq tramp-default-method "ssh")
 
 (auto-image-file-mode t)
 (delete-selection-mode t)
@@ -245,7 +176,6 @@
 ;; Evil
 (use-package evil :ensure t)
 (evil-mode t)
-;(setq evil-shift-with 2)
 
 ;; indent region
 (global-set-key (kbd "C-\\") 'indent-region)
@@ -256,13 +186,9 @@
 
 ;; 启动 Org-mode 文本内语法高亮
 (use-package org :ensure t)
-;(setq org-src-fontify-natively t)
 
-;; Fonts
+;; Icons
 (use-package all-the-icons :ensure t)
-;(setq all-the-icons-color-icons nil)
-;(setq inhibit-compacting-font-caches t)
-;(setq neo-theme 'icons)
 
 ;; Yasnippet
 (use-package yasnippet

@@ -1,14 +1,20 @@
 ;;; custom-variables.el --- Custom variables setting.
 ;;; Commentary:
 
+;; set autosave and backup directory
+(defconst emacs-tmp-dir (format "%s/%s%s/" temporary-file-directory "emacs" (user-uid)))
+
 ;;; Code:
 (custom-set-variables
+ ;; set autosave and backup directory
  '(backup-directory-alist `((".*" . ,emacs-tmp-dir)))
  '(auto-save-file-name-transforms `((".*" ,emacs-tmp-dir t)))
  '(auto-save-list-file-prefix emacs-tmp-dir)
 
- '(tramp-default-method "ssh")          ; uses ControlMaster
+ ;; Tramp
+ '(tramp-default-method "ssh")
 
+ ;; Comint
  '(comint-scroll-to-bottom-on-input t)  ; always insert at the bottom
  '(comint-scroll-to-bottom-on-output nil) ; always add output at the bottom
  '(comint-scroll-show-maximum-output t) ; scroll to show max possible output
@@ -21,11 +27,14 @@
                                         ; line above the current prompt
  '(comint-input-ring-size 5000)         ; max shell history size
  '(protect-buffer-bury-p nil)
+
+ ;; Evil
  '(evil-shift-with 2)
 
  ;; 启动 Org-mode 文本内语法高亮
  '(org-src-fontify-natively t)
 
+ ;; Icons
  '(all-the-icons-color-icons nil)
  '(inhibit-compacting-font-caches t)
  '(neo-theme 'icons)
