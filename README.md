@@ -19,28 +19,41 @@ brew install emacs --with-modules --with-cocoa --with-gnutls --with-librsvg --wi
 
 ### configure && make ###
 
-- sudo apt-get install build-essential texinfo libx11-dev libxpm-dev libjpeg-dev libpng-dev libgif-dev libtiff-dev libgtk2.0-dev libncurses-dev
 - for gtk3 build replace libgtk2.0-dev with libgtk-3-dev
-- git clone --depth=1 git://git.savannah.gnu.org/emacs.git
-- ./autogen.sh # not needed when installing from tarball
-- ./configure
-- make bootstrap
-- sudo make install
+``` shell
+sudo apt-get install build-essential texinfo libx11-dev libxpm-dev libjpeg-dev libpng-dev libgif-dev libtiff-dev libgtk2.0-dev libncurses-dev
+git clone --depth=1 git://git.savannah.gnu.org/emacs.git
+./autogen.sh # not needed when installing from tarball
+./configure
+make bootstrap
+sudo make install
+```
 
 ### use the package ###
 
-- sudo add-apt-repository -y ppa:ubuntu-elisp
-- sudo apt-get update
-- sudo apt-get install emacs-snapshot
+``` shell
+sudo add-apt-repository -y ppa:ubuntu-elisp
+sudo apt-get update
+sudo apt-get install emacs-snapshot
+```
 
 -------------------------------------------------------------------------------
 
 # Term color #
 
 - eterm-color.ti から生成した terminfo を利用する。tiファイルのパスは自分で判断して変更してください
-- tic -o ~/.terminfo /usr/local/share/emacs/23.1/etc/e/eterm-color.ti
+
+``` shell
+tic -o ~/.terminfo /usr/local/share/emacs/23.1/etc/e/eterm-color.ti
+
+```
+
 - Mac OS X で app 形式の場合は以下のような場所にあります
-- tic -o ~/.terminfo /Applications/Emacs.app/Contents/Resources/etc/e/eterm-color.ti
+
+``` shell
+tic -o ~/.terminfo /Applications/Emacs.app/Contents/Resources/etc/e/eterm-color.ti
+
+```
 
 -------------------------------------------------------------------------------
 
@@ -50,9 +63,11 @@ brew install emacs --with-modules --with-cocoa --with-gnutls --with-librsvg --wi
 
 ### Ubuntu ###
 
-- sudo apt-add-repository ppa:fish-shell/release-2
-- sudo apt-get update
-- sudo apt-get install fish
+``` shell
+sudo apt-add-repository ppa:fish-shell/release-2
+sudo apt-get update
+sudo apt-get install fish
+```
 
 ### Mac ###
 
@@ -60,14 +75,19 @@ brew install emacs --with-modules --with-cocoa --with-gnutls --with-librsvg --wi
 
 ## fisherman インストール ##
 
-- curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+``` shell
+curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+```
 
 ## fishのテーマ変更 ##
 
 - どのようなテーマがあるかは、以下ページが参考になります。
 - https://github.com/oh-my-fish/oh-my-fish/blob/master/docs/Themes.md
 - ここで「bobthefish」というテーマを利用しており、以下手順でインストールしています。
-- fisher omf/theme-bobthefish
+
+``` shell
+fisher omf/theme-bobthefish
+```
 
 -------------------------------------------------------------------------------
 
@@ -77,30 +97,40 @@ brew install emacs --with-modules --with-cocoa --with-gnutls --with-librsvg --wi
 
 ### Ubuntu ###
 
-- sudo apt-get install powerline
+``` shell
+sudo apt-get install powerline
+```
 
 ### Mac ###
 
-- pip install psutil
-- pip install powerline-shell
+``` shell
+pip install psutil
+pip install powerline-shell
+```
 
 ## Powerline fonts ##
 
 ### Ubuntu ###
 
-- sudo apt-get install fonts-powerline
+``` shell
+sudo apt-get install fonts-powerline
+```
 
 ### Other environments ###
 
-- git clone https://github.com/powerline/fonts.git --depth=1
-- fonts/install.sh
-- rm -rf fonts
+``` shell
+git clone https://github.com/powerline/fonts.git --depth=1
+fonts/install.sh
+rm -rf fonts
+```
 
 ## Redefine fish_prompt in ~/.config/fish/config.fish ##
 
-- function fish_prompt
--   powerline-shell --shell bare $status
-- end
+``` shell
+function fish_prompt
+  powerline-shell --shell bare $status
+end
+```
 
 -------------------------------------------------------------------------------
 
@@ -144,6 +174,7 @@ brew install emacs --with-modules --with-cocoa --with-gnutls --with-librsvg --wi
 
 # Go #
 
+``` shell
 - go get -u -v golang.org/x/tools/cmd/cover
 - go get -u -v golang.org/x/tools/cmd/guru
 - go get -u -v golang.org/x/tools/cmd/gorename
@@ -159,14 +190,17 @@ brew install emacs --with-modules --with-cocoa --with-gnutls --with-librsvg --wi
 - go get -u -v github.com/sourcegraph/go-langserver
 - go get -u -v github.com/golang/lint/golint
 - gocode set autobuild true
+```
 
 -------------------------------------------------------------------------------
 
 # JS #
 
-- npm install -g eslint 
-- npm install -g prettier
-- npm install -g typescript
+``` shell
+npm install -g eslint 
+npm install -g prettier
+npm install -g typescript
+```
 
 -------------------------------------------------------------------------------
 
@@ -191,8 +225,11 @@ brew install emacs --with-modules --with-cocoa --with-gnutls --with-librsvg --wi
 
 # ag #
 
-- apt-get install silversearcher-ag
-- brew install the_silver_searcher
+``` shell
+apt-get install silversearcher-ag
+brew install the_silver_searcher
+
+```
 
 -------------------------------------------------------------------------------
 
@@ -220,29 +257,30 @@ brew install emacs --with-modules --with-cocoa --with-gnutls --with-librsvg --wi
 -------------------------------------------------------------------------------
 
 # TAGS #
-- find . -name "*.el" -or -name "*.c" | etags -
+
+``` shell
+find . -name "*.el" -or -name "*.c" | etags -
+```
 
 -------------------------------------------------------------------------------
 
 # Source #
 
-```
-git://git.savannah.gnu.org/emacs.git
-https://git.savannah.gnu.org/git/emacs.git
-ssh://git.savannah.gnu.org:/srv/git/emacs.git
-```
+- git://git.savannah.gnu.org/emacs.git
+- https://git.savannah.gnu.org/git/emacs.git
+- ssh://git.savannah.gnu.org:/srv/git/emacs.git
 
 -------------------------------------------------------------------------------
 
 # アップグレードする方法 #
 
-```
-以下のコマンドでアップグレードしてください。
-そのためにはpackage-utilsパッケージが必要です。
-M-x package-install package-utils (初めてアップグレードする場合のみ)
-M-x package-utils-upgrade-by-name ample-theme
-```
+- 以下のコマンドでアップグレードしてください。
+- そのためにはpackage-utilsパッケージが必要です。
+- M-x package-install package-utils (初めてアップグレードする場合のみ)
+- M-x package-utils-upgrade-by-name ample-theme
 
 # EXWM #
 
+``` shell
 cp ~/.emacs.d/elpa/exwm*/xinitrc ~/.xinitrc
+```
