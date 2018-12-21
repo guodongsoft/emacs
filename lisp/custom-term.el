@@ -61,7 +61,10 @@
 
 (eval-when-compile (require 'cl))
 (use-package multi-term :ensure t)
-(use-package fish-mode :ensure t)
+(use-package fish-mode
+  :ensure t
+  :init
+  (setq fish-indent-offset 2))
 
 ;; "C-z"、"C-x"、"C-c"、"C-h"、"C-y"、"<ESC>" のキーが奪われなくなりますので、ほとんどの操作は Emacs 的にできるはずです。
 ;; 他のキーも奪われたくなければ以下のようにキーを追加します。
