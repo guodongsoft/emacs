@@ -28,7 +28,8 @@
 ;; shell の存在を確認
 (defun skt:shell ()
   "Find shell."
-  (or (executable-find "zsh")
+  (or (executable-find "fish")
+      (executable-find "zsh")
       (executable-find "bash")
       ;; (executable-find "f_zsh") ;; Emacs + Cygwin を利用する人は Zsh の代りにこれにしてください
       ;; (executable-find "f_bash") ;; Emacs + Cygwin を利用する人は Bash の代りにこれにしてください
@@ -58,9 +59,9 @@
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
-(eval-when-compile (require 'cl) (require 'multi-term) (require 'term))
-
+(eval-when-compile (require 'cl))
 (use-package multi-term :ensure t)
+(use-package fish-mode :ensure t)
 
 ;; "C-z"、"C-x"、"C-c"、"C-h"、"C-y"、"<ESC>" のキーが奪われなくなりますので、ほとんどの操作は Emacs 的にできるはずです。
 ;; 他のキーも奪われたくなければ以下のようにキーを追加します。
