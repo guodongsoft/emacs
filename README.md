@@ -1,15 +1,18 @@
-# --Install--
-## Mac
-### 第一种方式：
+# Emacs インストール #
+
+## Mac ##
+
+### 第一种方式： ###
 - brew unlink emacs
 - brew uninstall emacs
 - brew install emacs --with-modules --with-cocoa --with-gnutls --with-librsvg --with-mailutils --with-imagemagick@6
 
-### 第二种方式：
+### 第二种方式： ###
 - https://emacsformacosx.com/builds
 
-## Ubuntu
-### configure && make
+## Ubuntu ##
+
+### configure && make ###
 - sudo apt-get install build-essential texinfo libx11-dev libxpm-dev libjpeg-dev libpng-dev libgif-dev libtiff-dev libgtk2.0-dev libncurses-dev
 - for gtk3 build replace libgtk2.0-dev with libgtk-3-dev
 - git clone --depth=1 git://git.savannah.gnu.org/emacs.git
@@ -18,70 +21,75 @@
 - make bootstrap
 - sudo make install
 
-### use the package
+### use the package ###
 - sudo add-apt-repository -y ppa:ubuntu-elisp
 - sudo apt-get update
 - sudo apt-get install emacs-snapshot
 
-# --Term--
-## 環境変数 TERM の設定
+-------------------------------------------------------------------------------
+
+# Term color #
 - eterm-color.ti から生成した terminfo を利用する。tiファイルのパスは自分で判断して変更してください
 - tic -o ~/.terminfo /usr/local/share/emacs/23.1/etc/e/eterm-color.ti
 - Mac OS X で app 形式の場合は以下のような場所にあります
 - tic -o ~/.terminfo /Applications/Emacs.app/Contents/Resources/etc/e/eterm-color.ti
 
-## Shell の設定ファイル (.zshrc、.bashrc 等) に以下ような設定を記述する 
-- if [ "$EMACS" ];then
--   export TERM=Eterm-color
-- fi
+-------------------------------------------------------------------------------
 
-## fish インストール
-### Ubuntu
+# fish #
+
+## fish インストール ##
+
+### Ubuntu ###
 - sudo apt-add-repository ppa:fish-shell/release-2
 - sudo apt-get update
 - sudo apt-get install fish
 
-### Mac
+### Mac ###
 - brew install fish
 
-## powerline インストール
-### Ubuntu
-- sudo apt-get install powerline
-
-### Mac
-- pip install psutil
-- pip install powerline-shell
-
-## fisherman インストール
+## fisherman インストール ##
 - curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 
-## fishのテーマ変更
+## fishのテーマ変更 ##
 - どのようなテーマがあるかは、以下ページが参考になります。
 - https://github.com/oh-my-fish/oh-my-fish/blob/master/docs/Themes.md
 - ここで「bobthefish」というテーマを利用しており、以下手順でインストールしています。
-- fisher add oh-my-fish/theme-bobthefish
 - fisher omf/theme-bobthefish
-- git clone https://github.com/powerline/fonts.git
-- fonts/install.sh
-- rm -rf fonts
-- Redefine fish_prompt in ~/.config/fish/config.fish:
--  function fish_prompt
--    powerline-shell --shell bare $status
--  end
 
-# --Powerline fonts--
-## Ubuntu
+-------------------------------------------------------------------------------
+
+# Powerline #
+
+## Powerline インストール ##
+
+### Ubuntu ###
+- sudo apt-get install powerline
+
+### Mac ###
+- pip install psutil
+- pip install powerline-shell
+
+## Powerline fonts ##
+
+### Ubuntu ###
 - sudo apt-get install fonts-powerline
 
-## Other environments
+### Other environments ###
 - git clone https://github.com/powerline/fonts.git --depth=1
-- cd fonts
-- ./install.sh
-- cd ..
+- fonts/install.sh
 - rm -rf fonts
 
-# --Markdown--
-## 编辑命令
+## Redefine fish_prompt in ~/.config/fish/config.fish ##
+- function fish_prompt
+-   powerline-shell --shell bare $status
+- end
+
+-------------------------------------------------------------------------------
+
+# Markdown #
+
+## 编辑命令 ##
 - C-c C-t n 插入 hash 样式的标题，其中 n 为 1~5，表示从第一级标题到第五级标题。
 - C-c C-t t 插入 underline 样式的标题，这是一级。
 - C-c C-t s 同上，这是二级。
@@ -93,20 +101,26 @@
 - C-c C-p i 斜体。
 - C-c - 插入水平线。
 
-## 大纲视图 
+## 大纲视图  ##
 - 按 S-Tab 将在大纲视图、目录视图、及正常视图间切换。
 
-## 预览(需要安装 Markdown 程序包)
+## 预览(需要安装 Markdown 程序包) ##
 - C-c C-c m 在当前缓冲运行 Markdown，并在另一个缓冲预览。
 - C-c C-c p 同上，但在浏览器中预览。
 
-# --All the icons--
+-------------------------------------------------------------------------------
+
+# All the icons #
 - 打开emacs以后M-x all-the-icons-install-fonts
 
-# --Python--
+-------------------------------------------------------------------------------
+
+# Python #
 - 使用pip 安装：rope jedi flake8 importmagic autopep8 yapf
 
-# --Go--
+-------------------------------------------------------------------------------
+
+# Go #
 - go get -u -v golang.org/x/tools/cmd/cover
 - go get -u -v golang.org/x/tools/cmd/guru
 - go get -u -v golang.org/x/tools/cmd/gorename
@@ -123,12 +137,16 @@
 - go get -u -v github.com/golang/lint/golint
 - gocode set autobuild true
 
-# --Js--
+-------------------------------------------------------------------------------
+
+# JS #
 - npm install -g eslint 
 - npm install -g prettier
 - npm install -g typescript
 
-# --Projectile--
+-------------------------------------------------------------------------------
+
+# Projectile #
 - C-c p ?
 - C-c p D projectile-dired
 - C-c p I projectile-ibuffer
@@ -144,37 +162,52 @@
 - C-c p s r projectile-ripgrep
 - C-c p s s projectile-ag
 
-# --ag--
+-------------------------------------------------------------------------------
+
+# ag #
 apt-get install silversearcher-ag
 brew install the_silver_searcher
 
-# --Quicklisp--
-## 1.Install
+-------------------------------------------------------------------------------
+
+# Quicklisp #
+
+## Install ##
 - see quicklisp/Install
 
-## 2.Let Emacs know about SBCL and Quicklisp
+## Let Emacs know about SBCL and Quicklisp ##
 - First in SBCL run:
+
 ```
 (ql:quickload "quicklisp-slime-helper")
 ```
 
 - Tell Emacs how to launch your Lisp environment
+
 ```
 (setq inferior-lisp-program "sbcl")
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
 ```
 
-# --TAGS--
-find . -name "*.el" -or -name "*.c" | etags -
+-------------------------------------------------------------------------------
 
-# --Source--
+# TAGS #
+- find . -name "*.el" -or -name "*.c" | etags -
+
+-------------------------------------------------------------------------------
+
+# Source #
+
 ```
 git://git.savannah.gnu.org/emacs.git
 https://git.savannah.gnu.org/git/emacs.git
 ssh://git.savannah.gnu.org:/srv/git/emacs.git
 ```
 
-# --アップグレードする方法--
+-------------------------------------------------------------------------------
+
+# アップグレードする方法 #
+
 ```
 以下のコマンドでアップグレードしてください。
 そのためにはpackage-utilsパッケージが必要です。
@@ -182,5 +215,6 @@ M-x package-install package-utils (初めてアップグレードする場合の
 M-x package-utils-upgrade-by-name ample-theme
 ```
 
-# --EXWM--
+# EXWM #
+
 cp ~/.emacs.d/elpa/exwm*/xinitrc ~/.xinitrc

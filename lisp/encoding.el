@@ -8,7 +8,9 @@
 ;(set-language-environment "Japanese")
 (set-language-environment 'utf-8)
 (setq default-input-method "japanese-mozc")
-;;(setenv "LC_ALL" "en_US.UTF-8")
+;(setenv "LC_ALL" "en_US.UTF-8")
+;(getenv "LANG")
+(setenv "LANG" "en_US.UTF-8")
 ;; 设置默认读入文件编码
 (prefer-coding-system 'utf-8)
 
