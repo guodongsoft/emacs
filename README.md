@@ -4,9 +4,12 @@
 
 ### 第一种方式： ###
 
-- brew unlink emacs
-- brew uninstall emacs
-- brew install emacs --with-modules --with-cocoa --with-gnutls --with-librsvg --with-mailutils --with-imagemagick@6
+``` shell
+brew unlink emacs
+brew uninstall emacs
+brew install emacs --with-modules --with-cocoa --with-gnutls --with-librsvg --with-mailutils --with-imagemagick@6
+
+```
 
 ### 第二种方式： ###
 
