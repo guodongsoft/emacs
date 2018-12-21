@@ -60,6 +60,7 @@
 - https://github.com/oh-my-fish/oh-my-fish/blob/master/docs/Themes.md
 - ここで「bobthefish」というテーマを利用しており、以下手順でインストールしています。
 - fisher add oh-my-fish/theme-bobthefish
+- fisher omf/theme-bobthefish
 - git clone https://github.com/powerline/fonts.git
 - fonts/install.sh
 - rm -rf fonts
