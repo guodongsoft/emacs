@@ -57,9 +57,7 @@
  ;; Linux判定
  ((eq system-type 'gnu/linux)
   (progn
-    (set-fontset-font t 'japanese-jisx0208 "TakaoPGothic")
-    (add-to-list 'face-font-rescale-alist '(".*Takao P.*" . 0.85))
-    ))
+    (set-face-attribute 'default nil :height 120)))
 
  (t nil))
 
