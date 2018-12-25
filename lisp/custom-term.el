@@ -13,12 +13,14 @@
               "/usr/local/bin"
               (expand-file-name "~/bin")
               (expand-file-name "~/.emacs.d/bin")
+              (expand-file-name "~/Library/Python/2.7/bin")
               ))
  ;; PATH と exec-path に同じ物を追加します
  (when (and (file-exists-p dir) (not (member dir exec-path)))
    (setenv "PATH" (concat dir ":" (getenv "PATH")))
    (setq exec-path (append (list dir) exec-path))))
 
+;; MANPATH
 (setenv "MANPATH" (concat "/usr/local/man:/usr/share/man:/Developer/usr/share/man:/sw/share/man" (getenv "MANPATH")))
 
 ;; (setenv "CDPATH" "/")
