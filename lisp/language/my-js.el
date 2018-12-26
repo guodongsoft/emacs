@@ -1,4 +1,4 @@
-;;; init-js.el --- Javascript 
+;;; my-js.el --- Javascript 
 ;;; Commentary:
 
 (use-package js-comint)
@@ -92,5 +92,5 @@ irname" "console" "JSON")))
               (flycheck-add-mode 'javascript-eslint 'web-mode)
               (flycheck-mode))))
 
-(provide 'init-js)
-;;; init-js.el ends here
+(provide 'my-js)
+;;; my-js.el ends here

@@ -1,4 +1,4 @@
-;;; init-golang.el --- Golang develop environment configure
+;;; my-golang.el --- Golang develop environment configure
 ;;; Commentary:
 
 ;;; Code:
@@ -51,5 +51,5 @@
 (use-package go-autocomplete :ensure t)
 (ac-config-default)
 
-(provide 'init-golang)
-;;; init-golang.el ends here
+(provide 'my-golang)
+;;; my-golang.el ends here

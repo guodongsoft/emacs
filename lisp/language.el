@@ -30,10 +30,13 @@
 (setq c-default-style "linux")
 
 ;; --- Go ---
-(require 'init-golang)
+(require 'my-golang)
 
 ;; --- Javascript ---
-(require 'init-js)
+(require 'my-js)
+
+;; --- Rust ---
+(require 'my-rust)
 
 ;; --- Python ---
 ;(add-hook 'python-mode-hook 'anaconda-mode)
@@ -43,7 +46,7 @@
 ;(setq elpy-rpc-backend "jedi")
 
 ;; --- Ruby ---
-;(require 'init-rails)
+;(require 'my-rails)
 
 (provide 'language)
 ;;; language.el ends here

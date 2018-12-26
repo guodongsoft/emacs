@@ -251,5 +251,5 @@
 	       :vanilla (concat projectile-rails-vanilla-command " " command))
 	      'projectile-rails-mode)))
 
-(provide 'init-rails)
-;;; init-rails.el ends here
+(provide 'my-rails)
+;;; my-rails.el ends here
