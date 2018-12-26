@@ -2,60 +2,6 @@
 ;;; Commentary:
 
 ;;; Code:
-(use-package powerline :ensure t)
-(add-to-list 'load-path "~/.emacs.d/lisp/aweshell")
-;(require 'powerline)
-(require 'powerline-themes)
-
-(defun powerline-my-theme ()
-  "Setup the my mode-line."
-  (interactive)
-  (setq powerline-current-separator 'utf-8)
-  (setq-default mode-line-format
-                '("%e"
-                  (:eval
-                   (let* ((active (powerline-selected-window-active))
-                          (mode-line (if active 'mode-line 'mode-line-inactive))
-                          (face1 (if active 'mode-line-1-fg 'mode-line-2-fg))
-                          (face2 (if active 'mode-line-1-arrow 'mode-line-2-arrow))
-                          (separator-left (intern (format "powerline-%s-%s"
-                                                          (powerline-current-separator)
-                                                          (car powerline-default-separator-dir))))
-                          (lhs (list (powerline-raw " " face1)
-                                     (powerline-major-mode face1)
-                                     (powerline-raw " " face1)
-                                     (funcall separator-left face1 face2)
-                                     (powerline-buffer-id nil )
-                                     (powerline-raw " [ ")
-                                     (powerline-raw mode-line-mule-info nil)
-                                     (powerline-raw "%*")
-                                     (powerline-raw " |")
-                                     (powerline-process nil)
-                                     (powerline-vc)
-                                     (powerline-raw " ]")
-                                     ))
-                          (rhs (list (powerline-raw "%4l")
-                                     (powerline-raw ":")
-                                     (powerline-raw "%2c")
-                                     (powerline-raw " | ")
-                                     (powerline-raw "%6p")
-                                     (powerline-raw " ")
-                                     )))
-                     (concat (powerline-render lhs)
-                             (powerline-fill nil (powerline-width rhs))
-                             (powerline-render rhs)))))))
-
-(defun make/set-face (face-name fg-color bg-color weight)
-  (make-face face-name)
-  (set-face-attribute face-name nil
-                      :foreground fg-color :background bg-color :box nil :weight weight))
-(make/set-face 'mode-line-1-fg "#282C34" "#EF8300" 'bold)
-(make/set-face 'mode-line-2-fg "#AAAAAA" "#2F343D" 'bold)
-(make/set-face 'mode-line-1-arrow  "#AAAAAA" "#3E4451" 'bold)
-(make/set-face 'mode-line-2-arrow  "#AAAAAA" "#3E4451" 'bold)
-
-(powerline-my-theme)
-
 ;; shell の存在を確認
 (defun skt:shell ()
   "Find shell."
@@ -66,20 +12,6 @@
       ;; (executable-find "f_bash") ;; Emacs + Cygwin を利用する人は Bash の代りにこれにしてください
       (executable-find "cmdproxy")
       (error "Can't find 'shell' command in PATH!!")))
-
-(when (and (executable-find "fish")
-           (require 'fish-completion nil t))
-  (global-fish-completion-mode))
-
-(powerline-raw mode-line-mule-info nil 'l)
-(setq powerline-arrow-shape 'arrow)   ;; the default
-(setq powerline-arrow-shape 'curve)   ;; give your mode-line curves
-(setq powerline-arrow-shape 'arrow14) ;; best for small fonts
-(custom-set-faces
- '(mode-line ((t (:foreground "#030303" :background "#bdbdbd" :box nil))))
- '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil)))))
-(setq powerline-color1 "grey22")
-(setq powerline-color2 "grey40")
 
 ;; Shell 名の設定
 (custom-set-variables
@@ -100,9 +32,6 @@
  '(multi-term-dedicated-close-back-to-open-buffer-p t))
 
 (setenv "SHELL" shell-file-name)
-
-(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 (eval-when-compile (require 'cl))
 (use-package multi-term :ensure t)
