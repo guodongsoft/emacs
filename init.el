@@ -222,6 +222,8 @@
  '(magit-hash ((t (:foreground "red"))))
  '(magit-section-heading ((t (:background "#282822" :foreground "#00FFFF"))))
  '(magit-section-highlight ((((type tty)) nil)))
+ '(mode-line ((t (:foreground "#030303" :background "#bdbdbd" :box nil))))
+ '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil))))
  '(neo-dir-link-face ((t (:foreground "cyan"))))
  '(neo-file-link-face ((t (:foreground "white"))))
  '(tabbar-button ((t (:inherit tabbar-default :foreground "dark red"))))

@@ -3,6 +3,9 @@
 
 ;;; Code:
 (use-package powerline :ensure t)
+(add-to-list 'load-path "~/.emacs.d/lisp/aweshell")
+;(require 'powerline)
+(require 'powerline-themes)
 
 (defun powerline-my-theme ()
   "Setup the my mode-line."
@@ -67,6 +70,16 @@
 (when (and (executable-find "fish")
            (require 'fish-completion nil t))
   (global-fish-completion-mode))
+
+(powerline-raw mode-line-mule-info nil 'l)
+(setq powerline-arrow-shape 'arrow)   ;; the default
+(setq powerline-arrow-shape 'curve)   ;; give your mode-line curves
+(setq powerline-arrow-shape 'arrow14) ;; best for small fonts
+(custom-set-faces
+ '(mode-line ((t (:foreground "#030303" :background "#bdbdbd" :box nil))))
+ '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil)))))
+(setq powerline-color1 "grey22")
+(setq powerline-color2 "grey40")
 
 ;; Shell 名の設定
 (custom-set-variables
