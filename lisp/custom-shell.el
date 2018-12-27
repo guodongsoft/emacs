@@ -116,10 +116,15 @@
              (define-key term-raw-map (kbd "TAB") 'term-send-tab)
 
              (define-key term-raw-map (kbd "C-l") 'my-clear)
+
+             (define-key evil-insert-state-map (kbd "C-a") nil)
+             (define-key evil-insert-state-map (kbd "C-k") nil)
              (define-key term-raw-map (kbd "C-a") (lambda () (interactive) (term-send-raw-string "\C-a")))
              (define-key term-raw-map (kbd "C-k") (lambda () (interactive) (term-send-raw-string "\C-k")))
+
              (define-key term-raw-map (kbd "M-d") (lambda () (interactive) (term-send-raw-string "\ed")))
              (define-key term-raw-map (kbd "M-p") (lambda () (interactive) (term-send-raw-string "\ep")))
+
              (define-key term-raw-map (kbd "<M-left>")  (lambda () (interactive) (term-send-raw-string "\e[1;3D")))
              (define-key term-raw-map (kbd "<M-right>") (lambda () (interactive) (term-send-raw-string "\e[1;3C")))
              (define-key term-raw-map (kbd "<M-up>")    (lambda () (interactive) (term-send-raw-string "\e[1;3A")))
