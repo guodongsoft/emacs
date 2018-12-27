@@ -50,11 +50,11 @@
 
 ;; terminal に直接通したいキーがある場合は、以下をアンコメントする
 (delete "<ESC>" term-unbind-key-list)
-;; (delete "C-h" term-unbind-key-list)
-;; (delete "C-z" term-unbind-key-list)
-;; (delete "C-x" term-unbind-key-list)
-;; (delete "C-c" term-unbind-key-list)
-;; (delete "C-y" term-unbind-key-list)
+;(delete "C-h" term-unbind-key-list)
+;(delete "C-z" term-unbind-key-list)
+;(delete "C-x" term-unbind-key-list)
+;(delete "C-c" term-unbind-key-list)
+;(delete "C-y" term-unbind-key-list)
 
 (defun term-send-tab ()
   "Term send tab."
@@ -85,6 +85,7 @@
  '(term-color-blue ((t (:foreground "#7CB8BB" :background "#4C7073"))))
  '(term-color-magenta ((t (:foreground "#DC8CC3" :background "#CC9393"))))
  '(term-color-cyan ((t (:foreground "#93E0E3" :background "#8CD0D3"))))
+ ;'(term-color-cyan ((t (:foreground "#93E0E3" :background "#2F0FF0"))))
  '(term-color-white ((t (:foreground "#DCDCCC" :background "#656555"))))
 
  '(term-default-fg-color ((t (:inherit term-color-white))))
@@ -109,8 +110,8 @@
              (define-key term-raw-map (kbd "M-DEL") 'term-send-backward-kill-word)
              (define-key term-raw-map (kbd "TAB") 'term-send-tab)
  
-             (define-key term-raw-map (kbd "C-c p") 'multi-term-prev)
-             (define-key term-raw-map (kbd "C-c n") 'multi-term-next)
+             (define-key term-raw-map (kbd "M-j") 'multi-term-prev)
+             (define-key term-raw-map (kbd "M-k") 'multi-term-next)
 
              (define-key term-raw-map (kbd "C-SPC") nil)
              (define-key term-raw-map (kbd "C-@") nil) ; for putty
