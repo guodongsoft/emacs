@@ -90,6 +90,11 @@
  '(term-default-fg-color ((t (:inherit term-color-white))))
  '(term-default-bg-color ((t (:inherit term-color-black)))))
 
+(defun my-clear ()
+  (interactive)
+  (let ((comint-buffer-maximum-size 0))
+    (comint-truncate-buffer)))
+
 (add-hook 'term-mode-hook
           '(lambda ()
              ;;  mkdir -p ~/.terminfo
@@ -110,6 +115,7 @@
              (define-key term-raw-map (kbd "M-DEL") 'term-send-backward-kill-word)
              (define-key term-raw-map (kbd "TAB") 'term-send-tab)
 
+             (define-key term-raw-map (kbd "C-l") 'my-clear)
              (define-key term-raw-map (kbd "C-a") (lambda () (interactive) (term-send-raw-string "\C-a")))
              (define-key term-raw-map (kbd "C-k") (lambda () (interactive) (term-send-raw-string "\C-k")))
              (define-key term-raw-map (kbd "M-d") (lambda () (interactive) (term-send-raw-string "\ed")))
