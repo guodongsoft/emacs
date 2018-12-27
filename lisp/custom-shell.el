@@ -133,8 +133,8 @@
 ;; multi-term に対応
 (add-to-list 'shell-pop-internal-mode-list '("multi-term" "*terminal<1>*" '(lambda () (multi-term))))
 (shell-pop-set-internal-mode "multi-term")
-;; 25% の高さに分割する
-(shell-pop-set-window-height 25)
+;; 35% の高さに分割する
+(shell-pop-set-window-height 35)
 (shell-pop-set-internal-mode-shell shell-file-name)
 
 (defun my-shell-pop ()
