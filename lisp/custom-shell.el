@@ -100,14 +100,22 @@
 
              ;; keybind
              ;; C-h を term 内文字削除にする
-             (define-key term-raw-map (kbd "C-h") 'term-send-backspace)
+             ;(define-key term-raw-map (kbd "C-h") 'term-send-backspace)
              ;; C-y を term 内ペーストにする
              ;(define-key term-raw-map (kbd "C-y") 'term-paste)
+
              (define-key term-raw-map (kbd "M-d") 'term-send-forward-kill-word)
              (define-key term-raw-map (kbd "M-<backspace>") 'term-send-backward-kill-word)
              (define-key term-raw-map (kbd "M-w") 'term-send-backward-kill-word)
              (define-key term-raw-map (kbd "M-DEL") 'term-send-backward-kill-word)
              (define-key term-raw-map (kbd "TAB") 'term-send-tab)
+
+             (define-key term-raw-map (kbd "C-a") (lambda () (interactive) (term-send-raw-string "\C-a")))
+             (define-key term-raw-map (kbd "C-k") (lambda () (interactive) (term-send-raw-string "\C-k")))
+             (define-key term-raw-map (kbd "<M-left>")  (lambda () (interactive) (term-send-raw-string "\e[1;3D")))
+             (define-key term-raw-map (kbd "<M-right>") (lambda () (interactive) (term-send-raw-string "\e[1;3C")))
+             (define-key term-raw-map (kbd "<M-up>")    (lambda () (interactive) (term-send-raw-string "\e[1;3A")))
+             (define-key term-raw-map (kbd "<M-down>")  (lambda () (interactive) (term-send-raw-string "\e[1;3B")))
  
              (define-key term-raw-map (kbd "M-j") 'multi-term-prev)
              (define-key term-raw-map (kbd "M-k") 'multi-term-next)
