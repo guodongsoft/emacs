@@ -53,7 +53,7 @@
       '(
         install-elisp
         custom-variables
-        custom-term
+        custom-shell
         custom-anything
         custom-company
         custom-dired

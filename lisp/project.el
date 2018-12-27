@@ -16,8 +16,8 @@
 
 (use-package ag :ensure t)
 
-;; 使用f5键打开内容搜索
-(global-set-key [f5] 'projectile-ag)
+;; 使用f7键打开内容搜索
+(global-set-key [f7] 'projectile-ag)
 
 ;; Neotree
 (use-package neotree :ensure t)
@@ -28,7 +28,6 @@
 (setq neo-show-hidden-files t)
 (setq neo-smart-open t)
 (setq projectile-switch-project-action 'neotree-projectile-action)
-
 (global-set-key [f6] 'neotree-toggle)
 
 (defun neotree-project-dir ()

@@ -1,4 +1,4 @@
-;;; custom-term.el --- Term's initialization file
+;;; custom-shell.el --- Shell and term's settings file
 ;;; Commentary:
 
 ;;; Code:
@@ -147,5 +147,10 @@
 ;; ショートカットも好みで変更してください
 (global-set-key [f4] 'my-shell-pop)
 
-(provide 'custom-term)
-;;; custom-term.el ends here
+;; Aweshell
+(add-to-list 'load-path "~/.emacs.d/lisp/aweshell")
+(require 'aweshell)
+(global-set-key [f5] 'aweshell-new)
+
+(provide 'custom-shell)
+;;; custom-shell.el ends here

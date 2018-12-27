@@ -11,7 +11,7 @@
 (setq doom-modeline-buffer-file-name-style 'file-name)
 (setq-default mode-line-format
  (list
-  '(:propertize " %l " face (:weight bold))
+  '(:propertize " %l/%c " face (:weight bold))
   'mode-line-mule-info
   'mode-line-modified
   'mode-line-remote " "
