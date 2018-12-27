@@ -112,6 +112,8 @@
 
              (define-key term-raw-map (kbd "C-a") (lambda () (interactive) (term-send-raw-string "\C-a")))
              (define-key term-raw-map (kbd "C-k") (lambda () (interactive) (term-send-raw-string "\C-k")))
+             (define-key term-raw-map (kbd "M-d") (lambda () (interactive) (term-send-raw-string "\ed")))
+             (define-key term-raw-map (kbd "M-p") (lambda () (interactive) (term-send-raw-string "\ep")))
              (define-key term-raw-map (kbd "<M-left>")  (lambda () (interactive) (term-send-raw-string "\e[1;3D")))
              (define-key term-raw-map (kbd "<M-right>") (lambda () (interactive) (term-send-raw-string "\e[1;3C")))
              (define-key term-raw-map (kbd "<M-up>")    (lambda () (interactive) (term-send-raw-string "\e[1;3A")))
