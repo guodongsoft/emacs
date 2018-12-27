@@ -60,7 +60,6 @@
         custom-ivy
         custom-magit
         custom-modeline
-        ;custom-paredit
         custom-pair
         custom-tabbar
         encoding

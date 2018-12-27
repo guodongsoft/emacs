@@ -1,4 +1,4 @@
-;;; custom-pair.el --- Pair settings
+;;; custom-pair.el --- Awesome-pair settings
 ;;; Commentary:
 
 ;;; Code:
