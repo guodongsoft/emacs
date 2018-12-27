@@ -24,10 +24,6 @@
 ;; MANPATH
 (setenv "MANPATH" (concat "/usr/local/man:/usr/share/man:/Developer/usr/share/man:/sw/share/man" (getenv "MANPATH")))
 
-;; (setenv "CDPATH" "/")
-(setenv "CDPATH" (concat (replace-regexp-in-string
-                          "\\\\" "/" (getenv "HOME"))))
-
 (add-to-list 'load-path "~/.emacs.d/lisp/emacswiki")
 (add-to-list 'load-path "~/.emacs.d/lisp/emacswiki/common")
 
