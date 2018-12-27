@@ -60,12 +60,15 @@
         custom-ivy
         custom-magit
         custom-modeline
+        ;custom-paredit
+        custom-pair
         custom-tabbar
         encoding
         language
         project
         yaml-mode
         ))
+
 
 (dolist (req require-list)
   (require req))

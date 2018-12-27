@@ -63,9 +63,6 @@
 
 (global-set-key (kbd "M-#") 'sort-lines)
 
-;; diminish: 次模式在modeline中不显示, 只需显示主模式
-(use-package diminish :ensure t)
-
 (use-package bind-key :ensure t)
 
 ;; auto package update
@@ -85,9 +82,6 @@
 
 ;; 匹配括号高亮
 (show-paren-mode t)
-
-;; 自动补全括号
-(electric-pair-mode t)
 
 ;; 缩进默认设置
 (setq-default

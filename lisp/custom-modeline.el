@@ -2,6 +2,11 @@
 ;;; Commentary:
 
 (require 'doom-modeline)
+
+;; diminish: 次模式在modeline中不显示, 只需显示主模式
+(use-package diminish :ensure t)
+
+;;; Code:
 (doom-modeline-init)
 (setq doom-modeline-buffer-file-name-style 'file-name)
 (setq-default mode-line-format

@@ -1,8 +1,7 @@
 ;;; language.el --- Develop language settings
 ;;; Commentary:
 
-(require 'custom-paredit)
-
+;;; Code:
 (add-to-list 'load-path "~/.emacs.d/lisp/language")
 
 ;; Language Server Protocol
@@ -28,7 +27,6 @@
 (add-hook 'emacs-startup-hook 'rainbow-delimiters-using-stronger-colors)
 
 ;; --- Lisp ---
-;;; Code:
 ;; Emacs Lisp
 (add-hook 'elisp-mode-hook 'company-mode)
 

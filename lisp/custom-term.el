@@ -85,7 +85,6 @@
  '(term-color-blue ((t (:foreground "#7CB8BB" :background "#4C7073"))))
  '(term-color-magenta ((t (:foreground "#DC8CC3" :background "#CC9393"))))
  '(term-color-cyan ((t (:foreground "#93E0E3" :background "#8CD0D3"))))
- ;'(term-color-cyan ((t (:foreground "#93E0E3" :background "#2F0FF0"))))
  '(term-color-white ((t (:foreground "#DCDCCC" :background "#656555"))))
 
  '(term-default-fg-color ((t (:inherit term-color-white))))
