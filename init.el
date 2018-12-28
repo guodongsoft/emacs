@@ -188,13 +188,13 @@
   "Major mode for editing GitHub Flavored Markdown files" t)
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
-;; (use-package autoinsert
-;;   :ensure t
-;;   :config
-;;   (setq auto-insert-query nil)
-;;   (setq auto-insert-directory (locate-user-emacs-file "templates/"))
-;;   (add-hook 'find-file-hook 'auto-insert)
-;;   (auto-insert-mode t))
+(use-package autoinsert
+  :ensure t
+  :config
+  (setq auto-insert-query nil)
+  (setq auto-insert-directory (locate-user-emacs-file "templates/"))
+  (add-hook 'find-file-hook 'auto-insert)
+  (auto-insert-mode t))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
