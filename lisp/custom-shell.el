@@ -117,10 +117,8 @@
 
              (define-key term-raw-map (kbd "C-l") 'my-clear)
 
-             (define-key evil-insert-state-map (kbd "C-a") nil)
-             (define-key evil-insert-state-map (kbd "C-k") nil)
-             (define-key term-raw-map (kbd "C-a") (lambda () (interactive) (term-send-raw-string "\C-a")))
-             (define-key term-raw-map (kbd "C-k") (lambda () (interactive) (term-send-raw-string "\C-k")))
+             (evil-define-key 'insert term-raw-map (kbd "C-a") (lambda () (interactive) (term-send-raw-string "\C-a")))
+             (evil-define-key 'insert term-raw-map (kbd "C-k") (lambda () (interactive) (term-send-raw-string "\C-k")))
 
              (define-key term-raw-map (kbd "M-d") (lambda () (interactive) (term-send-raw-string "\ed")))
              (define-key term-raw-map (kbd "M-p") (lambda () (interactive) (term-send-raw-string "\ep")))
