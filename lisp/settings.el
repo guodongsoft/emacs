@@ -56,7 +56,7 @@
         custom-ivy
         custom-magit
         custom-modeline
-        custom-org
+        ;custom-org
         custom-pair
         custom-tabbar
         encoding
