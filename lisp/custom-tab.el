@@ -5,8 +5,8 @@
 (use-package awesome-tab
   :load-path "~/.emacs.d/lisp/emacswiki/awesome-tab.el"
   :config
-  (awesome-tab-mode t)
-  )
+  (awesome-tab-mode t))
+
 (global-set-key [(meta j)] 'awesome-tab-backward)
 (global-set-key [(meta k)] 'awesome-tab-forward)
 
