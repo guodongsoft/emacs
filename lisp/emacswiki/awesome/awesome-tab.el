@@ -1757,7 +1757,7 @@ Other buffer group by `awesome-tab-in-project-p' with project name."
   (list
    (cond
     ((derived-mode-p 'term-mode)
-     "Fish")
+     "Term")
     ((or (string-equal "*" (substring (buffer-name) 0 1))
          (memq major-mode '(magit-process-mode
                             magit-status-mode
