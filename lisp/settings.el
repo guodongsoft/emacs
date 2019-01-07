@@ -58,7 +58,7 @@
         custom-modeline
         ;custom-org
         custom-pair
-        custom-tabbar
+        custom-tab
         encoding
         language
         project

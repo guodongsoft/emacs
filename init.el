@@ -201,6 +201,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(awesome-tab-selected ((t (:inherit awesome-tab-default :foreground "green3" :overline "yellow" :underline "yellow" :weight ultra-bold :width semi-expanded))))
+ '(awesome-tab-separator ((t (:inherit awesome-tab-default :box (:line-width 2 :color "yellow" :style pressed-button) :height 0.1))))
  '(col-highlight ((t (:background "color-233"))))
  '(hl-line ((t (:background "color-233"))))
  '(lazy-highlight ((t (:background "black" :foreground "white" :underline t))))
@@ -220,15 +222,16 @@
  '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil))))
  '(neo-dir-link-face ((t (:foreground "cyan"))))
  '(neo-file-link-face ((t (:foreground "white"))))
- '(tabbar-button ((t (:inherit tabbar-default :foreground "dark red"))))
- '(tabbar-button-highlight ((t (:inherit tabbar-default))))
- '(tabbar-default ((t (:inherit variable-pitch :background "#E3E3E3" :foreground "black" :weight bold))))
- '(tabbar-highlight ((t (:underline t))))
- '(tabbar-modified ((t (:inherit tabbar-default :foreground "red"))))
- '(tabbar-selected ((t (:inherit tabbar-default :background "#48D1CC"))))
- '(tabbar-selected-modified ((t (:inherit tabbar-default :background "#48D1CC" :foreground "red"))))
- '(tabbar-separator ((t (:inherit tabbar-default :background "#C1FFC1"))))
- '(tabbar-unselected ((t (:inherit tabbar-default)))))
+ '(term-color-black ((t (:foreground "#3F3F3F" :background "#2B2B2B"))))
+ '(term-color-blue ((t (:foreground "#7CB8BB" :background "#4C7073"))))
+ '(term-color-cyan ((t (:foreground "#93E0E3" :background "#8CD0D3"))))
+ '(term-color-green ((t (:foreground "#7F9F7F" :background "#9FC59F"))))
+ '(term-color-magenta ((t (:foreground "#DC8CC3" :background "#CC9393"))))
+ '(term-color-red ((t (:foreground "#AC7373" :background "#8C5353"))))
+ '(term-color-white ((t (:foreground "#DCDCCC" :background "#656555"))))
+ '(term-color-yellow ((t (:foreground "#DFAF8F" :background "#9FC59F"))))
+ '(term-default-bg-color ((t (:inherit term-color-black))))
+ '(term-default-fg-color ((t (:inherit term-color-white)))))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -270,13 +273,12 @@
  '(org-src-fontify-natively t)
  '(package-selected-packages
    (quote
-    (company-lsp lsp-go lsp-mode golint go-dlv flymake flymake-go flycheck-gometalinter go-errcheck company-go paredit-everywhere proceed all-the-icons tabbar yasnippet flycheck counsel go-projectile projectile color-theme go-autocomplete evil-paredit paredit evil-magit magit-gitflow auto-compile auto-complete company company-web company-ycmd magit js-comint js2-mode doom-modeline neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil use-package)))
+    (company-lsp lsp-go lsp-mode golint go-dlv flymake flymake-go flycheck-gometalinter go-errcheck company-go paredit-everywhere proceed all-the-icons yasnippet flycheck counsel go-projectile projectile color-theme go-autocomplete evil-paredit paredit evil-magit magit-gitflow auto-compile auto-complete company company-web company-ycmd magit js-comint js2-mode doom-modeline neotree rspec-mode xwidgete ctags-update projectile-speedbar egg git-command package-utils emmet-mode mozc evil use-package)))
  '(protect-buffer-bury-p nil)
  '(ring-bell-function (quote ignore))
  '(shell-file-name (skt:shell))
  '(show-paren-mode t)
  '(system-uses-terminfo nil t)
- '(tabbar-separator (quote (1.5)))
  '(tramp-default-method "ssh" nil (tramp)))
 
 (provide 'init)
