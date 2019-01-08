@@ -24,8 +24,8 @@
 ;; MANPATH
 (setenv "MANPATH" (concat "/usr/local/man:/usr/share/man:/Developer/usr/share/man:/sw/share/man" (getenv "MANPATH")))
 
-(add-to-list 'load-path "~/.emacs.d/lisp/emacswiki")
-(add-to-list 'load-path "~/.emacs.d/lisp/emacswiki/common")
+(add-to-list 'load-path "~/.emacs.d/lisp/download")
+(add-to-list 'load-path "~/.emacs.d/lisp/download/common")
 
 ;; Flycheck
 (use-package flycheck

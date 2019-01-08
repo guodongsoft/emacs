@@ -1,6 +1,9 @@
 ;;; encoding.el --- Encoding's initialization file
 ;;; Commentary:
 
+(add-to-list 'load-path "~/.emacs.d/lisp/download/common")
+(require 'unicad)
+
 ;; 设置编辑环境
 (use-package mozc :ensure t)
 

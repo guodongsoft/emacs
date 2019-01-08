@@ -3,7 +3,7 @@
 
 ;;; Code:
 (use-package awesome-tab
-  :load-path "~/.emacs.d/lisp/emacswiki/awesome-tab.el"
+  :load-path "~/.emacs.d/lisp/download/awesome-tab.el"
   :config
   (awesome-tab-mode t))
 

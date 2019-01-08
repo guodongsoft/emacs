@@ -167,7 +167,7 @@
 (global-set-key [f4] 'my-shell-pop)
 
 ;; Aweshell
-(add-to-list 'load-path "~/.emacs.d/lisp/aweshell")
+(add-to-list 'load-path "~/.emacs.d/lisp/download/aweshell")
 (require 'aweshell)
 (global-set-key [f5] 'aweshell-new)
 

@@ -2,7 +2,7 @@
 ;;; Commentary:
 
 ;;; Code:
-(add-to-list 'load-path "~/.emacs.d/lisp/emacswiki/awesome")
+(add-to-list 'load-path "~/.emacs.d/lisp/download/awesome")
 (require 'awesome-pair)
 
 (dolist (hook (list
