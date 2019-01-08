@@ -19,7 +19,7 @@
     (propertize " %b "
      'face
      (if (buffer-modified-p)
-      '(:background "#B7CEEB" :foreground "#8A2BE2" :weight bold)
+      '(:background "red" :foreground "#404040" :weight bold)
       '(:background "#B7CEEB" :foreground "#404040" :weight normal))))
   '(:propertize " %p/%I " face (:background "#8A2BE2" :foreground "#FDF6E3"))
   '(:eval (propertize (concat " " (eyebrowse-mode-line-indicator) " ")))
