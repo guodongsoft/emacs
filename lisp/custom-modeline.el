@@ -7,12 +7,24 @@
 (use-package diminish :ensure t)
 
 ;;; Code:
+;; 文字コード表示
+(defvar my-mode-line-coding-format
+  '(:eval
+    (let* ((code (symbol-name buffer-file-coding-system))
+           (eol-type (coding-system-eol-type buffer-file-coding-system))
+           (eol (if (eq 0 eol-type) "UNIX"
+                  (if (eq 1 eol-type) "DOS"
+                    (if (eq 2 eol-type) "MAC"
+                      "???")))))
+      (concat code " " eol " "))))
+(put 'my-mode-line-coding-format 'risky-local-variable t)
+
 (doom-modeline-init)
 (setq doom-modeline-buffer-file-name-style 'file-name)
 (setq-default mode-line-format
  (list
   '(:propertize " %l/%c " face (:weight bold))
-  'mode-line-mule-info
+  'my-mode-line-coding-format
   'mode-line-modified
   'mode-line-remote " "
   '(:eval
