@@ -33,9 +33,11 @@
 ;; Common Lisp
 (require 'cl)
 
+;; TODO ----
 ;; SBCL
-(setq inferior-lisp-program "sbcl")
-(load (expand-file-name "~/quicklisp/slime-helper.el"))
+;(setq inferior-lisp-program "sbcl")
+;(load (expand-file-name "~/quicklisp/slime-helper.el"))
+;; TODO ----
 
 ;; --- C C++ ---
 (add-hook 'c-mode-hook      'company-mode)
