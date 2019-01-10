@@ -54,5 +54,7 @@
 (evil-define-key 'normal neotree-mode-map (kbd "A")   'neotree-stretch-toggle)
 (evil-define-key 'normal neotree-mode-map (kbd "H")   'neotree-hidden-file-toggle)
 
+(global-set-key [f9] 'projectile-switch-project)
+
 (provide 'project)
 ;;; project.el ends here
