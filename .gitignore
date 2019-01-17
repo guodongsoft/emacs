@@ -14,3 +14,7 @@ network*.data
 .*
 *.last
 tramp
+history
+places
+recentf
+persp-confs
